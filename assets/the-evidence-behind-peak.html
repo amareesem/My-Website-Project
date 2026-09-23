@@ -1,0 +1,813 @@
+<!--
+  THE EVIDENCE BEHIND PEAK — web page for peakcognitivelongevity.com
+  How to install (WordPress + Elementor free):
+  1. Create a new page titled "The Evidence Behind PEAK" and edit with Elementor.
+  2. Add a full-width section/container (Layout > Content Width: Full Width, no padding).
+  3. Drag in an "HTML" widget and paste EVERYTHING below this comment.
+  4. Replace the two "#book" links with your consultation booking URL.
+  Everything is scoped inside .peak-ev so it will not affect the rest of your site.
+  Research current as of September 10, 2026.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+
+.peak-ev{--blue:#1F4E9E;--navy:#14305F;--gold:#B8961E;--gold-bright:#E8C84A;--mist:#EBF0FA;--ink:#1E2533;--slate:#566074;--line:#D5DDEC;
+  font-family:'Poppins',Arial,sans-serif;font-weight:300;color:var(--ink);font-size:17px;line-height:1.7;background:#fff}
+.peak-ev *{box-sizing:border-box}
+.peak-ev h1,.peak-ev h2,.peak-ev h3,.peak-ev h4{font-family:'Lora',Georgia,serif;color:var(--navy);margin:0;line-height:1.2;font-weight:600}
+.peak-ev p{margin:0 0 1em}
+.peak-ev strong{font-weight:600}
+.peak-ev a{color:var(--blue)}
+.peak-ev a:focus-visible,.peak-ev summary:focus-visible{outline:3px solid var(--gold-bright);outline-offset:3px}
+.peak-ev .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.peak-ev .measure{max-width:68ch}
+.peak-ev section{padding:88px 0}
+
+/* Hero */
+.peak-ev .hero{background:var(--navy);color:#fff;padding:110px 0 0;position:relative;overflow:hidden}
+.peak-ev .hero h1{color:#fff;font-size:clamp(2.6rem,6vw,4.6rem);font-weight:700;letter-spacing:-0.01em;max-width:14ch}
+.peak-ev .hero .lede{font-family:'Lora',Georgia,serif;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.6;max-width:44ch;margin:28px 0 0;color:#E6ECF7}
+.peak-ev .hero .asof{font-size:.85rem;color:#B9C6DF;margin-top:22px}
+.peak-ev .ridge{display:block;width:100%;height:auto;margin-top:64px}
+
+/* Letter */
+.peak-ev .letter{padding-top:72px}
+.peak-ev .letter p{font-family:'Lora',Georgia,serif;font-size:1.2rem;line-height:1.8}
+.peak-ev .sig{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--blue);font-size:1.15rem}
+
+/* Today */
+.peak-ev .today{background:var(--mist)}
+.peak-ev .today h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:36px}
+.peak-ev .today-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
+.peak-ev .today-grid div{border-top:3px solid var(--gold);padding-top:18px}
+.peak-ev .today-grid h3{font-size:1.3rem;margin-bottom:10px}
+.peak-ev .today-grid p{font-size:.98rem;margin:0}
+
+/* Timeline — the signature element */
+.peak-ev .climb h2{font-size:clamp(2rem,4vw,3rem)}
+.peak-ev .climb .intro{margin:18px 0 56px}
+.peak-ev .trail{list-style:none;margin:0;padding:0;position:relative}
+.peak-ev .trail::before{content:"";position:absolute;left:148px;top:10px;bottom:10px;width:3px;background:linear-gradient(to bottom,var(--line),var(--gold))}
+.peak-ev .trail li{display:grid;grid-template-columns:130px 1fr;column-gap:56px;padding:0 0 44px;position:relative}
+.peak-ev .trail li::before{content:"";position:absolute;left:142px;top:12px;width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid var(--gold)}
+.peak-ev .trail li.now::before{background:var(--gold)}
+.peak-ev .yr{font-family:'Lora',Georgia,serif;font-weight:700;font-size:1.35rem;color:var(--blue);text-align:right;line-height:1.3}
+.peak-ev .trail h3{font-size:1.3rem;margin-bottom:6px}
+.peak-ev .trail p{margin:0;max-width:66ch;font-size:.98rem}
+.peak-ev .trail-note{font-size:.9rem;color:var(--slate);margin-top:8px}
+
+/* Legend and markers */
+.peak-ev .legend{display:flex;flex-wrap:wrap;gap:14px 34px;padding:22px 26px;border:1px solid var(--line);border-radius:6px;margin:36px 0 8px;font-size:.92rem}
+.peak-ev .legend span{display:inline-flex;align-items:center;gap:10px}
+.peak-ev .mk{display:inline-block;width:13px;height:13px;border-radius:50%;flex:0 0 13px}
+.peak-ev .mk-rct{background:var(--gold)}
+.peak-ev .mk-pop{border:2.5px solid var(--gold)}
+.peak-ev .mk-early{border:2px dotted var(--gold);width:14px;height:14px}
+
+/* Disciplines */
+.peak-ev .fields{background:#fff;border-top:1px solid var(--line)}
+.peak-ev .fields > .wrap > h2{font-size:clamp(2rem,4vw,3rem)}
+.peak-ev .field{display:grid;grid-template-columns:300px 1fr;gap:56px;padding:64px 0;border-bottom:1px solid var(--line)}
+.peak-ev .field:last-of-type{border-bottom:0}
+.peak-ev .field-head{position:sticky;top:24px;align-self:start}
+.peak-ev .field-head h3{font-size:1.75rem;margin-bottom:12px}
+.peak-ev .field-head p{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--blue);font-size:1.1rem;line-height:1.5;margin:0}
+.peak-ev .study{padding:18px 0 18px 30px;position:relative;border-top:1px solid #EEF1F7}
+.peak-ev .study:first-of-type{border-top:0}
+.peak-ev .study .mk{position:absolute;left:0;top:25px}
+.peak-ev .study h4{font-family:'Poppins',Arial,sans-serif;font-weight:600;font-size:1.02rem;color:var(--navy);margin-bottom:4px}
+.peak-ev .study p{margin:0;font-size:.97rem}
+.peak-ev .src{display:block;font-size:.82rem;color:var(--slate);margin-top:6px}
+.peak-ev .inpeak{margin-top:22px;background:var(--mist);border-left:4px solid var(--blue);padding:18px 22px;font-size:.96rem;border-radius:0 6px 6px 0}
+.peak-ev .inpeak strong{color:var(--blue)}
+.peak-ev .caution{max-width:80ch;margin-top:16px;font-size:.93rem;color:var(--slate);border-left:3px solid var(--line);padding-left:16px}
+.peak-ev .story{margin-top:22px;border:1px solid var(--gold);border-radius:6px;padding:20px 24px}
+.peak-ev .story h4{font-size:1.15rem;margin-bottom:6px}
+.peak-ev .story p{margin:0;font-size:.97rem}
+
+/* Gut-brain spotlight */
+.peak-ev .gut{background:#fff;border-top:6px solid var(--gold)}
+.peak-ev .gut h2{font-size:clamp(2rem,4vw,3rem)}
+.peak-ev .gut .gut-lede{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--blue);font-size:clamp(1.15rem,2vw,1.35rem);line-height:1.55;max-width:52ch;margin:16px 0 28px}
+.peak-ev .routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;margin:40px 0 56px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.peak-ev .routes div{padding:24px 24px 26px;border-right:1px solid var(--line);background:var(--mist)}
+.peak-ev .routes div:last-child{border-right:0}
+.peak-ev .routes h3{font-size:1.15rem;margin-bottom:8px}
+.peak-ev .routes p{font-size:.93rem;margin:0}
+.peak-ev .gut-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.peak-ev .gut-cols h3{font-size:1.35rem;margin:0 0 6px;padding-top:8px}
+.peak-ev .gut-cols .colnote{font-size:.93rem;color:var(--slate);margin-bottom:8px}
+@media (max-width:860px){.peak-ev .gut-cols{grid-template-columns:1fr;gap:32px}.peak-ev .routes div{border-right:0;border-bottom:1px solid var(--line)}.peak-ev .routes div:last-child{border-bottom:0}}
+
+/* Comparison table */
+.peak-ev .together{background:var(--mist)}
+.peak-ev .together h2{font-size:clamp(2rem,4vw,3rem)}
+.peak-ev .table-scroll{overflow-x:auto;margin-top:36px;background:#fff;border-radius:6px;border:1px solid var(--line)}
+.peak-ev table{border-collapse:collapse;width:100%;min-width:780px;font-size:.93rem}
+.peak-ev th,.peak-ev td{text-align:left;vertical-align:top;padding:16px 18px;border-bottom:1px solid var(--line)}
+.peak-ev th{font-weight:600;color:var(--navy);background:#F6F8FC}
+.peak-ev td:first-child{font-weight:600;color:var(--navy);white-space:nowrap}
+.peak-ev tr:last-child td{border-bottom:0}
+.peak-ev td .mk{margin-right:8px;vertical-align:-1px}
+.peak-ev .takeaway{font-family:'Lora',Georgia,serif;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--navy);margin-top:40px;max-width:40ch;line-height:1.45}
+
+/* Honest */
+.peak-ev .honest h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:28px}
+.peak-ev .honest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 48px}
+.peak-ev .honest-grid h3{font-size:1.2rem;margin-bottom:6px}
+.peak-ev .honest-grid p{font-size:.97rem;margin:0}
+
+/* Built */
+.peak-ev .built{border-top:1px solid var(--line)}
+.peak-ev .built h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}
+.peak-ev .pairs{margin-top:36px;border-top:2px solid var(--navy)}
+.peak-ev .pair{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:22px 0;border-bottom:1px solid var(--line)}
+.peak-ev .pair p{margin:0;font-size:.98rem}
+.peak-ev .pair .ev{font-family:'Lora',Georgia,serif;font-size:1.1rem;color:var(--navy)}
+.peak-ev .pair-head{padding:14px 0;font-weight:600;color:var(--slate);font-size:.9rem}
+
+/* CTA */
+.peak-ev .cta{background:var(--navy);color:#fff;text-align:left}
+.peak-ev .cta h2{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem)}
+.peak-ev .cta p{color:#E6ECF7;max-width:56ch;font-size:1.05rem;margin-top:18px}
+.peak-ev .btn{display:inline-block;background:var(--gold-bright);color:var(--navy);font-weight:600;text-decoration:none;padding:16px 30px;border-radius:4px;margin:14px 20px 0 0;font-size:1rem}
+.peak-ev .btn:hover{background:#F2D768}
+.peak-ev .phone{color:#fff;font-weight:500}
+.peak-ev .tag{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--gold-bright);font-size:1.25rem;margin-top:40px}
+
+/* References */
+.peak-ev .refs{padding:56px 0 72px;background:#F6F8FC}
+.peak-ev details{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.peak-ev summary{cursor:pointer;padding:20px 0;font-family:'Lora',Georgia,serif;font-size:1.3rem;color:var(--navy);font-weight:600}
+.peak-ev .refs ol{font-size:.86rem;line-height:1.6;color:var(--slate);padding-left:1.4em;margin:8px 0 28px}
+.peak-ev .refs li{margin-bottom:8px}
+.peak-ev .refs h4{font-family:'Poppins',Arial,sans-serif;font-size:.95rem;color:var(--navy);margin:22px 0 8px;font-weight:600}
+.peak-ev .disclaimer{font-size:.84rem;color:var(--slate);margin-top:28px;max-width:80ch}
+
+@media (max-width:860px){
+  .peak-ev section{padding:64px 0}
+  .peak-ev .field{grid-template-columns:1fr;gap:24px;padding:48px 0}
+  .peak-ev .field-head{position:static}
+  .peak-ev .pair{grid-template-columns:1fr;gap:8px}
+  .peak-ev .pair-head{display:none}
+  .peak-ev .trail::before{left:6px}
+  .peak-ev .trail li{grid-template-columns:1fr;padding-left:34px}
+  .peak-ev .trail li::before{left:0}
+  .peak-ev .yr{text-align:left;margin-bottom:4px}
+}
+</style>
+
+<div class="peak-ev">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>The Evidence Behind PEAK</h1>
+      <p class="lede">Dementia is not your destiny. That isn't a slogan we invented. It is where more than a century of research has led, and this page shows you the science, how it grew, and how it shaped every part of PEAK.</p>
+      <p class="asof">Research reviewed through September 2026</p>
+    </div>
+    <svg class="ridge" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 170 L0 132 L120 118 L210 126 L330 92 L420 104 L540 66 L610 80 L720 38 L790 54 L880 22 L960 44 L1060 30 L1150 60 L1260 50 L1360 84 L1440 76 L1440 170 Z" fill="#1F4E9E"/>
+      <path d="M0 132 L120 118 L210 126 L330 92 L420 104 L540 66 L610 80 L720 38 L790 54 L880 22" fill="none" stroke="#E8C84A" stroke-width="3"/>
+      <circle cx="880" cy="22" r="7" fill="#E8C84A"/>
+      <path d="M0 170 L0 150 L160 142 L300 150 L460 128 L620 140 L780 112 L940 124 L1100 104 L1260 122 L1440 110 L1440 170 Z" fill="#fff"/>
+    </svg>
+  </header>
+
+  <!-- LETTER -->
+  <section class="letter">
+    <div class="wrap measure">
+      <p>We didn't come to this work as believers. We came as two family physicians, trained the conventional way, who each watched a parent disappear into dementia. We had been taught there was little anyone could do.</p>
+      <p>Then we went looking for the evidence ourselves, and we found that the science had quietly moved on. Researchers across neuroscience, genetics, conventional medicine, and lifestyle medicine had been reaching the same conclusion from different directions: the risk of cognitive decline can be lowered, and the earlier we act, the more we can change.</p>
+      <p>This page is what we found. We've tried to show it to you honestly, including the landmark trials, the newest discoveries, and the places where the science is still climbing. You deserve more than promises. You deserve the evidence.</p>
+      <p class="sig">Drs. Lori &amp; Chris King</p>
+    </div>
+  </section>
+
+  <!-- WHERE THE SCIENCE STANDS -->
+  <section class="today">
+    <div class="wrap">
+      <h2>Where the science stands today</h2>
+      <div class="today-grid">
+        <div>
+          <h3>Nearly half of dementia is linked to things we can change</h3>
+          <p>The Lancet Commission, the world's leading panel of dementia experts, estimates that about 45% of dementia cases could be prevented or delayed by addressing 14 modifiable risk factors.</p>
+        </div>
+        <div>
+          <h3>Combined lifestyle programs protect the brain</h3>
+          <p>Large randomized trials in Finland, the United States, and 11 Latin American countries show that a structured program combining nutrition, exercise, brain training, social connection, and health monitoring protects thinking and memory in people at risk.</p>
+        </div>
+        <div>
+          <h3>Risk can now be seen years earlier</h3>
+          <p>Blood biomarkers, genetic testing, and cognitive testing now let physicians identify risk long before symptoms appear, while there is still time to act.</p>
+        </div>
+        <div>
+          <h3>The gut is part of the brain's story</h3>
+          <p>Changes in gut bacteria appear years before memory symptoms, and in 2026 researchers pinpointed a gut-bacteria compound linked to Alzheimer's brain changes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="climb">
+    <div class="wrap">
+      <h2>How the science climbed</h2>
+      <p class="intro measure">For most of the last century, dementia was treated as bad luck and old age. Here is how that picture changed, one discovery at a time.</p>
+
+      <ol class="trail">
+        <li>
+          <div class="yr">1906</div>
+          <div>
+            <h3>A disease gets a name</h3>
+            <p>Dr. Alois Alzheimer describes the plaques and tangles he found in the brain of a woman who died with severe memory loss. For decades, those deposits were seen as the whole story.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">1986&ndash;2001</div>
+          <div>
+            <h3>The Nun Study reveals "cognitive reserve"</h3>
+            <p>Researchers followed 678 Catholic sisters through old age and studied their brains after death. Some sisters whose brains were full of plaques and tangles had shown no signs of dementia in life. The lesson: the life you live helps decide whether brain changes ever become symptoms.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">1992&ndash;1993</div>
+          <div>
+            <h3>Amyloid takes center stage, and APOE4 is found</h3>
+            <p>The "amyloid hypothesis" becomes the dominant theory and drives most drug research for the next 30 years. A year later, scientists identify APOE4 as the strongest common gene linked to Alzheimer's. It raises risk, but it does not guarantee disease.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2011&ndash;2013</div>
+          <div>
+            <h3>The brain proves it can change</h3>
+            <p>A year of brisk walking enlarges the hippocampus, the brain's memory center, in older adults. Scientists discover the glymphatic system, the brain's overnight cleaning crew that clears waste, including amyloid, mostly during sleep. Genetic studies put the brain's immune cells, the microglia, at the center of Alzheimer's risk.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2014</div>
+          <div>
+            <h3>Root-cause medicine enters the conversation</h3>
+            <p>Dr. Dale Bredesen reports improved cognition in a small group of patients treated with a personalized, multi-part protocol. It was small and uncontrolled, but it opened a new question: what if each person's decline has its own set of drivers?</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2015</div>
+          <div>
+            <h3>FINGER: the first major proof that combination works</h3>
+            <p>In Finland, 1,260 older adults at risk of decline were randomly assigned to a two-year program of nutrition, exercise, brain training, and heart-health monitoring, or to general health advice. The combined program improved overall cognition 25% more than the comparison group, with even larger gains in executive function and processing speed.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2017&ndash;2020</div>
+          <div>
+            <h3>The experts put a number on prevention</h3>
+            <p>The Lancet Commission estimates that 35% of dementia is linked to nine modifiable risk factors (2017), then 40% across twelve (2020). In 2019, the SPRINT MIND trial shows that tighter blood pressure control lowers the risk of mild cognitive impairment.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2023</div>
+          <div>
+            <h3>Conventional medicine changes the biology</h3>
+            <p>The first anti-amyloid drugs gain FDA approval after slowing decline in early Alzheimer's by roughly a quarter to a third over 18 months. The benefit is modest and the risks are real, but it proves the disease process can be altered. The same year, the ACHIEVE trial shows that treating hearing loss slows cognitive decline in older adults at higher risk.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2023</div>
+          <div>
+            <h3>The gut&ndash;brain link comes into focus</h3>
+            <p>Researchers at Washington University find that people with the earliest brain signs of Alzheimer's, but no symptoms, already carry different gut bacteria. In Ireland, rats given gut bacteria from people with Alzheimer's develop memory problems and grow fewer new brain cells.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2024</div>
+          <div>
+            <h3>45%, and lifestyle helps people already diagnosed</h3>
+            <p>The Lancet Commission adds high LDL cholesterol and untreated vision loss, bringing the list to 14 risk factors and the estimate to about 45%. Dr. Dean Ornish's randomized trial shows that intensive lifestyle changes improved cognition and function measures over 20 weeks in people with mild cognitive impairment or early Alzheimer's.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2025</div>
+          <div>
+            <h3>U.S. POINTER, and surprising new clues</h3>
+            <p>The largest U.S. lifestyle trial, with 2,111 at-risk adults, confirms FINGER and shows that structure and coaching amplify the benefit. A natural experiment in Wales links the shingles vaccine to 20% fewer dementia diagnoses. Harvard scientists report that lithium, a trace element, is depleted early in Alzheimer's brains. The FDA clears the first blood tests to aid Alzheimer's diagnosis.</p>
+          </div>
+        </li>
+        <li class="now">
+          <div class="yr">2026</div>
+          <div>
+            <h3>The newest evidence</h3>
+            <p>A 20-year follow-up finds that a few weeks of brain-speed training, with booster sessions, was linked to 25% fewer dementia diagnoses two decades later. LatAm-FINGERS shows the structured lifestyle approach works across 11 countries and cultures. A large study in <em>JAMA</em> finds a p-tau217 blood test can signal risk up to 10 years before symptoms, and in August the FDA clears a p-tau217 blood test for use in primary care. University of Wisconsin scientists identify a compound made by gut bacteria that is linked to Alzheimer's brain changes and faster decline.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="trail-note measure">Each of these milestones is described in more detail below, with its source.</p>
+    </div>
+  </section>
+
+  <!-- FIELDS -->
+  <section class="fields">
+    <div class="wrap">
+      <h2>Seven fields, pointing the same way</h2>
+      <p class="measure" style="margin-top:18px">Conventional medicine and root-cause medicine don't always agree. On this question, they increasingly do. Here is what each field has contributed, and where you'll find it inside PEAK.</p>
+
+      <div class="legend" role="note" aria-label="How to read the evidence markers">
+        <span><i class="mk mk-rct"></i> Randomized controlled trial: the strongest test of cause and effect</span>
+        <span><i class="mk mk-pop"></i> Large population study: strong patterns in real-world data</span>
+        <span><i class="mk mk-early"></i> Early, small, or laboratory research: promising, still being confirmed</span>
+      </div>
+
+      <!-- Neuroscience -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Neuroscience</h3>
+          <p>The brain can build, repair, and clean itself, when we give it what it needs.</p>
+        </div>
+        <div>
+          <p>For generations, doctors were taught that adult brains could only decline. Neuroscience overturned that. The brain grows new connections throughout life, it has a waste-clearing system that runs mostly while we sleep, and its own immune cells can either protect it or inflame it, depending on the signals they receive.</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Exercise grows the memory center</h4>
+            <p>In a randomized trial of 120 older adults, a year of aerobic walking increased the size of the hippocampus by about 2%, roughly reversing one to two years of age-related shrinkage, and improved memory.</p>
+            <span class="src">Erickson et al., <em>PNAS</em>, 2011. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Sleep is when the brain takes out the trash</h4>
+            <p>Researchers discovered that during sleep, the spaces between brain cells widen and cerebrospinal fluid flushes out waste products, including amyloid. This was first shown in animal studies.</p>
+            <span class="src">Xie et al., <em>Science</em>, 2013. Laboratory research</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>Short sleep in midlife raises later risk</h4>
+            <p>In a 25-year study of about 8,000 British adults, people who regularly slept six hours or less in their 50s and 60s had roughly a 30% higher risk of developing dementia.</p>
+            <span class="src">Sabia et al., <em>Nature Communications</em>, 2021. Large population study</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Lifestyle helps even when the brain already shows changes</h4>
+            <p>Brain imaging from the U.S. POINTER trial found that people with smaller hippocampal volume or more tau buildup gained more cognitive benefit from the structured lifestyle program than similar people in the self-guided group. Amyloid buildup did not reduce the benefit.</p>
+            <span class="src">U.S. POINTER neuroimaging ancillary study, presented at CTAD, December 2025. Randomized trial substudy</span>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> Basecamp 2 focuses on inflammation, the signals that turn microglia from protectors into attackers. Sleep, movement, gratitude, and the practices that support neuroplasticity are woven through the weekly modules.</div>
+        </div>
+      </div>
+
+      <!-- Genetics -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Genetics</h3>
+          <p>Genes load the dice. They don't decide the roll.</p>
+        </div>
+        <div>
+          <p>Fewer than 1% of Alzheimer's cases are caused by genes that make the disease a near certainty. For everyone else, genes shift the odds. The most important of these, APOE4, is carried by about one in four people. Knowing your genetic risk doesn't seal your fate. It tells you how early, and how seriously, to act.</p>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>APOE4: the strongest common risk gene</h4>
+            <p>Identified in 1993, one copy of APOE4 raises Alzheimer's risk several-fold, and two copies raise it much further. A 2024 study concluded that carrying two copies represents a distinct genetic form of Alzheimer's, which makes early prevention especially important for these families.</p>
+            <span class="src">Corder et al., <em>Science</em>, 1993; Fortea et al., <em>Nature Medicine</em>, 2024</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>A healthy lifestyle helps even with high genetic risk</h4>
+            <p>Among nearly 200,000 older adults in the UK Biobank, people at high genetic risk who followed a favorable lifestyle had about a 32% lower risk of dementia than those at high genetic risk with an unfavorable lifestyle.</p>
+            <span class="src">Lourida et al., <em>JAMA</em>, 2019. Large population study</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>APOE4 carriers benefit from lifestyle programs too</h4>
+            <p>In both FINGER and U.S. POINTER, the cognitive benefits of the lifestyle program were seen in people who carry APOE4, not only in those who don't.</p>
+            <span class="src">Solomon et al., <em>JAMA Neurology</em>, 2018; Baker et al., <em>JAMA</em>, 2025</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Lifestyle can change how genes are expressed</h4>
+            <p>In a small eight-week pilot trial, a diet and lifestyle program lowered participants' epigenetic age, a DNA-based measure of biological aging, by about three years compared with controls.</p>
+            <span class="src">Fitzgerald et al., <em>Aging</em>, 2021. Small pilot randomized trial</span>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> Testing includes APOE4 and other critical risk genes. The Executive package adds the IntellxxDNA Brain Optimization Panel, which looks at more than 500 genetic variants so your protocol can target your specific vulnerabilities.</div>
+        </div>
+      </div>
+
+      <!-- Conventional medicine -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Conventional medicine</h3>
+          <p>The medical mainstream now agrees: dementia risk can be lowered.</p>
+        </div>
+        <div>
+          <p>The most conservative voices in medicine have moved. Major medical bodies now publish risk-reduction guidance, the FDA is clearing blood tests for early detection, and the largest research organizations are funding prevention trials. The 14 risk factors identified by the Lancet Commission are less education, hearing loss, high LDL cholesterol, depression, traumatic brain injury, physical inactivity, diabetes, smoking, high blood pressure, obesity, excessive alcohol, social isolation, air pollution, and untreated vision loss.</p>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>The Lancet Commission: about 45% potentially preventable</h4>
+            <p>The 2024 report estimates that addressing all 14 risk factors could prevent or delay about 45% of dementia worldwide. Hearing loss and high LDL cholesterol in midlife each account for about 7%.</p>
+            <span class="src">Livingston et al., <em>The Lancet</em>, 2024. Expert synthesis of population evidence</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Blood pressure control lowers risk of cognitive impairment</h4>
+            <p>In more than 9,000 adults, aiming for a systolic blood pressure under 120 lowered the risk of mild cognitive impairment by 19% compared with standard targets.</p>
+            <span class="src">SPRINT MIND Investigators, <em>JAMA</em>, 2019. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Treating hearing loss protects thinking</h4>
+            <p>Among older adults with hearing loss who were at higher risk of decline, hearing care slowed cognitive decline by 48% over three years. No significant effect was seen in the lower-risk group.</p>
+            <span class="src">Lin et al. (ACHIEVE), <em>The Lancet</em>, 2023. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>The shingles vaccine and fewer dementia diagnoses</h4>
+            <p>A strict birthday cutoff for shingles vaccination in Wales created a natural experiment among about 280,000 older adults. Those who received the vaccine were 20% less likely to be diagnosed with dementia over seven years, and the researchers have found similar signals in other countries.</p>
+            <span class="src">Eyting et al., <em>Nature</em>, 2025. Natural experiment</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Drugs can change the disease, but modestly</h4>
+            <p>Anti-amyloid drugs slowed decline in early Alzheimer's by roughly 27% to 35% over 18 months, with a risk of brain swelling and bleeding. In late 2025, two large trials of the diabetes drug semaglutide in early Alzheimer's did not slow the disease. Now the Alzheimer's Association has launched a $100 million trial, PROTECT-Cog, to test whether a metabolic drug adds benefit when paired with the U.S. POINTER lifestyle program. Lifestyle has become the foundation that new treatments are built on.</p>
+            <span class="src">van Dyck et al., <em>NEJM</em>, 2023; Sims et al., <em>JAMA</em>, 2023; Alzheimer's Association, AAIC 2026</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>Blood tests can reveal risk years before symptoms</h4>
+            <p>In a study of nearly 2,700 cognitively healthy older adults, those with very high p-tau217 levels had about a 78% chance of developing cognitive impairment within 10 years. In a separate real-world study in Sweden, family doctors diagnosed Alzheimer's correctly 93% of the time with a blood test result in hand, up from 65% without it. In August 2026, the FDA cleared the Elecsys p-tau217 blood test for use in primary and specialty care.</p>
+            <span class="src"><em>JAMA</em>, 2026 and AAIC 2026; Roche and Alzheimer's Association announcements, August 24, 2026</span>
+          </div>
+          <p class="caution">A note on guidelines: current Alzheimer's Association guidance reserves these blood tests for people who already have memory or thinking symptoms, and researchers say screening healthy people is not yet routine practice. At PEAK, biomarkers are never read alone. Your physician interprets them alongside your genetics, metabolic labs, cognitive testing, and history.</p>
+          <div class="inpeak"><strong>In PEAK:</strong> We check four brain biomarkers, not just one: p-tau217, the amyloid beta 42/40 ratio, neurofilament light (NfL), and GFAP. A comprehensive metabolic panel, a home blood pressure monitor, and a review of your history against the known risk factors round out the picture.</div>
+        </div>
+      </div>
+
+      <!-- Lifestyle medicine -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Lifestyle medicine</h3>
+          <p>The strongest medicine we have is a combination, not a single change.</p>
+        </div>
+        <div>
+          <p>This is where the evidence is deepest. Each lifestyle habit on its own shows benefit in population studies. But when researchers test them in randomized trials, the clearest results come from programs that combine several changes at once and give people structure and support to keep them.</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>U.S. POINTER: structure and support make the difference</h4>
+            <p>2,111 adults aged 60 to 79 at risk of decline, from diverse communities across five U.S. sites, followed a two-year program of exercise, the MIND diet, BrainHQ brain training, social and intellectual challenge, and regular health check-ins. Both groups improved, but the structured, coached group improved more, an effect estimated at one to two years of slower cognitive aging. The structured group also saw better blood pressure regulation and fewer sleep apnea events.</p>
+            <span class="src">Baker et al., <em>JAMA</em>, 2025; ancillary studies presented at CTAD, December 2025. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>LatAm-FINGERS: it works across cultures</h4>
+            <p>More than 1,000 older adults in 11 Latin American countries followed a culturally adapted version of the same approach, with salsa and tango for exercise and local foods for nutrition. Those who received structured coaching and peer support showed 55% greater improvement in overall memory, thinking, and reasoning than those following a self-guided program over two years.</p>
+            <span class="src"><em>The Lancet</em>, 2026, presented at AAIC 2026. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Brain-speed training: 20 years of follow-up</h4>
+            <p>In the ACTIVE trial of 2,802 adults aged 65 and older, people who completed a few weeks of adaptive processing-speed training plus booster sessions had 25% fewer dementia diagnoses over 20 years. Memory and reasoning training did not show the same long-term effect.</p>
+            <span class="src">Coe et al., <em>Alzheimer's &amp; Dementia: TRCI</em>, 2026. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>Every step counts</h4>
+            <p>Among 78,000 UK adults, walking about 9,800 steps a day was linked to about a 50% lower risk of dementia, and even about 3,800 steps a day was linked to about a 25% lower risk.</p>
+            <span class="src">del Pozo Cruz et al., <em>JAMA Neurology</em>, 2022. Large population study</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>One change alone isn't enough</h4>
+            <p>A three-year trial of the MIND diet found that participants who followed it did no better than a comparison group on a different healthy, calorie-reduced diet. Both groups improved. It's an important lesson: diet matters, but it works best as one part of a larger plan.</p>
+            <span class="src">Barnes et al., <em>NEJM</em>, 2023. Randomized controlled trial</span>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> Twenty-six weekly modules cover nutrition, movement, sleep, stress, brain challenge, and connection, one manageable step at a time. BrainHQ, the program used in U.S. POINTER, and a wearable are part of your recommended tools, and your monthly one-on-one visits provide the structure and accountability the trials show make the difference.</div>
+        </div>
+      </div>
+
+      <!-- Functional & precision medicine -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Functional &amp; precision medicine</h3>
+          <p>Find the drivers of decline, person by person, and address them.</p>
+        </div>
+        <div>
+          <p>Root-cause medicine starts from a simple observation: cognitive decline has many possible contributors, including insulin resistance, inflammation, nutrient gaps, hormone changes, toxins, infections, and poor sleep, and the mix is different for every person. The goal is to find your drivers and treat them. This is the youngest body of evidence on the page, and it is growing fast.</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>The first randomized trial of a precision protocol</h4>
+            <p>In a nine-month trial, 73 people with mild cognitive impairment or early dementia were randomly assigned to a personalized precision-medicine protocol or standard care. The precision group showed greater improvements in memory, executive function, and processing speed, along with better blood pressure, blood sugar, and lipids. Reviewers have noted that Alzheimer's blood biomarkers and brain volume did not change measurably over the nine months, and the results had not completed peer review as of this writing.</p>
+            <span class="src">Bredesen and colleagues, preprint, December 2025. Randomized trial awaiting peer review</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Earlier pilot studies</h4>
+            <p>In a 2022 pilot trial, 25 people with mild cognitive impairment or early Alzheimer's followed a personalized protocol for nine months and showed statistically significant improvements on cognitive testing. A 2023 study from Dr. Heather Sandison's residential program reported similar improvements.</p>
+            <span class="src">Toups et al., <em>Journal of Alzheimer's Disease</em>, 2022; Sandison et al., <em>Journal of Alzheimer's Disease</em>, 2023. Small uncontrolled studies</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>B vitamins slowed brain shrinkage</h4>
+            <p>In older adults with mild cognitive impairment, two years of B vitamins slowed the rate of brain shrinkage, with the greatest benefit in people who had high homocysteine. Later analysis suggested the benefit depended on having good omega-3 levels, a reminder that nutrients work together.</p>
+            <span class="src">Smith et al., <em>PLoS One</em>, 2010; Douaud et al., <em>PNAS</em>, 2013; Oulhaj et al., <em>J Alzheimer's Dis</em>, 2016. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>A ketogenic diet improved daily function</h4>
+            <p>In a small 12-week crossover trial of people with Alzheimer's, a modified ketogenic diet improved daily function and quality of life compared with a usual diet.</p>
+            <span class="src">Phillips et al., <em>Alzheimer's Research &amp; Therapy</em>, 2021. Small randomized trial</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>Metabolic health is brain health</h4>
+            <p>Diabetes, obesity, and high LDL cholesterol are all on the Lancet Commission's list of risk factors. Insulin resistance in the brain is so closely tied to Alzheimer's that some researchers have called it "type 3 diabetes."</p>
+            <span class="src">Livingston et al., <em>The Lancet</em>, 2024; de la Monte &amp; Wands, 2005</span>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> Your protocol is built around your root causes. Depending on your package, testing can include a total toxin burden analysis, NAD+ testing, a neurotransmitter and hormone evaluation, and professional cognitive testing. Nutrition follows KetoFlex 12/3 principles, adjusted to your results.</div>
+        </div>
+      </div>
+
+      <!-- Integrative -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Integrative &amp; mind-body medicine</h3>
+          <p>Low-risk practices with growing scientific support.</p>
+        </div>
+        <div>
+          <p>Practices once dismissed as "alternative," like meditation, tai chi, and sauna, are now being studied seriously. The trials are smaller than those in lifestyle medicine, so we're careful here. We include practices that are safe, that line up with stronger evidence about stress, circulation, and inflammation, and that people actually enjoy doing.</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Intensive lifestyle change, including stress management</h4>
+            <p>In Dr. Dean Ornish's trial of 51 people with mild cognitive impairment or early Alzheimer's, a program of whole-food plant-based nutrition, exercise, meditation, yoga, and group support improved several measures of cognition and function over 20 weeks, while the control group worsened. The blood amyloid ratio improved in the lifestyle group, and the gut microbiome changed. In a 40-week extension, the gains continued.</p>
+            <span class="src">Ornish et al., <em>Alzheimer's Research &amp; Therapy</em>, 2024; 40-week results, <em>Alzheimer's &amp; Dementia</em>, 2025. Small randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Tai chi</h4>
+            <p>In a 2023 randomized trial in older adults with mild cognitive impairment, tai chi, especially a version that added thinking challenges, improved global cognition scores more than stretching over six months.</p>
+            <span class="src">Li et al., <em>JAMA Network Open</em>, 2023. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Meditation</h4>
+            <p>In a small 12-week trial of adults with early memory concerns, a daily 12-minute meditation practice improved memory and cognitive performance, and the gains held at six months.</p>
+            <span class="src">Innes et al., <em>Journal of Alzheimer's Disease</em>, 2017. Small randomized trial</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>Sauna</h4>
+            <p>In a 20-year study of more than 2,000 Finnish men, those who used a sauna four to seven times a week had about a 66% lower risk of dementia than those who used it once a week.</p>
+            <span class="src">Laukkanen et al., <em>Age and Ageing</em>, 2017. Population study</span>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> The "P" in PEAK stands for Performance, the mind-body connection: meditation, breathwork, sauna, gratitude, time in nature, and meaningful relationships.</div>
+        </div>
+      </div>
+
+      <!-- Longevity -->
+      <div class="field">
+        <div class="field-head">
+          <h3>Longevity medicine</h3>
+          <p>Slow the aging that drives brain disease.</p>
+        </div>
+        <div>
+          <p>Age is the single biggest risk factor for dementia. Longevity science asks why cells age: chronic inflammation, failing mitochondria, and a slowdown in autophagy, the process cells use to clear out damaged parts. Much of this research is still in the lab, but it explains why the lifestyle trials work, and it points to what's next.</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>A daily multivitamin modestly slowed cognitive aging</h4>
+            <p>Across three COSMOS trials with more than 5,000 older adults, a daily multivitamin improved cognition by the equivalent of about two years of slower cognitive aging.</p>
+            <span class="src">Vyas et al., <em>American Journal of Clinical Nutrition</em>, 2024. Randomized controlled trials</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Lithium: a newly discovered vulnerability</h4>
+            <p>Harvard researchers found that lithium, a trace element naturally present in the brain, is depleted early in Alzheimer's as amyloid plaques bind it up. In mice, restoring normal lithium levels with lithium orotate reversed brain changes and memory loss. Human trials are needed, and lithium should never be self-prescribed.</p>
+            <span class="src">Aron et al., <em>Nature</em>, 2025. Laboratory research</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Biological age can move in both directions</h4>
+            <p>Epigenetic clocks measure how fast your body is aging at the cellular level. Early trials suggest that diet and lifestyle can slow these clocks, which gives us a way to track progress long before memory changes would show up.</p>
+            <span class="src">Fitzgerald et al., <em>Aging</em>, 2021. Small pilot trial</span>
+          </div>
+          <div class="story">
+            <h4>Dr. Lori's own climb</h4>
+            <p>Despite very high genetic risk, Dr. Lori has lowered her own measured biological age by more than ten years using the principles taught in PEAK. That's one person's story, not a study. But it's a big part of why she believes so deeply in this work.</p>
+          </div>
+          <div class="inpeak"><strong>In PEAK:</strong> Three of the six Basecamps are built on longevity science: Mitochondrial Health, Cellular Energy &amp; Performance, and Autophagy &amp; Cellular Regeneration, including practices such as fasting and high-intensity interval training.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUT-BRAIN SPOTLIGHT -->
+  <section class="gut" id="gut-brain">
+    <div class="wrap">
+      <h2>The gut&ndash;brain connection</h2>
+      <p class="gut-lede">Trillions of microbes in your gut are in constant conversation with your brain. The newest research suggests that conversation helps shape your risk of dementia.</p>
+      <p class="measure">Your gut is home to trillions of bacteria and other microbes, together called the microbiome. Twenty years ago, few brain researchers paid it much attention. Today it is one of the fastest-moving areas in dementia science, with major discoveries arriving every year. Scientists have mapped four main ways the gut and brain stay in touch.</p>
+
+      <div class="routes">
+        <div>
+          <h3>The vagus nerve</h3>
+          <p>A direct nerve line runs from the gut to the brain, carrying signals in both directions.</p>
+        </div>
+        <div>
+          <h3>The immune system</h3>
+          <p>When the gut lining becomes "leaky," bacterial fragments such as LPS can slip into the bloodstream and fuel inflammation throughout the body, including in the brain, where it can activate microglia.</p>
+        </div>
+        <div>
+          <h3>Microbial compounds</h3>
+          <p>Gut bacteria make substances that travel in the blood. Some, like butyrate made from dietary fiber, help protect the gut barrier and calm inflammation. Others appear to harm the brain.</p>
+        </div>
+        <div>
+          <h3>Metabolism</h3>
+          <p>Gut microbes influence blood sugar, cholesterol, blood pressure, and weight, several of which are on the Lancet Commission's list of dementia risk factors.</p>
+        </div>
+      </div>
+
+      <div class="gut-cols">
+        <div>
+          <h3>What the gut tells us about the brain</h3>
+          <p class="colnote">Evidence linking the microbiome to Alzheimer's</p>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>People with Alzheimer's carry different gut bacteria</h4>
+            <p>A University of Wisconsin study was among the first to show that the gut microbiome of people with Alzheimer's differs clearly from that of people without it, and that some of those differences track with Alzheimer's markers in spinal fluid.</p>
+            <span class="src">Vogt et al., <em>Scientific Reports</em>, 2017. Observational study</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>The changes appear before symptoms</h4>
+            <p>Among 164 cognitively normal older adults, the 49 who already showed amyloid and tau changes on brain scans and spinal fluid tests had distinctly different gut bacteria, even though their diets were similar. The differences tracked with amyloid and tau, not with brain cell loss, suggesting the gut changes early. A 2026 Australian study reported similar findings.</p>
+            <span class="src">Ferreiro et al., <em>Science Translational Medicine</em>, 2023; Dissanayaka et al., <em>Nutrients</em>, 2026. Observational studies</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Gut bacteria can transfer memory problems</h4>
+            <p>When researchers transplanted gut bacteria from people with Alzheimer's into young rats, the rats developed memory problems and made fewer new cells in the hippocampus. The more impaired the human donor, the more impaired the rat.</p>
+            <span class="src">Grabrucker et al., <em>Brain</em>, 2023. Laboratory research</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>Bacterial fragments are found in Alzheimer's brains</h4>
+            <p>LPS, a fragment of gut-type bacteria that triggers inflammation, was found in Alzheimer's brain tissue at higher levels than in healthy brains, clustered around amyloid plaques.</p>
+            <span class="src">Zhan et al., <em>Neurology</em>, 2016. Laboratory research</span>
+          </div>
+          <div class="study"><i class="mk mk-pop" aria-hidden="true"></i>
+            <h4>New in 2026: a gut compound linked to Alzheimer's</h4>
+            <p>In 1,196 cognitively healthy adults, higher blood levels of imidazole propionate, a compound made by certain gut bacteria, were linked to lower cognitive scores, more Alzheimer's biomarkers, and faster decline over time. A gene variant that raises levels of the compound was also linked to Alzheimer's risk, which points toward cause rather than coincidence. In mice, the compound weakened the blood-brain barrier and worsened amyloid and tau buildup.</p>
+            <span class="src">Vemuganti et al., <em>Nature Communications</em>, 2026. Population study with laboratory research</span>
+          </div>
+        </div>
+        <div>
+          <h3>What changes the gut, and helps the brain</h3>
+          <p class="colnote">Evidence that improving the microbiome can help</p>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Diet reshapes the aging gut</h4>
+            <p>In a one-year trial of 612 older adults across five European countries, a Mediterranean-style diet increased gut bacteria linked to less inflammation, less frailty, and better cognitive function, and reduced bacteria linked to poorer health.</p>
+            <span class="src">Ghosh et al. (NU-AGE), <em>Gut</em>, 2020. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Lifestyle change shifted the microbiome, alongside cognitive gains</h4>
+            <p>In Dr. Dean Ornish's trial in people with mild cognitive impairment or early Alzheimer's, the gut microbiome improved in the lifestyle group but not in the control group, alongside improvements in cognition and function.</p>
+            <span class="src">Ornish et al., <em>Alzheimer's Research &amp; Therapy</em>, 2024. Small randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>A daily fiber supplement sharpened memory</h4>
+            <p>In a double-blind trial of 36 pairs of twins aged 60 and older, the twin who took a daily prebiotic fiber (inulin and FOS) for 12 weeks grew more beneficial Bifidobacterium and made fewer errors on a memory test used to detect early Alzheimer's than the twin who took a placebo. A longer follow-up trial is underway.</p>
+            <span class="src">Ni Lochlainn et al., <em>Nature Communications</em>, 2024. Randomized controlled trial</span>
+          </div>
+          <div class="study"><i class="mk mk-rct" aria-hidden="true"></i>
+            <h4>Probiotics show modest benefit</h4>
+            <p>A 2025 analysis combining 15 randomized trials and nearly 1,000 people with mild cognitive impairment or Alzheimer's found that probiotics improved cognitive scores compared with placebo. The trials were small and used many different strains, and results are less consistent once dementia is established.</p>
+            <span class="src">Peng et al., meta-analysis of randomized trials, 2025</span>
+          </div>
+          <div class="study"><i class="mk mk-early" aria-hidden="true"></i>
+            <h4>The mouth matters too</h4>
+            <p>Toxins from <em>Porphyromonas gingivalis</em>, a bacterium behind gum disease, have been found in Alzheimer's brains. A drug aimed at those toxins did not meet its main goals in a clinical trial, so the story is not simple, but oral health is increasingly seen as part of brain health.</p>
+            <span class="src">Dominy et al., <em>Science Advances</em>, 2019. Laboratory research</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="caution">What we still don't know: most of this evidence shows strong links rather than final proof, and not every study agrees. A 2026 Finnish study that followed about 4,000 people for 16 years found only a modest overall link between the microbiome and later dementia, pointing to specific bacteria rather than overall diversity. Scientists are still working out which microbes and compounds matter most, and results from the U.S. POINTER microbiome study are still to come. What is consistent is this: the fiber-rich, plant-forward eating patterns that feed a healthy microbiome are the same ones used in the dementia-prevention trials. Fecal transplants and high-dose probiotics are not proven ways to prevent dementia.</p>
+
+      <div class="inpeak"><strong>In PEAK:</strong> Gut health is woven through the entire PEAK program, and in many of our patients' personalized protocols it is the first priority we address. Calming gut-driven inflammation is a focus of Basecamp 2, and your nutrition guidance emphasizes the fiber-rich, plant-forward foods that feed a healthy microbiome. For PEAK graduates, PEAK Ascent goes deeper with a multi-week 4R Gut-Brain Protocol and dedicated sessions on the gut-brain connection and the oral microbiome.</div>
+    </div>
+  </section>
+
+  <!-- COMBINATION TABLE -->
+  <section class="together">
+    <div class="wrap">
+      <h2>Why combination matters</h2>
+      <p class="measure" style="margin-top:18px">Here are the major trials that tested lifestyle change as a package, side by side with a trial that tested diet alone.</p>
+      <div class="table-scroll" role="region" aria-label="Comparison of lifestyle trials" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Study</th><th scope="col">Who took part</th><th scope="col">Length</th><th scope="col">What happened</th><th scope="col">Type of evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>FINGER (2015)</td><td>1,260 at-risk adults, 60&ndash;77, Finland</td><td>2 years</td><td>Combined program improved overall cognition more than general health advice</td><td><i class="mk mk-rct"></i>Randomized trial</td></tr>
+            <tr><td>U.S. POINTER (2025)</td><td>2,111 at-risk adults, 60&ndash;79, U.S.</td><td>2 years</td><td>Both groups improved; the structured, coached group improved more, about 1&ndash;2 years of slower cognitive aging</td><td><i class="mk mk-rct"></i>Randomized trial</td></tr>
+            <tr><td>LatAm-FINGERS (2026)</td><td>1,000+ at-risk adults, 11 countries</td><td>2 years</td><td>Structured group: 55% greater improvement in overall cognition than self-guided</td><td><i class="mk mk-rct"></i>Randomized trial</td></tr>
+            <tr><td>Ornish (2024)</td><td>51 adults with MCI or early Alzheimer's</td><td>20 weeks, extended to 40</td><td>Cognition and function measures improved while controls worsened</td><td><i class="mk mk-rct"></i>Small randomized trial</td></tr>
+            <tr><td>Precision medicine (2025)</td><td>73 adults with MCI or early dementia</td><td>9 months</td><td>Greater gains in memory, executive function, and processing speed than standard care</td><td><i class="mk mk-rct"></i>Randomized trial, awaiting peer review</td></tr>
+            <tr><td>MIND diet alone (2023)</td><td>604 adults at risk</td><td>3 years</td><td>No better than a comparison healthy diet; both groups improved</td><td><i class="mk mk-rct"></i>Randomized trial</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="takeaway">One healthy change helps. Many changes, guided and supported over time, help more.</p>
+    </div>
+  </section>
+
+  <!-- HONEST -->
+  <section class="honest">
+    <div class="wrap">
+      <h2>Reading the evidence with clear eyes</h2>
+      <div class="honest-grid">
+        <div>
+          <h3>Lower risk, not a guarantee</h3>
+          <p>The science shows that risk can be reduced. No program, including ours, can promise that any one person will never develop dementia.</p>
+        </div>
+        <div>
+          <h3>What "45%" really means</h3>
+          <p>The Lancet estimate describes whole populations. It means that if all 14 risk factors disappeared, about 45% of dementia cases might be prevented or delayed. It doesn't mean your own risk falls by exactly that amount.</p>
+        </div>
+        <div>
+          <h3>Not all evidence is equal</h3>
+          <p>A randomized trial, a population study, and a mouse study each tell us something different. That's why every finding on this page is marked, so you can see how solid it is.</p>
+        </div>
+        <div>
+          <h3>The science keeps climbing</h3>
+          <p>Some of the most exciting findings, like lithium and the newest precision-medicine trial, are still early. We share them because they matter, and we label them because you deserve to know the difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT -->
+  <section class="built">
+    <div class="wrap">
+      <h2>How the evidence built PEAK</h2>
+      <p class="measure">PEAK wasn't designed around a theory. It was designed around what the research shows works.</p>
+      <div class="pairs">
+        <div class="pair pair-head"><span>What the research shows</span><span>What we do</span></div>
+        <div class="pair"><p class="ev">Combining changes works better than any single change.</p><p>PEAK addresses nutrition, movement, sleep, stress, brain challenge, and connection together across six monthly Basecamps.</p></div>
+        <div class="pair"><p class="ev">Structure, coaching, and accountability amplify the benefit.</p><p>You work one-on-one with Dr. Lori or Dr. Chris King, with monthly virtual visits and secure messaging between visits.</p></div>
+        <div class="pair"><p class="ev">Risk is personal, and so are its drivers.</p><p>Your protocol is built from your history, your genetics, four brain biomarkers, and your metabolic and other lab results.</p></div>
+        <div class="pair"><p class="ev">A healthy gut supports a healthy brain.</p><p>Gut health runs through the whole program, and it is often the top priority in your personalized protocol.</p></div>
+        <div class="pair"><p class="ev">Change sticks when it's gradual.</p><p>One module a week, about an hour of your time, so transformation stays manageable rather than overwhelming.</p></div>
+        <div class="pair"><p class="ev">Heart health is brain health.</p><p>Blood pressure, cholesterol, and blood sugar are measured, tracked, and optimized, including at home.</p></div>
+        <div class="pair"><p class="ev">Brain-speed training has 20 years of follow-up.</p><p>BrainHQ is part of your recommended toolkit from the start.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>The climb begins now.</h2>
+      <p>We believe your mind is a gift worth fighting for. Your first step is a one-hour consultation with one of our physicians. We'll review your history, begin identifying your risk factors, and answer your questions with real answers, not a sales pitch.</p>
+      <a class="btn" href="#book">Book your consultation</a>
+      <a class="phone" href="tel:18177965115">Or call 817-796-5115</a>
+      <p class="tag">Your sharpest years are still ahead.</p>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="refs">
+    <div class="wrap">
+      <details>
+        <summary>Sources and references</summary>
+        <h4>Landmark reports and multidomain trials</h4>
+        <ol>
+          <li>Livingston G, Huntley J, Liu KY, et al. Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission. <em>Lancet</em>. 2024;404(10452):572&ndash;628.</li>
+          <li>Ngandu T, Lehtisalo J, Solomon A, et al. A 2 year multidomain intervention of diet, exercise, cognitive training, and vascular risk monitoring versus control to prevent cognitive decline in at-risk elderly people (FINGER). <em>Lancet</em>. 2015;385(9984):2255&ndash;2263.</li>
+          <li>Solomon A, Turunen H, Ngandu T, et al. Effect of the apolipoprotein E genotype on cognitive change during a multidomain lifestyle intervention. <em>JAMA Neurol</em>. 2018;75(4):462&ndash;470.</li>
+          <li>Baker LD, Espeland MA, Whitmer RA, et al. Structured vs self-guided multidomain lifestyle interventions for global cognitive function: the US POINTER randomized clinical trial. <em>JAMA</em>. 2025;334(8):681&ndash;691.</li>
+          <li>Alzheimer's Association. U.S. POINTER ancillary studies (sleep, neurovascular, neuroimaging), Clinical Trials on Alzheimer's Disease (CTAD) conference, December 2, 2025.</li>
+          <li>LatAm-FINGERS investigators. <em>Lancet</em>. 2026. Presented at the Alzheimer's Association International Conference, London, July 2026.</li>
+          <li>Ornish D, Madison C, Kivipelto M, et al. Effects of intensive lifestyle changes on the progression of mild cognitive impairment or early dementia due to Alzheimer's disease: a randomized, controlled clinical trial. <em>Alzheimers Res Ther</em>. 2024;16(1):122.</li>
+          <li>Ornish D, et al. Effects of intensive lifestyle changes on the progression of mild cognitive impairment or early dementia due to Alzheimer's disease: extended 40-week results. <em>Alzheimers Dement</em>. 2025;21(Suppl).</li>
+          <li>Barnes LL, Dhana K, Liu X, et al. Trial of the MIND diet for prevention of cognitive decline in older persons. <em>N Engl J Med</em>. 2023;389(7):602&ndash;611.</li>
+        </ol>
+        <h4>Neuroscience and genetics</h4>
+        <ol>
+          <li>Snowdon DA. Aging and Alzheimer's disease: lessons from the Nun Study. <em>Gerontologist</em>. 1997;37(2):150&ndash;156.</li>
+          <li>Corder EH, Saunders AM, Strittmatter WJ, et al. Gene dose of apolipoprotein E type 4 allele and the risk of Alzheimer's disease in late onset families. <em>Science</em>. 1993;261(5123):921&ndash;923.</li>
+          <li>Fortea J, Pegueroles J, Alcolea D, et al. APOE4 homozygosity represents a distinct genetic form of Alzheimer's disease. <em>Nat Med</em>. 2024;30(5):1284&ndash;1291.</li>
+          <li>Lourida I, Hannon E, Littlejohns TJ, et al. Association of lifestyle and genetic risk with incidence of dementia. <em>JAMA</em>. 2019;322(5):430&ndash;437.</li>
+          <li>Guerreiro R, Wojtas A, Bras J, et al. TREM2 variants in Alzheimer's disease. <em>N Engl J Med</em>. 2013;368(2):117&ndash;127.</li>
+          <li>Erickson KI, Voss MW, Prakash RS, et al. Exercise training increases size of hippocampus and improves memory. <em>Proc Natl Acad Sci USA</em>. 2011;108(7):3017&ndash;3022.</li>
+          <li>Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain. <em>Science</em>. 2013;342(6156):373&ndash;377.</li>
+          <li>Sabia S, Fayosse A, Dumurgier J, et al. Association of sleep duration in middle and old age with incidence of dementia. <em>Nat Commun</em>. 2021;12:2289.</li>
+          <li>Fitzgerald KN, Hodges R, Hanes D, et al. Potential reversal of epigenetic age using a diet and lifestyle intervention: a pilot randomized clinical trial. <em>Aging (Albany NY)</em>. 2021;13(7):9419&ndash;9432.</li>
+        </ol>
+        <h4>Conventional medicine, diagnostics, and treatment</h4>
+        <ol>
+          <li>SPRINT MIND Investigators. Effect of intensive vs standard blood pressure control on probable dementia. <em>JAMA</em>. 2019;321(6):553&ndash;561.</li>
+          <li>Lin FR, Pike JR, Albert MS, et al. Hearing intervention versus health education control to reduce cognitive decline in older adults with hearing loss in the USA (ACHIEVE). <em>Lancet</em>. 2023;402(10404):786&ndash;797.</li>
+          <li>Eyting M, Xie M, Michalik F, et al. A natural experiment on the effect of herpes zoster vaccination on dementia. <em>Nature</em>. 2025;641:438&ndash;446.</li>
+          <li>van Dyck CH, Swanson CJ, Aisen P, et al. Lecanemab in early Alzheimer's disease. <em>N Engl J Med</em>. 2023;388(1):9&ndash;21.</li>
+          <li>Sims JR, Zimmer JA, Evans CD, et al. Donanemab in early symptomatic Alzheimer disease: the TRAILBLAZER-ALZ 2 randomized clinical trial. <em>JAMA</em>. 2023;330(6):512&ndash;527.</li>
+          <li>Alzheimer's Association. Research advances from the 2026 Alzheimer's Association International Conference (p-tau217 risk prediction, published in <em>JAMA</em>; blood testing in Swedish primary care; PROTECT-Cog trial announcement). July 16, 2026.</li>
+          <li>Roche Diagnostics. FDA clearance of Elecsys pTau217 plasma test. August 24, 2026.</li>
+        </ol>
+        <h4>The gut&ndash;brain axis</h4>
+        <ol>
+          <li>Vogt NM, Kerby RL, Dill-McFarland KA, et al. Gut microbiome alterations in Alzheimer's disease. <em>Sci Rep</em>. 2017;7(1):13537.</li>
+          <li>Ferreiro AL, Choi J, Ryou J, et al. Gut microbiome composition may be an indicator of preclinical Alzheimer's disease. <em>Sci Transl Med</em>. 2023;15(700):eabo2984.</li>
+          <li>Dissanayaka DMS, Rainey-Smith SR, Sohrabi HR, et al. Gut microbiome changes in preclinical Alzheimer's disease. <em>Nutrients</em>. 2026;18(15):2469.</li>
+          <li>Grabrucker S, Marizzoni M, Silajd&#382;i&#263; E, et al. Microbiota from Alzheimer's patients induce deficits in cognition and hippocampal neurogenesis. <em>Brain</em>. 2023;146(12):4916&ndash;4934.</li>
+          <li>Zhan X, Stamova B, Jin LW, et al. Gram-negative bacterial molecules associate with Alzheimer disease pathology. <em>Neurology</em>. 2016;87(22):2324&ndash;2332.</li>
+          <li>Vemuganti V, Kang JW, Zhang Q, et al. Gut bacterial metabolite imidazole propionate potentiates Alzheimer's disease pathology. <em>Nat Commun</em>. 2026;17(1):8017.</li>
+          <li>Ghosh TS, Rampelli S, Jeffery IB, et al. Mediterranean diet intervention alters the gut microbiome in older people reducing frailty and improving health status: the NU-AGE 1-year dietary intervention across five European countries. <em>Gut</em>. 2020;69(7):1218&ndash;1228.</li>
+          <li>Ni Lochlainn M, Bowyer RCE, Moll JM, et al. Effect of gut microbiome modulation on muscle function and cognition: the PROMOTe randomised controlled trial. <em>Nat Commun</em>. 2024;15:1859.</li>
+          <li>Peng TR, Lin HH, Tseng TL, Wu TW. Effectiveness of probiotic supplements on cognitive function in mild cognitive impairment and Alzheimer's disease: a meta-analysis of randomized controlled trials. <em>Gen Hosp Psychiatry</em>. 2025.</li>
+          <li>Dominy SS, Lynch C, Ermini F, et al. <em>Porphyromonas gingivalis</em> in Alzheimer's disease brains: evidence for disease causation and treatment with small-molecule inhibitors. <em>Sci Adv</em>. 2019;5(1):eaau3333.</li>
+          <li>Tynkkynen J, Kambur O, Niiranen T, et al. Gut microbiome and risk of dementia: a prospective, population-based study. medRxiv preprint, February 2026.</li>
+        </ol>
+        <h4>Lifestyle, functional, integrative, and longevity medicine</h4>
+        <ol>
+          <li>Coe NB, Miller KEM, Sun C, et al. Impact of cognitive training on claims-based diagnosed dementia over 20 years: evidence from the ACTIVE study. <em>Alzheimers Dement (N Y)</em>. 2026;12(1):e70197.</li>
+          <li>del Pozo Cruz B, Ahmadi M, Naismith SL, Stamatakis E. Association of daily step count and intensity with incident dementia in 78,430 adults living in the UK. <em>JAMA Neurol</em>. 2022;79(10):1059&ndash;1063.</li>
+          <li>Bredesen DE, et al. Precision medicine treatment of Alzheimer's disease: a randomized controlled trial. Preprints.org, December 2025 (not peer reviewed at time of writing).</li>
+          <li>Toups K, Hathaway A, Gordon D, et al. Precision medicine approach to Alzheimer's disease: successful pilot project. <em>J Alzheimers Dis</em>. 2022;88(4):1411&ndash;1421.</li>
+          <li>Sandison H, Callan NGL, Rao RV, Phipps J, Bradley R. Observed improvement in cognition during a personalized lifestyle intervention in people with cognitive decline. <em>J Alzheimers Dis</em>. 2023.</li>
+          <li>Smith AD, Smith SM, de Jager CA, et al. Homocysteine-lowering by B vitamins slows the rate of accelerated brain atrophy in mild cognitive impairment. <em>PLoS One</em>. 2010;5(9):e12244.</li>
+          <li>Douaud G, Refsum H, de Jager CA, et al. Preventing Alzheimer's disease-related gray matter atrophy by B-vitamin treatment. <em>Proc Natl Acad Sci USA</em>. 2013;110(23):9523&ndash;9528.</li>
+          <li>Oulhaj A, Jern&eacute;n F, Refsum H, Smith AD, de Jager CA. Omega-3 fatty acid status enhances the prevention of cognitive decline by B vitamins in mild cognitive impairment. <em>J Alzheimers Dis</em>. 2016;50(2):547&ndash;557.</li>
+          <li>Phillips MCL, Deprez LM, Mortimer GMN, et al. Randomized crossover trial of a modified ketogenic diet in Alzheimer's disease. <em>Alzheimers Res Ther</em>. 2021;13:51.</li>
+          <li>de la Monte SM, Wands JR. Review of insulin and insulin-like growth factor expression, signaling, and malfunction in the central nervous system: relevance to Alzheimer's disease. <em>J Alzheimers Dis</em>. 2005;7(1):45&ndash;61.</li>
+          <li>Li F, Harmer P, Eckstrom E, et al. Cognitively enhanced tai ji quan vs regular tai ji quan and stretching exercise for improving cognition in older adults with mild cognitive impairment: a randomized clinical trial. <em>JAMA Netw Open</em>. 2023.</li>
+          <li>Innes KE, Selfe TK, Khalsa DS, Kandati S. Meditation and music improve memory and cognitive function in adults with subjective cognitive decline: a pilot randomized controlled trial. <em>J Alzheimers Dis</em>. 2017;56(3):899&ndash;916.</li>
+          <li>Laukkanen T, Kunutsor S, Kauhanen J, Laukkanen JA. Sauna bathing is inversely associated with dementia and Alzheimer's disease in middle-aged Finnish men. <em>Age Ageing</em>. 2017;46(2):245&ndash;249.</li>
+          <li>Vyas CM, Manson JE, Sesso HD, et al. Effect of multivitamin-mineral supplementation versus placebo on cognitive function: results from the clinic subcohort of the COSMOS randomized clinical trial and meta-analysis of 3 cognitive studies within COSMOS. <em>Am J Clin Nutr</em>. 2024;119(3):692&ndash;701.</li>
+          <li>Aron L, Ngian ZK, Qiu C, et al. Lithium deficiency and the onset of Alzheimer's disease. <em>Nature</em>. 2025;645(8081):712&ndash;721.</li>
+        </ol>
+      </details>
+      <p class="disclaimer">This page is for education and is not a substitute for individual medical advice. PEAK Cognitive Longevity is a physician-led program designed to identify and address modifiable risk factors for cognitive decline; it cannot guarantee that dementia will be prevented, and individual results vary. Research summaries reflect published and presented findings as of September 2026. Please talk with your physician before starting any new supplement, diet, or exercise program.</p>
+    </div>
+  </section>
+
+</div>
