@@ -253,7 +253,7 @@
 
   .disclosure-box{ border:1.5px dashed var(--accent); border-radius:10px; padding:22px 26px; font-size:13.5px; line-height:1.65; color:var(--body-text); font-style:italic; }
 
-  .video-ph{ background:var(--bg-alt); border:1px dashed var(--border); border-radius:12px; padding:28px; display:flex; align-items:center; gap:16px; color:var(--muted); font-size:14px; max-width:560px; margin:20px auto 0; }
+  .about-video{ display:block; width:100%; max-width:720px; height:auto; margin:20px auto 0; border-radius:12px; background:#000; }
 
   @media (max-width:980px){
     nav.primary{ display:none; }
@@ -793,9 +793,10 @@
         <p style="font-size:16px;line-height:1.75;">Several years ago they both retrained in root-cause and longevity medicine, because the conventional model had no useful answer to the question that mattered most to their own families.</p>
         <p class="pullquote">In PEAK, you work directly with one of them.</p>
         <p style="font-size:15px;line-height:1.7;">Not a coach, not a care coordinator, not a protocol delivered by an app. Your own physician, every month, for six months.</p>
-        <div class="video-ph">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M10 8.5l6 3.5-6 3.5z" fill="currentColor" stroke="none"/></svg>
-        </div>
+        <video class="about-video" controls preload="metadata" playsinline aria-label="Drs. Lori and Chris King introduce PEAK Cognitive Longevity">
+          <source src="assets/KINGVIDEO-web.mp4" type="video/mp4">
+          Your browser does not support HTML video. Please use a modern browser to watch the PEAK introduction.
+        </video>
       </div>
     </div>
   </section>
