@@ -74,13 +74,22 @@ function parsePost(source, fileName) {
     throw new Error(`${fileName}: expected five complete FAQs`);
   }
 
-  const body = match[2]
+  let body = match[2]
     .replace(/className=/g, 'class=')
     .replace(/style=\{\{\s*width:\s*"([^"]+)"\s*\}\}/g, 'style="width:$1"')
     .replace(/\\\$/g, '$');
   if (/\{\{|\}\}|<script\b/i.test(body)) {
     throw new Error(`${fileName}: contains unsupported JSX or executable script`);
   }
+
+  // The body already restates the frontmatter FAQ list as its own "Frequently
+  // Asked Questions" section. Strip that inline copy so it isn't duplicated
+  // alongside the styled, schema-backed FAQ section rendered from frontmatter.
+  const inlineFaqMatch = body.match(/<h2>Frequently Asked Questions<\/h2>[\s\S]*?(?=<hr\s*\/?>)/);
+  if (!inlineFaqMatch) {
+    throw new Error(`${fileName}: expected an inline "Frequently Asked Questions" section to remove`);
+  }
+  body = body.replace(inlineFaqMatch[0], '');
 
   const firstParagraph = body.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
   const excerpt = firstParagraph
