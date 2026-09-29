@@ -926,7 +926,7 @@
       <div class="narrow" style="margin-bottom:44px;">
         <div class="field">
           <label for="blog-search">Search articles</label>
-          <input id="blog-search" type="text" placeholder="Search by topic or title&hellip;" oninput="blogSearch(this.value)" />
+          <input id="blog-search" type="text" placeholder="Search by topic or title&hellip;" oninput="foodFightSearch(this.value)" />
         </div>
       </div>
 
@@ -1305,6 +1305,67 @@
     });
     blogRenderPosts(matches, 'Search Results');
   }
+  var foodFightPosts = [];
+  function renderFoodFightPosts(query){
+    var grid = document.getElementById('food-fight-grid');
+    if(!grid) return;
+    var normalizedQuery = (query || '').trim().toLowerCase();
+    var matches = foodFightPosts.filter(function(post){
+      var searchable = [post.title, post.description, post.excerpt, post.focusKeyword]
+        .concat(post.tags).join(' ').toLowerCase();
+      return !normalizedQuery || searchable.indexOf(normalizedQuery) !== -1;
+    });
+    grid.replaceChildren();
+    matches.forEach(function(post){
+      var card = document.createElement('article');
+      card.className = 'card';
+      card.style.cssText = 'padding:28px;display:flex;flex-direction:column;gap:12px;';
+      var position = document.createElement('span');
+      position.className = 'eyebrow';
+      position.textContent = 'Food Fight · Article ' + (post.seriesNumber + 1);
+      var title = document.createElement('h3');
+      title.style.cssText = 'font-size:18px;font-weight:600;';
+      var link = document.createElement('a');
+      link.href = '/blog/' + post.slug + '/';
+      link.textContent = post.title;
+      title.appendChild(link);
+      var excerpt = document.createElement('p');
+      excerpt.style.cssText = 'font-size:14.5px;line-height:1.65;';
+      excerpt.textContent = post.description;
+      var meta = document.createElement('span');
+      meta.className = 'pill';
+      meta.style.alignSelf = 'flex-start';
+      meta.textContent = post.readingTime + ' min read';
+      card.append(position, title, excerpt, meta);
+      grid.appendChild(card);
+    });
+    var empty = document.getElementById('food-fight-empty');
+    if(empty) empty.hidden = matches.length !== 0;
+    var count = document.getElementById('food-fight-count');
+    if(count) count.textContent = matches.length + (matches.length === 1 ? ' article' : ' articles');
+  }
+  function foodFightSearch(query){
+    renderFoodFightPosts(query);
+  }
+  (function loadFoodFightPosts(){
+    var categories = document.getElementById('blog-categories');
+    categories.innerHTML = '<div class="narrow" style="margin-bottom:28px;"><h2 style="font-size:24px;font-weight:700;">The Food Fight Series</h2><p style="font-size:14.5px;line-height:1.65;">A 26-article series on food, weight loss, brain health, and practical nutrition from Dr. Lori King, MD.</p><p id="food-fight-count" class="eyebrow" aria-live="polite">Loading articles…</p></div><div id="food-fight-grid" class="grid-3"></div><p id="food-fight-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p>';
+    fetch('/assets/food-fight-blog-index.json')
+      .then(function(response){
+        if(!response.ok) throw new Error('Unable to load Food Fight articles (' + response.status + ')');
+        return response.json();
+      })
+      .then(function(posts){
+        if(!Array.isArray(posts) || posts.length !== 26) throw new Error('The Food Fight article index is incomplete');
+        foodFightPosts = posts;
+        renderFoodFightPosts(document.getElementById('blog-search').value);
+      })
+      .catch(function(error){
+        var count = document.getElementById('food-fight-count');
+        if(count) count.textContent = 'Food Fight articles could not be loaded. Please refresh and try again.';
+        console.error(error);
+      });
+  })();
   function handleContactSubmit(e){
     e.preventDefault();
     var btn = e.currentTarget;
