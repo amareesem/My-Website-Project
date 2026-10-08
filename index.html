@@ -1341,7 +1341,7 @@
         return response.json();
       })
       .then(function(posts){
-        if(!Array.isArray(posts) || posts.length !== 26) throw new Error('The Food Fight article index is incomplete');
+        if(!Array.isArray(posts) || posts.length !== 27) throw new Error('The Food Fight article index is incomplete');
         foodFightPosts = posts;
         renderFoodFightPosts(document.getElementById('blog-search').value);
       })

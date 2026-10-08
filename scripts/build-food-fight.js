@@ -1,4 +1,4 @@
-const fs = require('node:fs/promises');
+﻿const fs = require('node:fs/promises');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
@@ -192,14 +192,14 @@ async function main() {
   const files = (await fs.readdir(sourceDirectory))
     .filter(file => file.endsWith('.mdx'))
     .sort();
-  if (files.length !== 26) throw new Error(`Expected 26 MDX posts, found ${files.length}`);
+  if (files.length !== 27) throw new Error(`Expected 27 MDX posts, found ${files.length}`);
 
   const posts = await Promise.all(files.map(async file =>
     parsePost(await fs.readFile(path.join(sourceDirectory, file), 'utf8'), file)
   ));
   posts.sort((a, b) => a.seriesNumber - b.seriesNumber);
   if (posts.some((post, index) => post.seriesNumber !== index)) {
-    throw new Error('seriesNumber values must be unique and cover 0 through 25');
+    throw new Error('seriesNumber values must be unique and cover 0 through 26');
   }
   const slugs = new Set(posts.map(post => post.slug));
   for (const post of posts) {

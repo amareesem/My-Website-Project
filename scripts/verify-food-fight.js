@@ -1,11 +1,11 @@
-const fs = require('node:fs');
+﻿const fs = require('node:fs');
 const path = require('node:path');
 const root = process.cwd();
 const posts = JSON.parse(fs.readFileSync(path.join(root, 'assets', 'food-fight-blog-index.json'), 'utf8'));
 const errors = [];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-if (posts.length !== 26) errors.push('wrong index count');
+if (posts.length !== 27) errors.push('wrong index count');
 posts.forEach((p, i) => {
   const file = path.join(root, 'blog', p.slug, 'index.html');
   if (p.seriesNumber !== i) errors.push('wrong order ' + i);
@@ -21,6 +21,6 @@ posts.forEach((p, i) => {
     if (!fs.existsSync(path.join(root, 'blog', m[1], 'index.html'))) errors.push('broken link ' + m[1]);
   }
 });
-if (fs.readdirSync('content/blog').length !== 26) errors.push('source file count');
+if (fs.readdirSync('content/blog').length !== 27) errors.push('source file count');
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
-console.log('All 26 routes pass: no duplicate inline FAQ, order, SEO, visible FAQ/schema, disclaimer, and links.');
+console.log('All 27 routes pass: no duplicate inline FAQ, order, SEO, visible FAQ/schema, disclaimer, and links.');
