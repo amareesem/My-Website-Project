@@ -174,7 +174,7 @@ function renderArticle(post, previous, next) {
 <body>
   <header class="site-header"><nav><a href="/">PEAK Cognitive Longevity</a><a href="/index.html#blog">All Blog Posts</a></nav></header>
   <main class="page">
-    <div class="series-label">The Food Fight Series · Article ${post.seriesNumber + 1} of 26</div>
+    <div class="series-label">The Food Fight Series</div>
     <h1>${escapeHtml(post.title)}</h1>
     <p class="dek">${escapeHtml(post.description)}</p>
     <div class="byline">${escapeHtml(post.author)} · ${escapeHtml(post.publishedAt)} · ${post.readingTime} min read</div>
