@@ -178,15 +178,15 @@
   .utility-bar button:hover, .utility-bar a:hover{ color:var(--ink); }
 
   header.site{ position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--border); }
-  header.site .bar{ height:96px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-  .brand{ display:flex; align-items:center; gap:14px; background:none; border:none; cursor:pointer; padding:0; }
+  header.site .bar{ height:96px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+  header.site .brand{ display:flex; flex:0 0 auto; align-items:center; gap:14px; margin-right:0; background:none; border:none; cursor:pointer; padding:0; }
   .brand img{ width:54px; height:54px; object-fit:contain; }
   .brand span{ font-family:'Roboto',sans-serif; font-weight:800; font-size:21px; color:var(--ink); white-space:nowrap; letter-spacing:-.01em; }
-  nav.primary{ display:flex; align-items:center; gap:30px; }
+  nav.primary{ display:flex; align-items:center; gap:20px; }
   nav.primary button{ background:none; border:none; cursor:pointer; font-size:14.5px; font-weight:500; color:var(--body-text); padding:6px 0; border-bottom:2px solid transparent; }
   nav.primary button:hover{ color:var(--ink); }
   nav.primary button.active{ color:var(--ink); font-weight:600; border-bottom-color:var(--brand-blue); }
-  .navwrap{ display:flex; align-items:center; gap:28px; }
+  .navwrap{ display:flex; align-items:center; gap:20px; }
   .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:14.5px; padding:13px 26px; border-radius:7px; cursor:pointer; border:none; white-space:nowrap; }
   .btn-primary{ background:var(--btn-bg); color:var(--btn-text); }
   .btn-primary:hover{ background:var(--btn-bg-hover); }
@@ -398,8 +398,9 @@
   @media (max-width:520px){
     header.site .wrap.bar{ height:70px; }
     header.site .bar{ gap:8px; }
-    .brand{ gap:8px; }
-    .brand span{ font-size:16px; }
+    header.site .brand{ flex:1 1 auto; min-width:0; gap:8px; }
+    header.site .brand img{ flex:0 0 56px; }
+    header.site .brand span{ min-width:0; white-space:normal; font-size:16px; line-height:1.15; }
     header.site .navwrap{ gap:0; }
     header.site .navwrap > .btn-primary{ width:48px; height:42px; padding:0; font-size:0; }
     header.site .navwrap > .btn-primary::after{ content:"Book"; font-size:12px; }
