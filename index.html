@@ -65,14 +65,18 @@
   .nh-storyLink{ color:var(--blue); font-weight:600; text-decoration:none; }
   .nh-pillPassage{ margin:36px auto 0; max-width:900px; padding:32px; border-radius:18px; background:#dce7f8; }
   .nh-pillPassage .nh-pillLead{ font-family:'Lora',Georgia,serif; font-size:clamp(1.35rem,2.5vw,1.8rem); line-height:1.4; color:var(--blue); }
-  .nh-about-story{ padding:64px 24px; background:var(--tint); }
-  .nh-about-storyInner{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+  .nh-about-story{ padding:64px 24px; }
+  .nh-about-storyInner{ max-width:900px; margin:0 auto; }
+  .nh-about-parents{ background:var(--tint); }
+  .nh-about-parentsInner{ max-width:1100px; margin:0 auto; }
+  .nh-about-videoInner{ max-width:900px; margin:0 auto; text-align:center; }
+  .nh-about-videoInner .about-video{ width:100%; }
+  #page-about .team-card{ min-height:240px; padding:34px 24px; justify-content:center; }
+  #page-about .team-card > div:first-child{ width:104px !important; height:104px !important; flex:0 0 104px; }
   .nh-parentPhotos{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
   .nh-parentPhoto{ width:100%; aspect-ratio:4/5; border-radius:16px; }
   .nh-about-story .about-video{ width:100%; }
   header.site .mobile-nav{ display:none; }
-  .nh-lifeRow{ max-width:1100px; margin:48px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .nh-lifeRow > *{ width:100%; aspect-ratio:4/3; border-radius:16px; }
   .nh-faq{ border-bottom:1px solid #dfe5f1; padding:18px 0; }
   .nh-faq summary{ cursor:pointer; font-weight:600; color:var(--blue); font-size:1.08rem; }
   .nh .nh-faq p{ margin:12px 0 0; color:var(--ink-soft); }
@@ -83,7 +87,7 @@
     .nh-hero{ padding-top:56px; padding-bottom:56px; }
     .nh-trail{ grid-template-columns:1fr; }
     .nh-peakGrid,.nh-researchRow{ grid-template-columns:repeat(2,1fr); }
-    .nh-statRow,.nh-lifeRow{ grid-template-columns:1fr; }
+    .nh-statRow{ grid-template-columns:1fr; }
     .nh-section{ padding:64px 20px; }
   }
   @media (max-width:520px){
@@ -92,13 +96,14 @@
     .nh-researchLinks{ flex-direction:column; }
     .nh-storyPhotos{ gap:8px; }
     .nh-photoCaption{ font-size:.78rem; }
-    .nh-about-storyInner{ grid-template-columns:1fr; }
     .nh-pillPassage{ padding:24px 20px; }
   }
   header.site .brand img{ width:72px; height:72px; }
+  header.site .brand{ margin-right:28px; }
   .nh-storyPhotos > div,.nh-parentPhotos > figure{ margin:0; min-width:0;   }
   @media (max-width:520px){
     header.site .brand img{ width:56px; height:56px; }
+    header.site .brand{ margin-right:0; }
     header.site .mobile-nav{ display:flex; gap:24px; overflow-x:auto; white-space:nowrap; padding:8px 24px 10px; border-top:1px solid var(--border); scrollbar-width:none; }
     header.site .mobile-nav::-webkit-scrollbar{ display:none; }
     header.site .mobile-nav button{ flex:0 0 auto; padding:0; border:0; background:none; color:var(--body-text); font:500 14px 'Rubik',Arial,sans-serif; }
@@ -553,7 +558,6 @@
       <p>PEAK puts a plan built for your body in your hands, along with the knowledge to choose with confidence. One choice at a time, the future you just pictured becomes something you build every day.</p>
       <div class="nh-center"><a href="https://l.bttr.to/DRte6" class="nh-btn-gold">Book your consultation</a></div>
     </div>
-    <div class="nh-lifeRow"><div class="nh-photo-ph " aria-hidden="true"></div><div class="nh-photo-ph " aria-hidden="true"></div><div class="nh-photo-ph " aria-hidden="true"></div></div>
   </section>
 
   <section class="nh-section">
@@ -586,20 +590,30 @@
 
   <section class="nh-about-story">
     <div class="nh-about-storyInner">
+      <h2>Why we built PEAK</h2>
+      <p>We know dementia as physicians, and as a daughter and son who watched a parent live with it. We did what we knew to do for our own families, but conventional medicine offered few ways to look for the underlying risks early or a clear path to change them.</p>
+      <p>That experience changed the questions we asked in our practice. We retrained in root-cause and longevity medicine, and built PEAK to bring families earlier testing, a physician who knows them, and practical steps to support brain health.</p>
+    </div>
+  </section>
+
+  <section class="pad-lg nh-about-parents">
+    <div class="wrap nh-about-parentsInner">
+      <div class="center-head"><h2>Our parents</h2></div>
       <div class="nh-parentPhotos">
         <figure><img src="assets/photos/Lori-with-Dad.jpg" alt="Dr. Lori King with her father" class="nh-photo nh-parentPhoto"><figcaption class="nh-photoCaption">Dr. Lori with her father</figcaption></figure>
         <figure><img src="assets/photos/Chris-with-Mom.jpg" alt="Dr. Chris King with his mother" class="nh-photo nh-parentPhoto"><figcaption class="nh-photoCaption">Dr. Chris with his mother</figcaption></figure>
       </div>
-      <div>
-        <h2>Why we built PEAK</h2>
-        <p>We know dementia as physicians, and as a daughter and son who watched a parent live with it. We did what we knew to do for our own families, but conventional medicine offered few ways to look for the underlying risks early or a clear path to change them.</p>
-        <p>That experience changed the questions we asked in our practice. We retrained in root-cause and longevity medicine, and built PEAK to bring families earlier testing, a physician who knows them, and practical steps to support brain health.</p>
-        <video class="about-video" controls preload="metadata" playsinline aria-label="Drs. Lori and Chris King introduce PEAK Cognitive Longevity">
-          <source src="assets/KINGVIDEO-web.mp4" type="video/mp4">
-          Your browser does not support HTML video. Please use a modern browser to watch the PEAK introduction.
-        </video>
-        <p><a href="assets/KINGVIDEO-web.mp4" target="_blank" rel="noopener">If the video doesn&rsquo;t play, open it in a video player.</a></p>
-      </div>
+    </div>
+  </section>
+
+  <section class="pad-lg">
+    <div class="wrap nh-about-videoInner">
+      <div class="center-head"><h2>Watch our story</h2></div>
+      <video class="about-video" controls preload="metadata" playsinline aria-label="Drs. Lori and Chris King introduce PEAK Cognitive Longevity">
+        <source src="assets/KINGVIDEO-web.mp4" type="video/mp4">
+        Your browser does not support HTML video. Please use a modern browser to watch the PEAK introduction.
+      </video>
+      <p><a href="assets/KINGVIDEO-web.mp4" target="_blank" rel="noopener">If the video doesn&rsquo;t play, open it in a video player.</a></p>
     </div>
   </section>
 
@@ -638,9 +652,6 @@
       <div class="center-head">
         <h2 style="font-size:32px;font-weight:700;">Meet the Team</h2>
         <p style="font-size:15.5px;line-height:1.7;">Physician-led, with support from a team that knows every patient by name.</p>
-      </div>
-      <div class="photo-ph" style="aspect-ratio:16/6;margin-bottom:32px;">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
       </div>
       <div class="grid-4">
         <div class="card team-card"><div style="width:76px;height:76px;border-radius:50%;overflow:hidden;"><img src="data:image/jpeg;base64,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" alt="Dr. Lori King, MD" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"></div><div><h3 style="font-size:15.5px;font-weight:600;">Dr. Lori King, MD</h3><p class="role">Physician &amp; Co-Founder</p></div></div>
