@@ -117,11 +117,6 @@
   header.site .brand{ margin-right:28px; }
   .nh-storyPhotos > div,.nh-parentPhotos > figure{ margin:0; min-width:0;   }
   @media (max-width:520px){
-    header.site .brand img{ width:56px; height:56px; }
-    header.site .brand{ margin-right:0; }
-    header.site .mobile-nav{ display:flex; gap:24px; overflow-x:auto; white-space:nowrap; padding:8px 24px 10px; border-top:1px solid var(--border); scrollbar-width:none; }
-    header.site .mobile-nav::-webkit-scrollbar{ display:none; }
-    header.site .mobile-nav button{ flex:0 0 auto; padding:0; border:0; background:none; color:var(--body-text); font:500 14px 'Rubik',Arial,sans-serif; }
   }
 </style></head><body>
 <title>PEAK Cognitive Longevity | Dementia Is Not Your Destiny</title><meta name="description" content="A physician-led cognitive longevity program in Southlake, TX and virtual nationwide. Advanced testing uncovers hidden risk factors for dementia so you can change them while it matters most.">
@@ -380,8 +375,18 @@
 
   .about-video{ display:block; width:100%; max-width:720px; height:auto; margin:20px auto 0; border-radius:12px; background:#000; }
 
-  @media (max-width:980px){
+  @media (max-width:1240px){
     nav.primary{ display:none; }
+    header.site .brand img{ width:56px; height:56px; }
+    header.site .brand{ margin-right:0; }
+    header.site .brand span{ font-size:18px; }
+    header.site .bar{ gap:12px; }
+    header.site .navwrap{ gap:10px; }
+    header.site .mobile-nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px 24px; padding:12px 20px; border-top:1px solid var(--border); }
+    header.site .mobile-nav button{ flex:0 0 auto; padding:2px 0; border:0; background:none; color:var(--body-text); font:500 14px 'Rubik',Arial,sans-serif; }
+    header.site .mobile-nav button:hover{ color:var(--ink); }
+  }
+  @media (max-width:980px){
     .grid-3, .grid-4, .grid-2, .timeline, .qualify-grid, .before-during-after, .hero-grid, .split-media, .split-media.rev{ grid-template-columns:1fr; }
     .split-media.rev .photo-frame{ order:0; }
     .photo-frame{ aspect-ratio:16/10; }
@@ -398,7 +403,7 @@
     header.site .navwrap{ gap:0; }
     header.site .navwrap > .btn-primary{ width:48px; height:42px; padding:0; font-size:0; }
     header.site .navwrap > .btn-primary::after{ content:"Book"; font-size:12px; }
-    header.site .mobile-nav{ display:flex; }
+    header.site .mobile-nav{ gap:6px 18px; padding:10px 16px; }
   }
 </style>
 
