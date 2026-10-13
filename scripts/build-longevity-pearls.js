@@ -106,7 +106,13 @@ function parsePost(source, fileName) {
   let body = match[2]
     .replace(/className=/g, 'class=')
     .replace(/style=\{\{\s*width:\s*"([^"]+)"\s*\}\}/g, 'style="width:$1"')
-    .replace(/\\\$/g, '$');
+    .replace(/\\\$/g, '$')
+    .replace(/<a\b[^>]*>/gi, function(anchor){
+      if(!/\bhref=["']https?:\/\//i.test(anchor)) return anchor;
+      if(!/\btarget=/i.test(anchor)) anchor = anchor.replace(/>$/, ' target="_blank">');
+      if(!/\brel=/i.test(anchor)) anchor = anchor.replace(/>$/, ' rel="noopener noreferrer">');
+      return anchor;
+    });
   if (/\{\{|\}\}|<script\b/i.test(body)) throw new Error(`${fileName}: contains unsupported JSX or executable script`);
   const inlineFaqMatch = body.match(/<h2>Frequently Asked Questions<\/h2>[\s\S]*$/);
   if (!inlineFaqMatch) throw new Error(`${fileName}: expected an inline FAQ section to remove`);
