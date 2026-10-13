@@ -58,8 +58,9 @@
   .nh-researchRow p{ font-size:.95rem; color:var(--ink-soft); }
   .nh-researchLinks{ display:flex; justify-content:center; flex-wrap:wrap; gap:16px; margin:32px auto 0; }
   .living-photos{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; max-width:1180px; margin:32px auto 0; }
-  .living-photos figure{ min-width:0; aspect-ratio:4/5; margin:0; overflow:hidden; border-radius:16px; }
+  .living-photos figure{ min-width:0; aspect-ratio:4/3; margin:0; overflow:hidden; border-radius:16px; }
   .living-photos img{ width:100%; height:100%; object-fit:cover; }
+  #page-about .team-card > .team-avatar-photo{ width:104px; height:104px; max-width:none; flex:0 0 104px; border-radius:50%; object-fit:cover; }
   .cherry-apply-panel{ display:grid; grid-template-columns:minmax(0,1fr) 175px; gap:18px; align-items:center; margin-top:16px; }
   .cherry-apply-copy .nh-btn-gold{ margin-top:2px; }
   .cherry-credit-note{ margin:12px 0 0 !important; font-size:.9rem; line-height:1.55; }
@@ -686,7 +687,7 @@
     <div class="wrap">
       <div class="center-head"><h2 style="font-size:32px;font-weight:700;">Your PEAK Team</h2></div>
       <div class="grid-2">
-        <article class="card team-card"><div class="avatar" style="width:76px;height:76px;border-radius:50%;background:var(--accent-soft);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Roboto';font-weight:700;font-size:20px;">AM</div><div><h3 style="font-size:17px;font-weight:600;">Amareese Martinez</h3><p class="role">PEAK Assistant</p><p>Keeps your appointments, kits, and supplements running smoothly.</p></div></article>
+        <article class="card team-card"><img class="team-avatar-photo" src="assets/photos/amareese-martinez.png" width="400" height="400" alt="Amareese Martinez"><div><h3 style="font-size:17px;font-weight:600;">Amareese Martinez</h3><p class="role">PEAK Assistant</p><p>Keeps your appointments, kits, and supplements running smoothly.</p></div></article>
         <article class="card team-card"><div class="avatar" style="width:76px;height:76px;border-radius:50%;background:var(--accent-soft);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Roboto';font-weight:700;font-size:20px;">JD</div><div><h3 style="font-size:17px;font-weight:600;">Joe Derr</h3><p class="role">Patient Concierge</p><p>Your guide from your first question through graduation.</p></div></article>
       </div>
     </div>
