@@ -1112,12 +1112,17 @@
       <form class="card form-card" id="contact-form" onsubmit="handleContactSubmit(event)" style="flex:1.2;">
         <h2>Send Us a Message</h2>
         <div class="two-col-field">
-          <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="Your full name" required /></div>
-          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" type="text" placeholder="(optional)" /></div>
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" placeholder="Your full name" autocomplete="name" maxlength="120" required /></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" placeholder="(optional)" autocomplete="tel" maxlength="40" /></div>
         </div>
-        <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" placeholder="you@example.com" required /></div>
-        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" rows="5" placeholder="Tell us a little about what you're hoping to address." required></textarea></div>
-        <button class="btn btn-primary" type="submit" style="width:fit-content;">Open Email App to Send</button>
+        <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required /></div>
+        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" maxlength="5000" placeholder="Tell us how we can help. Please do not include sensitive medical information." required></textarea></div>
+        <div aria-hidden="true" style="position:absolute;left:-10000px;">
+          <label for="c-website">Leave this field empty</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <p style="font-size:14px;">For general questions only. Please do not include medical records or sensitive health information. For urgent medical concerns, contact your clinician; for emergencies, call 911.</p>
+        <button class="btn btn-primary" type="submit" style="width:fit-content;">Send Message</button>
+        <p id="contact-status" role="status" aria-live="polite" aria-atomic="true" style="font-size:14px;" hidden></p>
       </form>
 
       <div class="info-col">
@@ -1474,16 +1479,48 @@
       if(original) image.src = original.src;
     });
   })();
-  function handleContactSubmit(e){
+  async function handleContactSubmit(e){
     e.preventDefault();
     var form = e.currentTarget;
-    var name = form.querySelector('#c-name').value.trim();
-    var phone = form.querySelector('#c-phone').value.trim();
-    var email = form.querySelector('#c-email').value.trim();
-    var message = form.querySelector('#c-msg').value.trim();
-    var subject = 'Website message from ' + name.replace(/[\r\n]/g, ' ');
-    var body = ['Name: ' + name, 'Phone: ' + (phone || 'Not provided'), 'Email: ' + email, '', message].join('\n');
-    window.location.href = 'mailto:team@peakcognitivelongevity.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var button = form.querySelector('button[type="submit"]');
+    if(button.disabled || !form.reportValidity()) return;
+    var status = form.querySelector('#contact-status');
+    var controller = new AbortController();
+    var timeout = setTimeout(function(){ controller.abort(); }, 15000);
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    status.hidden = false;
+    status.textContent = 'Submitting your message...';
+    form.setAttribute('aria-busy', 'true');
+    try{
+      var response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: form.querySelector('#c-name').value.trim(),
+          phone: form.querySelector('#c-phone').value.trim(),
+          email: form.querySelector('#c-email').value.trim(),
+          message: form.querySelector('#c-msg').value.trim(),
+          website: form.querySelector('#c-website').value
+        })
+      });
+      var result = await response.json();
+      if(!response.ok || result.success !== true){
+        throw new Error(result.error || 'Your message could not be submitted.');
+      }
+      form.reset();
+      status.textContent = 'Your message has been submitted to the PEAK team. We typically respond within one business day.';
+    }catch(error){
+      status.textContent = 'We could not confirm your message was submitted. ' +
+        (error.name === 'AbortError' ? 'The request timed out. ' : '') +
+        'Your information is still here. Please try again, or email team@peakcognitivelongevity.com or call (817) 796-5115.';
+    }finally{
+      clearTimeout(timeout);
+      button.disabled = false;
+      button.textContent = 'Send Message';
+      form.removeAttribute('aria-busy');
+    }
   }
   (function applyPeakPhotography(){
     var base = 'assets/photos/';
