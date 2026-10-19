@@ -4,14 +4,17 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { test, beforeEach } = require('node:test');
 const contact = require('../api/contact');
+const contactConfig = require('../api/contact-config');
 
-const validFields = { name: 'Test Visitor', email: 'visitor@example.com', phone: '', message: 'A general question.', website: '' };
+const validFields = { name: 'Test Visitor', email: 'visitor@example.com', phone: '(817) 555-0123', message: 'A general question.', website: '', captchaToken: 'test-captcha-token' };
 
 beforeEach(context => {
-  const keys = ['RESEND_API_KEY', 'CONTACT_FROM_EMAIL', 'CONTACT_ALLOWED_ORIGINS', 'VERCEL_URL'];
+  const keys = ['RESEND_API_KEY', 'CONTACT_FROM_EMAIL', 'CONTACT_ALLOWED_ORIGINS', 'VERCEL_URL', 'RECAPTCHA_SECRET_KEY', 'RECAPTCHA_SITE_KEY'];
   const previous = Object.fromEntries(keys.map(key => [key, process.env[key]]));
   process.env.RESEND_API_KEY = 'test-key-not-a-real-secret';
   process.env.CONTACT_FROM_EMAIL = 'website@mail.peakcognitivelongevity.com';
+  process.env.RECAPTCHA_SECRET_KEY = 'test-captcha-secret';
+  process.env.RECAPTCHA_SITE_KEY = 'test-public-site-key';
   delete process.env.CONTACT_ALLOWED_ORIGINS;
   delete process.env.VERCEL_URL;
   context.after(() => {
@@ -25,6 +28,18 @@ beforeEach(context => {
     throw new Error('Unexpected network request in test');
   });
 });
+
+function mockEmail(context, send) {
+  context.mock.method(globalThis, 'fetch', async (url, options) => {
+    if (url === 'https://www.google.com/recaptcha/api/siteverify') {
+      const params = new URLSearchParams(options.body);
+      assert.equal(params.get('secret'), 'test-captcha-secret');
+      assert.equal(params.get('response'), validFields.captchaToken);
+      return { ok: true, json: async () => ({ success: true, hostname: 'www.peakcognitivelongevity.com' }) };
+    }
+    return send(url, options);
+  });
+}
 
 function request(overrides = {}) {
   return {
@@ -48,7 +63,7 @@ async function submit(req) {
 
 test('sends only to the team inbox and uses visitor email for replies', async context => {
   let payload;
-  context.mock.method(globalThis, 'fetch', async (url, options) => {
+  mockEmail(context, async (url, options) => {
     assert.equal(url, 'https://api.resend.com/emails');
     assert.equal(options.headers.Authorization, 'Bearer test-key-not-a-real-secret');
     assert.ok(options.signal instanceof AbortSignal);
@@ -79,7 +94,7 @@ test('rejects unsupported methods, origins, and media types', async () => {
 test('allows explicit preview origins and the current Vercel deployment', async context => {
   process.env.CONTACT_ALLOWED_ORIGINS = ' https://peak-preview.vercel.app ';
   process.env.VERCEL_URL = 'peak-deployment.vercel.app';
-  context.mock.method(globalThis, 'fetch', async () => ({ ok: true, json: async () => ({ id: 'test-id' }) }));
+  mockEmail(context, async () => ({ ok: true, json: async () => ({ id: 'test-id' }) }));
   for (const origin of ['https://peak-preview.vercel.app', 'https://peak-deployment.vercel.app']) {
     assert.equal((await submit(request({ headers: { origin, 'content-type': 'application/json; charset=utf-8' } }))).code, 200);
   }
@@ -96,6 +111,11 @@ test('rejects malformed data, oversized fields, header injection, and honeypot e
     { ...validFields, message: 'a'.repeat(5001) },
     { ...validFields, message: '\u0000' },
     { ...validFields, phone: 123 },
+    { ...validFields, phone: '' },
+    { ...validFields, phone: '   ' },
+    { ...validFields, phone: undefined },
+    { ...validFields, captchaToken: '' },
+    { ...validFields, captchaToken: undefined },
     { ...validFields, website: 'https://spam.example' }
   ]) {
     const res = await submit(request({ body }));
@@ -106,9 +126,9 @@ test('rejects malformed data, oversized fields, header injection, and honeypot e
   assert.equal((await submit(request({ body: ' '.repeat(32769) }))).code, 413);
 });
 
-test('supports JSON strings and optional phone and honeypot fields', async context => {
-  context.mock.method(globalThis, 'fetch', async () => ({ ok: true, json: async () => ({ id: 'test-id' }) }));
-  const { phone, website, ...body } = validFields;
+test('supports JSON strings and an optional honeypot field', async context => {
+  mockEmail(context, async () => ({ ok: true, json: async () => ({ id: 'test-id' }) }));
+  const { website, ...body } = validFields;
   assert.equal((await submit(request({ body: JSON.stringify(body) }))).code, 200);
 });
 
@@ -129,13 +149,13 @@ test('never claims success for provider rejections, invalid confirmations, or ti
     { ok: true, json: async () => ({}) },
     { ok: true, json: async () => { throw new SyntaxError('Invalid response'); } }
   ]) {
-    context.mock.method(globalThis, 'fetch', async () => providerResponse);
+    mockEmail(context, async () => providerResponse);
     const res = await submit(request());
     assert.equal(res.code, 502);
     assert.ok(res.body.error);
     assert.equal(res.body.success, undefined);
   }
-  context.mock.method(globalThis, 'fetch', async () => { throw new DOMException('Timed out', 'TimeoutError'); });
+  mockEmail(context, async () => { throw new DOMException('Timed out', 'TimeoutError'); });
   assert.equal((await submit(request())).code, 502);
 });
 
@@ -148,7 +168,7 @@ function client(fetch) {
     'button[type="submit"]': { disabled: false, textContent: 'Send Message' },
     '#contact-status': { hidden: true, textContent: '' },
     '#c-name': { value: validFields.name },
-    '#c-phone': { value: '' },
+    '#c-phone': { value: validFields.phone },
     '#c-email': { value: validFields.email },
     '#c-msg': { value: validFields.message },
     '#c-website': { value: '' }
@@ -161,9 +181,10 @@ function client(fetch) {
     removeAttribute() { this.busy = false; },
     reset() { this.resets++; }
   };
-  const context = vm.createContext({ fetch, AbortController, setTimeout, clearTimeout });
+  const captcha = { resets: 0, getResponse: () => validFields.captchaToken, reset() { this.resets++; } };
+  const context = vm.createContext({ fetch, AbortController, setTimeout, clearTimeout, contactCaptchaId: 0, window: { grecaptcha: captcha } });
   vm.runInContext(handlerSource, context);
-  return { elements, form, submit: () => context.handleContactSubmit({ preventDefault() {}, currentTarget: form }) };
+  return { elements, form, captcha, submit: () => context.handleContactSubmit({ preventDefault() {}, currentTarget: form }) };
 }
 
 test('client posts to the local API and resets only after confirmed success', async () => {
@@ -177,8 +198,43 @@ test('client posts to the local API and resets only after confirmed success', as
   await app.submit();
   assert.equal(app.form.resets, 1);
   assert.equal(app.form.busy, false);
+  assert.equal(app.captcha.resets, 1);
   assert.equal(app.elements['button[type="submit"]'].disabled, false);
   assert.match(app.elements['#contact-status'].textContent, /submitted to the PEAK team/);
+});
+
+test('client blocks submissions with no completed CAPTCHA', async () => {
+  const app = client(async () => { throw new Error('Should not fetch'); });
+  app.captcha.getResponse = () => '';
+  await app.submit();
+  assert.equal(app.form.resets, 0);
+  assert.match(app.elements['#contact-status'].textContent, /complete the reCAPTCHA/);
+});
+
+test('CAPTCHA rejection, wrong host, outage, and missing configuration never send mail', async context => {
+  for (const result of [{ success: false }, { success: true, hostname: 'untrusted.example' }]) {
+    context.mock.method(globalThis, 'fetch', async url => {
+      assert.equal(url, 'https://www.google.com/recaptcha/api/siteverify');
+      return { ok: true, json: async () => result };
+    });
+    assert.equal((await submit(request())).code, 400);
+  }
+  context.mock.method(globalThis, 'fetch', async () => { throw new Error('Network failure'); });
+  assert.equal((await submit(request())).code, 503);
+  delete process.env.RECAPTCHA_SECRET_KEY;
+  assert.equal((await submit(request())).code, 503);
+});
+
+test('CAPTCHA config exposes only the public site key and fails when missing', () => {
+  const res = { setHeader() {}, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; } };
+  contactConfig({ method: 'GET' }, res);
+  assert.equal(res.code, 200);
+  assert.deepEqual(res.body, { siteKey: 'test-public-site-key' });
+  delete process.env.RECAPTCHA_SITE_KEY;
+  contactConfig({ method: 'GET' }, res);
+  assert.equal(res.code, 503);
+  contactConfig({ method: 'POST' }, res);
+  assert.equal(res.code, 405);
 });
 
 test('client preserves entries and presents contact alternatives on failures', async () => {

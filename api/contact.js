@@ -36,18 +36,21 @@ module.exports = async function contact(req, res) {
     return res.status(400).json({ error: 'The form data could not be read.' });
   }
 
-  const limits = { name: 120, phone: 40, email: 254, message: 5000, website: 200 };
+  const limits = { name: 120, phone: 40, email: 254, message: 5000, website: 200, captchaToken: 4096 };
   const fields = {};
   for (const [field, limit] of Object.entries(limits)) {
-    const value = body[field] === undefined && (field === 'phone' || field === 'website') ? '' : body[field];
+    const value = body[field] === undefined && field === 'website' ? '' : body[field];
     if (typeof value !== 'string' || value.length > limit || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value)) {
       return res.status(400).json({ error: 'Please check the form fields and message length.' });
     }
     fields[field] = value.trim();
   }
-  if (!fields.name || !fields.message || !EMAIL_PATTERN.test(fields.email) ||
+  if (!fields.name || !fields.phone || !fields.message || !EMAIL_PATTERN.test(fields.email) ||
       /[\r\n]/.test(fields.name + fields.phone + fields.email) || fields.website) {
-    return res.status(400).json({ error: 'Please provide a name, valid email address, and message.' });
+    return res.status(400).json({ error: 'Please provide a name, phone number, valid email address, and message.' });
+  }
+  if (!fields.captchaToken) {
+    return res.status(400).json({ error: 'Please complete the reCAPTCHA verification.' });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -55,6 +58,28 @@ module.exports = async function contact(req, res) {
   if (!apiKey || !from || !EMAIL_PATTERN.test(from)) {
     console.error('Contact email delivery is not configured.');
     return res.status(503).json({ error: 'Email delivery is temporarily unavailable. Please call or email the PEAK team.' });
+  }
+
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.error('Contact reCAPTCHA verification is not configured.');
+    return res.status(503).json({ error: 'Verification is temporarily unavailable. Please contact the PEAK team directly.' });
+  }
+  try {
+    const verification = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret: process.env.RECAPTCHA_SECRET_KEY, response: fields.captchaToken }).toString(),
+      signal: AbortSignal.timeout(5000)
+    });
+    if (!verification.ok) throw new Error('reCAPTCHA service unavailable');
+    const result = await verification.json();
+    const allowedHostnames = origins.map(origin => new URL(origin).hostname);
+    if (result.success !== true || !allowedHostnames.includes(result.hostname)) {
+      return res.status(400).json({ error: 'Verification failed or expired. Please complete reCAPTCHA again.' });
+    }
+  } catch (error) {
+    console.error('Contact reCAPTCHA verification failed.', error.name);
+    return res.status(503).json({ error: 'Verification is temporarily unavailable. Please try again or contact the PEAK team directly.' });
   }
 
   try {
@@ -73,7 +98,7 @@ module.exports = async function contact(req, res) {
         text: [
           `Name: ${fields.name}`,
           `Email: ${fields.email}`,
-          `Phone: ${fields.phone || 'Not provided'}`,
+          `Phone: ${fields.phone}`,
           '',
           fields.message
         ].join('\n')

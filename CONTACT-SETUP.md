@@ -41,6 +41,36 @@ variable names; local `.env` files and Vercel-generated files are ignored.
 
 ## Verification
 
+### Google reCAPTCHA v2 (required before deploying the CAPTCHA update)
+
+Create an **"I'm not a robot" Checkbox (v2)** key pair in the
+[Google reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create).
+Register `peakcognitivelongevity.com` and
+`my-website-project-jade.vercel.app` as domains (no scheme, path, or hash).
+The apex domain registration also covers `www`. Register `localhost` separately
+only if you need local integration testing.
+
+In Vercel, set `RECAPTCHA_SITE_KEY` to the public site key and
+`RECAPTCHA_SECRET_KEY` to the private secret key for Production and Preview,
+then deploy the updated code. Never share or commit the secret.
+`/api/contact-config` exposes only the public site key. The API verifies each
+token with Google and checks the returned hostname before contacting Resend.
+Missing keys, expired/invalid tokens, and Google service failures fail closed.
+Phone and email are required in both the browser form and the API.
+
+Test an incomplete CAPTCHA, a completed challenge, and an expired challenge.
+Confirm only valid submissions reach the inbox. Review Google's terms and the
+site's privacy disclosures for the use of reCAPTCHA.
+
+### Free e-book
+
+The homepage banner opens `#ebook` inside the existing site navigation.
+The page embeds the supplied GoHighLevel landing page, preserving its signup
+and delivery automation; this repository does not duplicate or collect e-book
+signups. A clearly labeled new-tab link is provided if embedding is blocked.
+Check the embedded form and actual e-book delivery after deployment. Do not
+submit production signup forms during automated testing.
+
 Run the automated checks with Node.js 22 or later:
 
 ```powershell

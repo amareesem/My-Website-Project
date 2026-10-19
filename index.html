@@ -492,6 +492,10 @@
 
 <!-- HOME -->
 <div class="page active" id="page-home">
+  <section aria-label="Free Food Fight e-book" style="background:#f2e7d4;padding:22px 24px;text-align:center;">
+    <p style="margin:0;font-size:18px;font-weight:600;">Want our free e-book? Meet <em>Food Fight</em>: practical food swaps for your waistline, health, and brain.</p>
+    <a class="nh-btn-gold" style="display:inline-block;margin-top:14px;" href="#ebook" onclick="goTo('ebook');return false;">Get the Free E-book &rarr;</a>
+  </section>
 <div class="nh">
   <section class="nh-hero">
     <div class="nh-heroText">
@@ -1113,14 +1117,16 @@
         <h2>Send Us a Message</h2>
         <div class="two-col-field">
           <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" placeholder="Your full name" autocomplete="name" maxlength="120" required /></div>
-          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" placeholder="(optional)" autocomplete="tel" maxlength="40" /></div>
+          <div class="field"><label for="c-phone">Phone (required)</label><input id="c-phone" name="phone" type="tel" placeholder="Your phone number" autocomplete="tel" maxlength="40" required /></div>
         </div>
-        <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required /></div>
+        <div class="field"><label for="c-email">Email (required)</label><input id="c-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required /></div>
         <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" maxlength="5000" placeholder="Tell us how we can help. Please do not include sensitive medical information." required></textarea></div>
         <div aria-hidden="true" style="position:absolute;left:-10000px;">
           <label for="c-website">Leave this field empty</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <p style="font-size:14px;">For general questions only. Please do not include medical records or sensitive health information. For urgent medical concerns, contact your clinician; for emergencies, call 911.</p>
+        <div id="contact-captcha" style="max-width:100%;overflow-x:auto;" aria-label="Google reCAPTCHA verification"></div>
+        <p id="captcha-status" role="status" aria-live="polite">Verification will load when you open Contact.</p>
         <button class="btn btn-primary" type="submit" style="width:fit-content;">Send Message</button>
         <p id="contact-status" role="status" aria-live="polite" aria-atomic="true" style="font-size:14px;" hidden></p>
       </form>
@@ -1136,6 +1142,17 @@
   </section>
 </div>
 
+<div class="page" id="page-ebook">
+  <section class="pad-md">
+    <div class="wrap">
+      <button class="btn btn-outline" onclick="goTo('home')" style="margin-bottom:20px;">&larr; Back to Home</button>
+      <h1>Get Your Free Food Fight E-book</h1>
+      <p>Explore Dr. Lori King's guide and request your free copy below.</p>
+      <p>If the page does not load, <a href="https://go.peakcognitivelongevity.com/food-fight-ebook" target="_blank" rel="noopener noreferrer">open the e-book signup page in a new tab</a>.</p>
+      <iframe id="ebook-frame" title="Food Fight free e-book signup" style="width:100%;height:1200px;border:0;background:#fff;" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </section>
+</div>
 </main>
 
 <button class="btn btn-primary sticky-consultation" onclick="goTo('consultation')">Book Your Consultation</button>
@@ -1186,6 +1203,7 @@
     'payment-options': 'Investment and Payment Options | Peak Cognitive Longevity',
     'consultation': 'Book a Consultation | Peak Cognitive Longevity',
     'contact': 'Contact Peak Cognitive Longevity | Southlake, TX',
+    'ebook': 'Free Food Fight E-book | Peak Cognitive Longevity',
     'faq': 'Frequently Asked Questions | Peak Cognitive Longevity'
   };
   function goTo(name){
@@ -1204,6 +1222,11 @@
     window.scrollTo({ top: 0, behavior: 'instant' });
     try{ history.replaceState(null, '', '#' + name); }catch(e){}
     if(PAGE_TITLES[name]){ document.title = PAGE_TITLES[name]; }
+    if(name === 'contact') initializeContactCaptcha();
+    if(name === 'ebook'){
+      var frame = document.getElementById('ebook-frame');
+      if(!frame.getAttribute('src')) frame.src = 'https://go.peakcognitivelongevity.com/food-fight-ebook';
+    }
   }
   function scrollToId(id){
     var el = document.getElementById(id);
@@ -1479,12 +1502,57 @@
       if(original) image.src = original.src;
     });
   })();
+  var contactCaptchaId = null;
+  var contactCaptchaLoading = false;
+  async function initializeContactCaptcha(){
+    if(contactCaptchaId !== null || contactCaptchaLoading) return;
+    contactCaptchaLoading = true;
+    var status = document.getElementById('captcha-status');
+    status.textContent = 'Loading verification...';
+    try{
+      var configResponse = await fetch('/api/contact-config');
+      var config = await configResponse.json();
+      if(!configResponse.ok || !config.siteKey) throw new Error('Verification configuration unavailable');
+      if(!window.grecaptcha || !window.grecaptcha.render){
+        await new Promise(function(resolve, reject){
+          var script = document.createElement('script');
+          var timeout = setTimeout(function(){
+            script.remove();
+            reject(new Error('reCAPTCHA load timed out'));
+          }, 12000);
+          window.peakRecaptchaLoaded = function(){ clearTimeout(timeout); resolve(); };
+          script.src = 'https://www.google.com/recaptcha/api.js?onload=peakRecaptchaLoaded&render=explicit';
+          script.async = true;
+          script.onerror = function(){ clearTimeout(timeout); script.remove(); reject(new Error('Unable to load reCAPTCHA')); };
+          document.head.appendChild(script);
+        });
+      }
+      contactCaptchaId = window.grecaptcha.render('contact-captcha', {
+        sitekey: config.siteKey,
+        size: 'compact',
+        callback: function(){ status.textContent = 'Verification complete.'; },
+        'expired-callback': function(){ status.textContent = 'Verification expired. Please complete reCAPTCHA again.'; },
+        'error-callback': function(){ status.textContent = 'Verification could not load. Please check your connection or contact the team directly.'; }
+      });
+      status.textContent = 'Please complete the reCAPTCHA before sending.';
+    }catch(error){
+      status.textContent = 'Verification is unavailable. Reopen Contact to retry, or email team@peakcognitivelongevity.com or call (817) 796-5115.';
+    }finally{
+      contactCaptchaLoading = false;
+    }
+  }
   async function handleContactSubmit(e){
     e.preventDefault();
     var form = e.currentTarget;
     var button = form.querySelector('button[type="submit"]');
     if(button.disabled || !form.reportValidity()) return;
     var status = form.querySelector('#contact-status');
+    var captchaToken = contactCaptchaId !== null && window.grecaptcha ? window.grecaptcha.getResponse(contactCaptchaId) : '';
+    if(!captchaToken){
+      status.hidden = false;
+      status.textContent = 'Please complete the reCAPTCHA before sending. If verification is unavailable, please call or email the PEAK team.';
+      return;
+    }
     var controller = new AbortController();
     var timeout = setTimeout(function(){ controller.abort(); }, 15000);
     button.disabled = true;
@@ -1502,7 +1570,8 @@
           phone: form.querySelector('#c-phone').value.trim(),
           email: form.querySelector('#c-email').value.trim(),
           message: form.querySelector('#c-msg').value.trim(),
-          website: form.querySelector('#c-website').value
+          website: form.querySelector('#c-website').value,
+          captchaToken: captchaToken
         })
       });
       var result = await response.json();
@@ -1512,7 +1581,7 @@
       form.reset();
       status.textContent = 'Your message has been submitted to the PEAK team. We typically respond within one business day.';
     }catch(error){
-      status.textContent = 'We could not confirm your message was submitted. ' +
+      status.textContent = 'We could not confirm your message was submitted. Please complete reCAPTCHA again before retrying. ' +
         (error.name === 'AbortError' ? 'The request timed out. ' : '') +
         'Your information is still here. Please try again, or email team@peakcognitivelongevity.com or call (817) 796-5115.';
     }finally{
@@ -1520,6 +1589,7 @@
       button.disabled = false;
       button.textContent = 'Send Message';
       form.removeAttribute('aria-busy');
+      window.grecaptcha.reset(contactCaptchaId);
     }
   }
   (function applyPeakPhotography(){
@@ -1541,7 +1611,7 @@
   })();
   (function init(){
     var hash = (location.hash || '').replace('#','');
-    var valid = ['home','about','program','evidence','blog','helpful-links','payment-options','consultation','contact'];
+    var valid = ['home','about','program','evidence','blog','helpful-links','payment-options','consultation','contact','ebook'];
     goTo(valid.indexOf(hash) !== -1 ? hash : 'home');
   })();
 </script>
