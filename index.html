@@ -391,6 +391,35 @@
 
   .about-video{ display:block; width:100%; max-width:720px; height:auto; margin:20px auto 0; border-radius:12px; background:#000; }
 
+  .ebook-banner{ position:relative; isolation:isolate; overflow:hidden; background:#edf2f5; padding:36px 24px; text-align:center; }
+  .ebook-banner::before{ content:""; position:absolute; inset:0; z-index:-1; background:url('assets/photos/ebook-alpine-lake-banner.jpg') center 52%/cover no-repeat; opacity:.35; }
+  .ebook-banner .ebook-banner-title{ margin:0 auto 10px; max-width:850px; font:800 clamp(24px,3vw,34px)/1.3 'Roboto',Arial,sans-serif; letter-spacing:normal; word-spacing:normal; color:#122d4e; text-shadow:0 1px 4px #fff; }
+  .ebook-banner p{ margin:0 auto 20px; max-width:760px; font:600 17px/1.65 'Rubik',Arial,sans-serif; letter-spacing:normal; word-spacing:normal; color:#122d4e; }
+  .ebook-banner .btn{ white-space:normal; line-height:1.5; letter-spacing:normal; }
+  .ebook-page{ font:17px/1.75 'Rubik',Arial,sans-serif; }
+  .ebook-page h1,.ebook-page h2{ line-height:1.25; letter-spacing:normal; }
+  .ebook-page h1{ font-size:clamp(40px,6vw,64px); margin:12px 0 18px; }
+  .ebook-page h2{ font-size:clamp(26px,4vw,34px); margin:0 0 22px; }
+  .ebook-page p{ margin:0 0 20px; }
+  .ebook-hero{ display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:56px; align-items:center; }
+  .ebook-cover{ display:block; width:100%; max-width:420px; height:auto; margin:auto; border-radius:12px; box-shadow:0 16px 40px -18px rgba(18,29,38,.5); }
+  .ebook-page .ebook-dek{ font-size:23px; line-height:1.5; font-weight:600; }
+  .ebook-page .ebook-details{ font-size:15px; color:var(--muted); margin-top:20px; }
+  .ebook-highlights{ padding-left:24px; margin:0 0 28px; }
+  .ebook-highlights li{ margin-bottom:14px; }
+  .ebook-signup{ max-width:760px; margin:0 auto; scroll-margin-top:180px; }
+  .ebook-signup iframe{ display:block; width:100%; height:540px; border:0; border-radius:4px; background:#fff; }
+  .ebook-page .ebook-disclosure{ font-size:14px; line-height:1.7; color:var(--muted); margin-top:20px; }
+  @media (min-width:1241px){
+    header.site .bar{ height:auto; min-height:104px; padding-top:12px; padding-bottom:12px; }
+    header.site .navwrap{ flex:1 1 auto; min-width:0; flex-direction:column; align-items:flex-end; gap:12px; }
+    nav.primary{ flex-wrap:wrap; justify-content:flex-end; gap:8px 18px; }
+  }
+  @media (max-width:760px){
+    .ebook-hero{ grid-template-columns:minmax(0,1fr); gap:32px; }
+    .ebook-cover{ max-width:300px; }
+  }
+
   @media (max-width:1240px){
     nav.primary{ display:none; }
     header.site .brand img{ height:64px; }
@@ -474,6 +503,7 @@
         <button data-page="payment-options" onclick="goTo('payment-options')">Investment</button>
         <button data-page="evidence" onclick="goTo('evidence')">The Evidence</button>
         <button data-page="blog" onclick="goTo('blog')">Blog</button>
+        <button data-page="ebook" onclick="goTo('ebook')">Free E-book</button>
         <button data-page="contact" onclick="goTo('contact')">Contact</button>
       </nav>
       <button class="btn btn-primary" onclick="goTo('consultation')">Book Your Consultation</button>
@@ -485,6 +515,7 @@
     <button onclick="goTo('payment-options')">Investment</button>
     <button onclick="goTo('evidence')">The Evidence</button>
     <button onclick="goTo('blog')">Blog</button>
+    <button data-page="ebook" onclick="goTo('ebook')">Free E-book</button>
   </nav>
 </header>
 
@@ -492,9 +523,10 @@
 
 <!-- HOME -->
 <div class="page active" id="page-home">
-  <section aria-label="Free Food Fight e-book" style="background:#f2e7d4;padding:22px 24px;text-align:center;">
-    <p style="margin:0;font-size:18px;font-weight:600;">Want our free e-book? Meet <em>Food Fight</em>: practical food swaps for your waistline, health, and brain.</p>
-    <a class="nh-btn-gold" style="display:inline-block;margin-top:14px;" href="#ebook" onclick="goTo('ebook');return false;">Get the Free E-book &rarr;</a>
+  <section class="ebook-banner" aria-label="Free Food Fight e-book">
+    <h2 class="ebook-banner-title">Want our free e-book?</h2>
+    <p>Meet <em>Food Fight</em>: practical food swaps for your waistline, health, and brain.</p>
+    <a class="btn btn-primary" href="#ebook" onclick="goTo('ebook');return false;">Get the Free E-book &rarr;</a>
   </section>
 <div class="nh">
   <section class="nh-hero">
@@ -1142,14 +1174,53 @@
   </section>
 </div>
 
-<div class="page" id="page-ebook">
+<div class="page ebook-page" id="page-ebook">
   <section class="pad-md">
+    <div class="wrap ebook-hero">
+      <div>
+        <p class="eyebrow">Free e-book from Dr. Lori King, MD</p>
+        <h1>FOOD FIGHT</h1>
+        <p class="ebook-dek">Win the battle for your waistline, your health, and your brain.</p>
+        <p>Weight gain, chronic disease, and memory loss aren't three separate problems. They share the same four root causes, and food feeds all four. This free guide shows you how to fight all three battles from your plate, one small swap at a time.</p>
+        <a class="btn btn-primary" href="#ebook-signup" onclick="goToSection('ebook','ebook-signup');return false;">Send Me the Free E-book</a>
+        <p class="ebook-details">166 pages &middot; 26 short chapters &middot; recipes in every chapter</p>
+      </div>
+      <img class="ebook-cover" src="assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD">
+    </div>
+  </section>
+  <section class="pad-md alt">
+    <div class="wrap narrow">
+      <h2>What's inside</h2>
+      <ul class="ebook-highlights">
+        <li>Why cutting sugary drinks is the easiest first win, and what changes when you do</li>
+        <li>The leafy-greens habit linked to brains that performed about 11 years younger</li>
+        <li>How to quit sugar, and what to expect in the first week</li>
+        <li>Ultra-processed foods, dementia risk, and the simple 5-ingredient rule</li>
+        <li>Which fish give you brain-building omega-3s without the mercury</li>
+        <li>The truth about fruit, dairy, red meat, eggs, soy, and cooking oils</li>
+        <li>Fermented and prebiotic foods that feed a healthier gut</li>
+        <li>Portion control without counting, and why late-night eating works against you</li>
+      </ul>
+      <p><strong>Read it front to back, or jump to the chapter that's calling your name.</strong> Each chapter ends with simple next steps, a safety check, and a recipe or two. Small swaps, repeated, are how this fight is won.</p>
+    </div>
+  </section>
+  <section class="pad-md">
+    <div class="wrap narrow">
+      <h2>About Dr. Lori King</h2>
+      <p>Dr. Lori King, MD, is the founder of the PEAK Cognitive Longevity Program at Timarron Wellness in Southlake, Texas. A conventionally trained family physician, she retrained in root-cause and longevity medicine after losing a parent to dementia.</p>
+      <p><em>Food Fight</em> is the guide she wishes every patient had: practical, evidence-based, and written so you can actually use it.</p>
+    </div>
+  </section>
+  <section class="pad-md alt">
     <div class="wrap">
-      <button class="btn btn-outline" onclick="goTo('home')" style="margin-bottom:20px;">&larr; Back to Home</button>
-      <h1>Get Your Free Food Fight E-book</h1>
-      <p>Explore Dr. Lori King's guide and request your free copy below.</p>
-      <p>If the page does not load, <a href="https://go.peakcognitivelongevity.com/food-fight-ebook" target="_blank" rel="noopener noreferrer">open the e-book signup page in a new tab</a>.</p>
-      <iframe id="ebook-frame" title="Food Fight free e-book signup" style="width:100%;height:1200px;border:0;background:#fff;" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="ebook-signup" id="ebook-signup">
+        <h2>Get your free copy</h2>
+        <p>Enter your name and email, and we'll send <em>Food Fight</em> straight to your inbox.</p>
+        <iframe id="inline-JvGwX8MG7DenmjwVKses" title="Food Fight Ebook Nurture - Opt-in"></iframe>
+        <p class="ebook-disclosure">If the signup form does not load, please call <a href="tel:+18177965115">(817) 796-5115</a> or email <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a> for help.</p>
+        <p class="ebook-disclosure">We respect your privacy. You can unsubscribe at any time.</p>
+        <p class="ebook-disclosure">This e-book is for educational purposes and isn't a substitute for personal medical advice.<br>PEAK Cognitive Longevity Program &middot; Timarron Wellness &middot; 200 Pecan Creek Dr., Southlake, TX 76092 &middot; 817-796-5115</p>
+      </div>
     </div>
   </section>
 </div>
@@ -1216,7 +1287,7 @@
     if(target){
       target.classList.add('active');
     }
-    document.querySelectorAll('#primary-nav button').forEach(function(b){
+    document.querySelectorAll('header.site button[data-page]').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-page') === name);
     });
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -1224,8 +1295,10 @@
     if(PAGE_TITLES[name]){ document.title = PAGE_TITLES[name]; }
     if(name === 'contact') initializeContactCaptcha();
     if(name === 'ebook'){
-      var frame = document.getElementById('ebook-frame');
-      if(!frame.getAttribute('src')) frame.src = 'https://go.peakcognitivelongevity.com/food-fight-ebook';
+      var frame = document.getElementById('inline-JvGwX8MG7DenmjwVKses');
+      if(!frame.getAttribute('src')){
+        frame.src = 'https://link.peakcognitivelongevity.com/widget/form/JvGwX8MG7DenmjwVKses';
+      }
     }
   }
   function scrollToId(id){

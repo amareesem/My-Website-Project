@@ -64,12 +64,19 @@ site's privacy disclosures for the use of reCAPTCHA.
 
 ### Free e-book
 
-The homepage banner opens `#ebook` inside the existing site navigation.
-The page embeds the supplied GoHighLevel landing page, preserving its signup
-and delivery automation; this repository does not duplicate or collect e-book
-signups. A clearly labeled new-tab link is provided if embedding is blocked.
-Check the embedded form and actual e-book delivery after deployment. Do not
-submit production signup forms during automated testing.
+The photo-backed homepage banner and desktop/mobile **Free E-book** tabs open
+`#ebook` inside the existing site navigation. The cover, description, chapter
+highlights, author information, and disclosures are native site content.
+Only the supplied GoHighLevel opt-in form (`JvGwX8MG7DenmjwVKses`) is embedded
+directly, retaining the provider-hosted form and signup automation. The iframe
+has an explicit 540px height and allows normal internal scrolling. The optional
+provider resize/launcher script is omitted because it hid the inline form while
+waiting for a resize handshake in browser testing.
+The alpine banner image is rendered at 35% opacity, independently of the text.
+This repository does not duplicate or collect e-book signups. Contact
+alternatives are shown if the form is unavailable. Check the embedded form and
+actual e-book delivery after deployment. Do not submit production signup forms
+during automated testing.
 
 Run the automated checks with Node.js 22 or later:
 
