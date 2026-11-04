@@ -170,6 +170,7 @@ function renderArticle(post) {
   <meta name="keywords" content="${escapeHtml(post.tags.join(', '))}">
   <meta name="article:section" content="${escapeHtml(post.category)}">
   <link rel="canonical" href="${canonical}">
+  <script src="/assets/analytics.js" defer><\/script>
   <meta property="og:type" content="article">
   <meta property="og:title" content="${escapeHtml(post.seoTitle)}">
   <meta property="og:description" content="${escapeHtml(post.description)}">

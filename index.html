@@ -1,4 +1,4 @@
-<!doctype html><html><head><link rel="icon" type="image/png" href="/favicon.png"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
+<!doctype html><html><head><link rel="icon" type="image/png" href="/favicon.png"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><script src="/assets/analytics.js"></script><style>@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}
   /* New homepage (from Dr. Lori's 10/9 homepage package) */
   .nh{ --blue:#1f4e9e; --blue-dark:#163a78; --gold:#b8961e; --gold-bright:#e8c84a; --tint:#ebf0fa; --nink:#1d2433; --ink-soft:#4a5468; font-family:'Poppins',Arial,sans-serif; font-size:18px; line-height:1.65; color:var(--nink); background:#fff; }
   .nh h1,.nh h2,.nh h3{ font-family:'Lora',Georgia,serif; line-height:1.2; margin:0 0 .6em; color:var(--blue); }
@@ -1293,6 +1293,10 @@
     window.scrollTo({ top: 0, behavior: 'instant' });
     try{ history.replaceState(null, '', '#' + name); }catch(e){}
     if(PAGE_TITLES[name]){ document.title = PAGE_TITLES[name]; }
+    if(target && window.__peakAnalyticsPage !== name && window.peakTrack){
+      window.peakTrack('page_view', { page_title: PAGE_TITLES[name] || name, page_path: '/#' + name, page_location: location.origin + location.pathname + '#' + name });
+    }
+    window.__peakAnalyticsPage = name;
     if(name === 'contact') initializeContactCaptcha();
     if(name === 'ebook'){
       var frame = document.getElementById('inline-JvGwX8MG7DenmjwVKses');
@@ -1307,6 +1311,7 @@
   }
   function goToSection(page, id){
     goTo(page);
+    if(id === 'ebook-signup' && window.peakTrack){ window.peakTrack('ebook_signup_click'); }
     setTimeout(function(){ scrollToId(id); }, 50);
   }
   var legacyOpening = document.querySelector('.homepage-opening-scale');
@@ -1653,6 +1658,7 @@
       }
       form.reset();
       status.textContent = 'Your message has been submitted to the PEAK team. We typically respond within one business day.';
+      if(window.peakTrack){ window.peakTrack('generate_lead', { method: 'contact_form' }); }
     }catch(error){
       status.textContent = 'We could not confirm your message was submitted. Please complete reCAPTCHA again before retrying. ' +
         (error.name === 'AbortError' ? 'The request timed out. ' : '') +
