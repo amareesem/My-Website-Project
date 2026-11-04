@@ -109,6 +109,24 @@
   .nh .nh-faq p{ margin:12px 0 0; color:var(--ink-soft); }
   .nh-photo{ object-fit:cover; display:block; }
   .nh-photo-ph{ background:linear-gradient(160deg,#c9d6ef 0%,#ebf0fa 55%,#f6ecc8 100%); }
+  /* Patient reviews: homepage "In their words" */
+  .nh-reviewGrid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:1040px; margin:36px auto 0; }
+  .nh-reviewCard{ background:#fff; border-radius:16px; border-top:4px solid var(--gold); box-shadow:0 4px 18px rgba(31,78,158,.08); padding:30px 28px 24px; margin:0; display:flex; flex-direction:column; gap:12px; text-align:left; }
+  .nh-reviewCard.nh-reviewFeatured{ grid-column:1/-1; padding:38px 42px 30px; }
+  .nh-reviewMark{ font-family:'Lora',Georgia,serif; font-size:3.2rem; line-height:.55; color:var(--gold); }
+  .nh-reviewCard blockquote{ margin:0; font-size:.98rem; line-height:1.7; color:var(--ink-soft); }
+  .nh-reviewCard.nh-reviewFeatured blockquote{ font-family:'Lora',Georgia,serif; font-size:1.18rem; line-height:1.6; color:var(--nink); }
+  .nh-reviewWho{ margin:0; font-size:.98rem; color:var(--nink); }
+  .nh-reviewWho strong{ font-weight:700; }
+  .nh-reviewWho span{ font-size:.85rem; color:var(--ink-soft); }
+  .nh-reviewCard .nh-reviewLink{ margin-top:auto; font-size:.9rem; font-weight:600; color:var(--blue); text-decoration:none; }
+  .nh-reviewCard .nh-reviewLink:hover{ text-decoration:underline; }
+  .nh-reviewActions{ margin-top:32px; text-align:center; }
+  @media (max-width:900px){
+    .nh-reviewGrid{ grid-template-columns:1fr; }
+    .nh-reviewCard.nh-reviewFeatured{ grid-column:auto; padding:30px 28px 24px; }
+    .nh-reviewCard.nh-reviewFeatured blockquote{ font-size:1.05rem; }
+  }
   @media (max-width:900px){
     .nh-hero,.nh-split{ grid-template-columns:1fr; }
     .nh-hero{ padding-top:56px; padding-bottom:56px; }
@@ -431,8 +449,30 @@
     header.site .mobile-nav button{ flex:0 0 auto; padding:2px 0; border:0; background:none; color:var(--body-text); font:500 14px 'Rubik',Arial,sans-serif; }
     header.site .mobile-nav button:hover{ color:var(--ink); }
   }
+  /* Patient reviews: inner-page quote cards */
+  .patient-quote-card{ background:#fff; border-left:4px solid #b8961e; border-radius:12px; box-shadow:0 10px 30px -18px rgba(18,29,38,.3); padding:26px 30px; display:flex; flex-direction:column; gap:12px; text-align:left; }
+  .timeline.has-quote{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .timeline.has-quote .step:first-child{ grid-column:1/-1; }
+  .timeline .patient-quote-card{ grid-column:1/-1; margin:8px 0; }
+  .patient-quote-card blockquote{ margin:0; font-family:'Lora',Georgia,serif; font-style:italic; font-size:17px; line-height:1.7; color:var(--ink); }
+  .patient-quote-who{ margin:0; font-size:14.5px; color:var(--ink); }
+  .patient-quote-who span{ color:var(--muted); font-size:13px; }
+  .patient-quote-link{ font-size:14px; font-weight:600; color:var(--brand-blue); text-decoration:none; }
+  .patient-quote-link:hover{ text-decoration:underline; }
+  .physician-review{ display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center; }
+  .physician-review .gold-rule{ width:64px; height:3px; background:#b8961e; border-radius:2px; }
+  .physician-review blockquote{ margin:0; font-family:'Lora',Georgia,serif; font-size:20px; line-height:1.65; color:var(--ink); }
+  /* Patient Stories page */
+  .story-card{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:34px 36px; margin-top:28px; box-shadow:0 10px 30px -22px rgba(18,29,38,.3); scroll-margin-top:120px; }
+  .story-card h2{ font-family:'Lora',Georgia,serif; font-size:26px; font-weight:700; }
+  .story-card .story-who{ font-size:14px; color:var(--muted); margin:4px 0 0; }
+  .story-card .story-pull{ font-family:'Lora',Georgia,serif; font-size:21px; line-height:1.6; color:var(--ink); border-left:3px solid #b8961e; padding-left:18px; margin:22px 0 2px; }
+  .story-card h3{ font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#b8961e; margin-top:28px; }
+  .story-card p.story-text{ font-size:18px; line-height:1.75; margin-top:16px; }
+  .story-disclaimer{ font-size:13.5px; color:var(--muted); text-align:center; margin-top:34px; line-height:1.6; }
+  @media (max-width:600px){ .story-card{ padding:26px 22px; } }
   @media (max-width:980px){
-    .grid-3, .grid-4, .grid-2, .timeline, .qualify-grid, .before-during-after, .hero-grid, .split-media, .split-media.rev{ grid-template-columns:1fr; }
+    .grid-3, .grid-4, .grid-2, .timeline, .timeline.has-quote, .qualify-grid, .before-during-after, .hero-grid, .split-media, .split-media.rev{ grid-template-columns:1fr; }
     .split-media.rev .photo-frame{ order:0; }
     .photo-frame{ aspect-ratio:16/10; }
     .split{ flex-direction:column; }
@@ -607,6 +647,37 @@
     <div class="nh-center"><a href="#consultation" onclick="goTo('consultation');return false;" class="nh-btn-gold">Book your consultation</a></div>
   </section>
 
+  <section class="nh-section nh-tinted nh-reviews">
+    <div class="nh-narrow">
+      <p class="nh-eyebrowBlue">From our patients</p>
+      <h2>In their words</h2>
+    </div>
+    <div class="nh-reviewGrid">
+      <figure class="nh-reviewCard nh-reviewFeatured">
+        <span class="nh-reviewMark" aria-hidden="true">&ldquo;</span>
+        <blockquote>Dr. Lori is willing to sit down and spend enough quality time actually listening and caring about me to do whatever it takes and find the ROOT causes! &hellip; I finally have hope. I watched both parents die an inch at a time and I no longer feel swept up into my inevitable. Now I have a fighting chance to change everything.</blockquote>
+        <figcaption class="nh-reviewWho"><strong>L. Craig</strong> <span>&middot; PEAK patient</span></figcaption>
+        <a class="nh-reviewLink" href="#patient-stories" onclick="goToSection('patient-stories','l-craig');return false;">Read the full review &rarr;</a>
+      </figure>
+      <figure class="nh-reviewCard">
+        <span class="nh-reviewMark" aria-hidden="true">&ldquo;</span>
+        <blockquote>Before starting the program, I felt sluggish, dealt with daily brain fog, and honestly didn&rsquo;t feel like myself. Since joining Peak Longevity, that has completely changed&mdash;I feel energized, clear-headed, and like me again. &hellip; The monthly check-ins are a huge part of what makes the program so successful. They keep me accountable, supported, and moving forward.</blockquote>
+        <figcaption class="nh-reviewWho"><strong>Anonymous</strong> <span>&middot; PEAK patient</span></figcaption>
+        <a class="nh-reviewLink" href="#patient-stories" onclick="goToSection('patient-stories','anonymous');return false;">Read the full review &rarr;</a>
+      </figure>
+      <figure class="nh-reviewCard">
+        <span class="nh-reviewMark" aria-hidden="true">&ldquo;</span>
+        <blockquote>I initially sat in on my husband&rsquo;s consultation with Dr. Lori King, never expecting that by the end of the appointment, I would sign up too. &hellip; I encourage anyone who has ever been told by a doctor, as I was, that &lsquo;that&rsquo;s your lot in life&rsquo; to have a conversation with Dr. Lori King. There is hope, and there are answers.</blockquote>
+        <figcaption class="nh-reviewWho"><strong>Yvonne B.</strong> <span>&middot; PEAK patient</span></figcaption>
+        <a class="nh-reviewLink" href="#patient-stories" onclick="goToSection('patient-stories','yvonne');return false;">Read the full review &rarr;</a>
+      </figure>
+    </div>
+    <div class="nh-reviewActions">
+      <button type="button" class="nh-btn-gold" onclick="goTo('patient-stories')">Read all patient stories</button>
+      <p class="nh-small">Individual experiences vary.</p>
+    </div>
+  </section>
+
   <section class="nh-section">
     <div class="nh-narrow"><h2>Built on the research that&rsquo;s rewriting the dementia story.</h2></div>
     <div class="nh-researchRow">
@@ -690,6 +761,17 @@
           <p class="role">Co-Founder &amp; Physician</p>
           <p style="font-size:15px;line-height:1.75;">A conventionally trained family physician who retrained in root-cause and longevity medicine. Dr. Chris co-developed PEAK and works one to one with patients, guiding them through each Basecamp with the care he brought to decades of family practice.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad-lg">
+    <div class="wrap narrow">
+      <div class="physician-review" id="about-patient-review">
+        <div class="gold-rule" aria-hidden="true"></div>
+        <blockquote>We are impressed with the knowledge and care provided by Dr. Lori. Embarking on this health journey to longevity will be easier with her guidance and counsel. Thank you for developing this program to help us navigate our &ldquo;golden years&rdquo; and make them more healthy!</blockquote>
+        <p class="patient-quote-who"><strong>Barbara M.</strong> <span>&middot; PEAK patient</span></p>
+        <a class="patient-quote-link" href="#patient-stories" onclick="goToSection('patient-stories','barbara');return false;">Read the full review &rarr;</a>
       </div>
     </div>
   </section>
@@ -850,8 +932,13 @@
   </section>
   <section class="pad-lg">
     <div class="wrap">
-      <div class="timeline">
+      <div class="timeline has-quote">
         <div class="step"><span class="k">Weeks 1&ndash;2</span><h3>Testing</h3><p>Advanced testing done largely from home. We measure your brain with four blood biomarkers, then look at the systems feeding into it: metabolic and cardiovascular health, gut health, vitamins and nutrients, hormones and neurotransmitters, cellular energy, and &mdash; depending on your tier &mdash; genetics, environmental exposure, and professional cognitive testing.</p></div>
+        <div class="patient-quote-card">
+          <blockquote>&ldquo;When I joined the program a year ago I tested healthy but was tired and miserable. &hellip; With Doctor Lori&rsquo;s compassionate and patient help, I have walked through tests and improvements that cannot be discovered in a 30-minute annual physical box, to now be armed with enough information about ME to really have a fighting chance at health. Even on the days I couldn&rsquo;t remember all the right words, she has listened and truly cared.&rdquo;</blockquote>
+          <p class="patient-quote-who"><strong>L. Craig</strong> <span>&middot; PEAK patient</span></p>
+          <a class="patient-quote-link" href="#patient-stories" onclick="goToSection('patient-stories','l-craig');return false;">Read her full story &rarr;</a>
+        </div>
         <div class="step"><span class="k">Weeks 3&ndash;4</span><h3>Analysis &amp; Protocol</h3><p>Your physician reviews everything, then sits down with you for a full Review of Findings. Together you build a protocol targeting the specific root causes the testing found in you.</p></div>
         <div class="step"><span class="k">Months 2&ndash;7</span><h3>The Climb</h3><p>One educational module each week &mdash; 26 in total, across six monthly Basecamps covering inflammation, mitochondrial health, cellular energy, autophagy, and lifelong brain health. Expect about an hour a week to read and think it through &mdash; the action steps happen inside the life you already have.</p></div>
         <div class="step"><span class="k">Every Month</span><h3>Physician Visit</h3><p>A one-on-one virtual visit with Dr. Lori or Dr. Chris to adjust your protocol, review supplements, and answer questions. Between visits, you can message your physician directly, any time.</p></div>
@@ -1049,6 +1136,11 @@
     <div class="wrap">
       <div class="center-head"><h2 style="font-size:34px;font-weight:700;">Your investment in your brain&rsquo;s future</h2></div>
       <p class="narrow" style="font-size:15.5px;line-height:1.75;text-align:center;">PEAK is a six-month, physician-led program. Every package includes your Review of Findings, a personalized protocol, six monthly Basecamps with 26 weekly modules, a one-to-one virtual visit with your physician every month, anytime secure messaging, and your PEAK Graduation. Packages differ in how deep the testing goes.</p>
+      <div class="patient-quote-card" style="max-width:720px;margin:28px auto 0;">
+        <blockquote>&ldquo;My healing wasn&rsquo;t an overnight success story. It took an investment of three to four months, but the lasting, tangible results became clear evidence that my healing journey had begun.&rdquo;</blockquote>
+        <p class="patient-quote-who"><strong>Yvonne B.</strong> <span>&middot; PEAK patient</span></p>
+        <a class="patient-quote-link" href="#patient-stories" onclick="goToSection('patient-stories','yvonne');return false;">Read the full review &rarr;</a>
+      </div>
       <div class="investment-table-wrap" role="region" aria-label="Program pricing and testing comparison" tabindex="0">
         <table class="investment-table">
           <caption>Program pricing and included services</caption>
@@ -1224,6 +1316,24 @@
     </div>
   </section>
 </div>
+
+<!-- PATIENT STORIES -->
+<div class="page" id="page-patient-stories">
+  <section class="hero-page pad-md" style="background-image:url('assets/photos/Mountain-Flowers-Stream.jpg');">
+    <div class="wrap narrow" style="text-align:center;display:flex;flex-direction:column;gap:16px;">
+      <span class="eyebrow">From our patients</span>
+      <h1 style="font-size:38px;font-weight:700;">Patient Stories</h1>
+      <p style="font-size:16px;line-height:1.7;">In their own words: what our patients have shared about their PEAK experience.</p>
+    </div>
+  </section>
+  <section class="pad-lg">
+    <div class="wrap narrow">
+      <div id="patient-stories-list"></div>
+      <p class="story-disclaimer">These are our patients&rsquo; own words about their personal experiences. Individual results vary. PEAK Cognitive Longevity does not diagnose, treat, or cure dementia or Alzheimer&rsquo;s disease.</p>
+      <div class="btn-row" style="margin-top:28px;"><button class="btn btn-primary" onclick="goTo('consultation')">Book Your Consultation</button></div>
+    </div>
+  </section>
+</div>
 </main>
 
 <button class="btn btn-primary sticky-consultation" onclick="goTo('consultation')">Book Your Consultation</button>
@@ -1245,6 +1355,7 @@
           <button onclick="goTo('about')">Meet the Physicians</button>
           <button onclick="goTo('program')">The Program</button>
           <button onclick="goTo('evidence')">The Evidence</button>
+          <button onclick="goTo('patient-stories')">Patient Stories</button>
         </div>
         <div class="foot-col">
           <span class="label">Support</span>
@@ -1275,6 +1386,7 @@
     'consultation': 'Book a Consultation | Peak Cognitive Longevity',
     'contact': 'Contact Peak Cognitive Longevity | Southlake, TX',
     'ebook': 'Free Food Fight E-book | Peak Cognitive Longevity',
+    'patient-stories': 'Patient Stories | Peak Cognitive Longevity',
     'faq': 'Frequently Asked Questions | Peak Cognitive Longevity'
   };
   function goTo(name){
@@ -1688,10 +1800,91 @@
       });
     });
   })();
+  var PATIENT_STORIES = [
+    {
+      id: 'l-craig',
+      name: 'L. Craig',
+      pull: 'Dr. Lori is willing to sit down and spend enough quality time actually listening and caring about me to do whatever it takes and find the ROOT causes! &hellip; I finally have hope. I watched both parents die an inch at a time and I no longer feel swept up into my inevitable. Now I have a fighting chance to change everything.',
+      sections: [
+        {
+          heading: 'One year in',
+          paragraphs: [
+            'I highly recommend the Peak Cognitive Longevity program. When I joined the program a year ago, I tested healthy but was tired and miserable. Although I had zero clogging in my arteries, the inflammation around my heart, which needs to come within an acceptable range of 1&ndash;3, was a 17! I was poised for a catastrophic event. I really didn&rsquo;t have a choice but to join.',
+            'With Doctor Lori&rsquo;s compassionate and patient help, I have walked through tests and improvements that cannot be discovered in a 30-minute annual physical box, to now be armed with enough information about ME to really have a fighting chance at health. Even on the days I couldn&rsquo;t remember all the right words, she has listened and truly cared. It&rsquo;s so rare, I barely know how to express it! I thought I couldn&rsquo;t afford it, but I can only imagine what that heart attack would have cost!!'
+          ]
+        },
+        {
+          heading: 'When she first joined',
+          paragraphs: [
+            'I am an active member in my pursuit of health and have been for many years. Along with putting substantial research in my pursuit of a family practitioner, I have always had a functional medicine doc. I have been constant in my use of supplements and health advisories, healthy eating plans, etc. Yet after all of that, I found myself triggered for a major health event in several areas because of what I didn&rsquo;t know. This is what led me to join Peak Cognitive Longevity with Dr. Lori King. She leaves no stone unturned in areas such as reversing brain fog, release from heavy metals, discovering your unique biomarkers, and protecting you from your own genetics, in my case two parents with Alzheimer&rsquo;s.',
+            'For years I have felt like I was all alone trying to balance seemingly conflicting info on how to stop unexplainable fatigue and gross inflammation, hair loss and weight gain just for starters.',
+            'This Peak Longevity program is a perfect blend. No, it&rsquo;s more than that. It&rsquo;s quite literally a life saver! The one you always hoped for but thought you&rsquo;d never find, the best of medical expertise and experience blended with alternative medicine, where I, quite frankly, had seen more results with natural supplements instead of drugs with laundry lists of side effects! I longed for facts on my health based on real tests that did NOT merely throw drugs at the symptoms!! FINALLY!! Peak Cognitive Longevity, more specifically Dr. Lori, is willing to sit down and spend enough quality time actually listening and caring about me to do whatever it takes and find the ROOT causes! I don&rsquo;t know if I have ever met someone with more compassion and resolve to help.',
+            'I wish I could express this better but let me sum it up by saying this. I finally have hope. I watched both parents die an inch at a time and I no longer feel swept up into my inevitable. Now I have a fighting chance to change everything.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'yvonne',
+      name: 'Yvonne B.',
+      pull: 'I initially sat in on my husband&rsquo;s consultation with Dr. Lori King, never expecting that by the end of the appointment, I would sign up too. &hellip; I encourage anyone who has ever been told by a doctor, as I was, that &lsquo;that&rsquo;s your lot in life&rsquo; to have a conversation with Dr. Lori King. There is hope, and there are answers.',
+      sections: [
+        {
+          paragraphs: [
+            'I initially sat in on my husband&rsquo;s consultation with Dr. Lori King, never expecting that by the end of the appointment, I would sign up too. I came to understand just how deeply connected our brain and gut health really are.',
+            'I had struggled with gut issues for 50 years, and it was only through Dr. King&rsquo;s thorough testing that significant underlying issues were finally discovered. My healing wasn&rsquo;t an overnight success story. It took an investment of three to four months, but the lasting, tangible results became clear evidence that my healing journey had begun.',
+            'Fine-tuning my supplements, adjusting the timing of my meals, and getting my sleep cycles back on track have been life-changing, to say the least. Some of my issues are genetic and will remain with me for life, but with Dr. King&rsquo;s guidance, they are now so much more manageable. Other issues have resolved completely.',
+            'I encourage anyone who has ever been told by a doctor, as I was, that &ldquo;that&rsquo;s your lot in life&rdquo; to have a conversation with Dr. Lori King. There is hope, and there are answers. We simply need someone willing to look deeper and help us find a different path forward. That person for me was Dr. King.',
+            'For me, faith and healing go hand in hand. Dr. Lori King has given me renewed hope and real, meaningful results. Joining Peak Longevity has truly transformed my wellness and, more importantly, how I am able to live my life.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'anonymous',
+      name: 'Anonymous',
+      sections: [
+        {
+          paragraphs: [
+            'Peak Longevity has truly been life-changing for me. Before starting the program, I felt sluggish, dealt with daily brain fog, and honestly didn&rsquo;t feel like myself. Since joining Peak Longevity, that has completely changed&mdash;I feel energized, clear-headed, and like me again. The information and guidance Dr. Lori provides have been invaluable, and the monthly check-ins are a huge part of what makes the program so successful. They keep me accountable, supported, and moving forward. I&rsquo;m incredibly grateful for the impact this program has had on my overall well-being.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'barbara',
+      name: 'Barbara M.',
+      sections: [
+        {
+          paragraphs: [
+            'We are impressed with the knowledge and care provided by Dr. Lori. Embarking on this health journey to longevity will be easier with her guidance and counsel. Thank you for developing this program to help us navigate our &ldquo;golden years&rdquo; and make them more healthy!'
+          ]
+        }
+      ]
+    }
+  ];
+  (function renderPatientStories(){
+    var list = document.getElementById('patient-stories-list');
+    if(!list) return;
+    list.innerHTML = PATIENT_STORIES.map(function(story){
+      var inner = '<h2>' + story.name + '</h2><p class="story-who">PEAK patient</p>';
+      if(story.pull){ inner += '<p class="story-pull">&ldquo;' + story.pull + '&rdquo;</p>'; }
+      story.sections.forEach(function(section){
+        if(section.heading){ inner += '<h3>' + section.heading + '</h3>'; }
+        inner += section.paragraphs.map(function(p){ return '<p class="story-text">' + p + '</p>'; }).join('');
+      });
+      return '<article class="story-card" id="' + story.id + '">' + inner + '</article>';
+    }).join('');
+  })();
   (function init(){
     var hash = (location.hash || '').replace('#','');
-    var valid = ['home','about','program','evidence','blog','helpful-links','payment-options','consultation','contact','ebook'];
-    goTo(valid.indexOf(hash) !== -1 ? hash : 'home');
+    var valid = ['home','about','program','evidence','blog','helpful-links','payment-options','consultation','contact','ebook','patient-stories'];
+    var storyIds = PATIENT_STORIES.map(function(s){ return s.id; });
+    if(storyIds.indexOf(hash) !== -1){
+      goToSection('patient-stories', hash);
+    } else {
+      goTo(valid.indexOf(hash) !== -1 ? hash : 'home');
+    }
   })();
 </script>
 
