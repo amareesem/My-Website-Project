@@ -151,6 +151,7 @@ function renderArticle(post, previous, next) {
   <meta name="keywords" content="${escapeHtml([post.focusKeyword, ...post.tags].join(', '))}">
   <meta name="article:section" content="${escapeHtml(post.category)}">
   <link rel="canonical" href="${canonical}">
+  <meta name="robots" content="noindex, nofollow">
   <script src="/assets/analytics.js" defer><\/script>
   <meta property="og:type" content="article">
   <meta property="og:title" content="${escapeHtml(post.seoTitle)}">
@@ -162,7 +163,7 @@ function renderArticle(post, previous, next) {
   <style>
     :root{color-scheme:light;--ink:#18332e;--green:#31584d;--gold:#c59654;--muted:#65756f;--paper:#f8f7f2;--line:#e4e6df}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 Georgia,"Times New Roman",serif}
-    a{color:var(--green)}.site-header{background:#17372f;color:#fff;padding:18px 24px}.site-header nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;gap:18px;align-items:center;font:600 14px/1.4 Arial,sans-serif}.site-header a{color:#fff;text-decoration:none}
+    a{color:var(--green)}.site-header{background:#17372f;color:#fff;padding:18px 24px}.site-header nav{max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 18px;align-items:center;font:600 14px/1.4 Arial,sans-serif}.site-header a{color:#fff;text-decoration:none}
     .page{max-width:860px;margin:0 auto;padding:54px 24px 80px}.series-label{color:#8b6839;text-transform:uppercase;letter-spacing:.12em;font:700 12px Arial,sans-serif}
     h1{font:700 clamp(32px,5vw,48px)/1.13 Georgia,serif;letter-spacing:-.025em;margin:14px 0 18px}.dek{font-size:19px;line-height:1.6;color:#52645d;margin:0 0 22px}
     .byline{font:14px/1.5 Arial,sans-serif;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:25px;margin-bottom:30px}.article-body h2{font:700 28px/1.25 Georgia,serif;margin:42px 0 14px}.article-body h3{font:700 21px/1.35 Georgia,serif;margin:30px 0 12px}
@@ -173,7 +174,7 @@ function renderArticle(post, previous, next) {
   </style>
 </head>
 <body>
-  <header class="site-header"><nav><a href="/">PEAK Cognitive Longevity</a><a href="/index.html#blog">All Blog Posts</a></nav></header>
+  <header class="site-header"><nav><a href="/">PEAK Cognitive Longevity</a><a href="/blog/">Blog</a><a href="/ebook/">E-book</a><a href="/consultation/">Book Your Consultation</a><a href="/contact/">Contact</a></nav></header>
   <main class="page">
     <div class="series-label">The Food Fight Series</div>
     <h1>${escapeHtml(post.title)}</h1>
@@ -183,7 +184,7 @@ function renderArticle(post, previous, next) {
     <section class="faqs" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>${renderFaq(post)}
     </section>
     <nav class="series-nav" aria-label="Food Fight series navigation">${navigation}</nav>
-    <a class="back-link" href="/index.html#blog">← Back to all Food Fight articles</a>
+    <a class="back-link" href="/blog/">Back to all articles</a>
   </main>
 </body>
 </html>`;

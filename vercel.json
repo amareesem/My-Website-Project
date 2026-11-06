@@ -1,0 +1,20 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": false },
+    { "source": "/payment-options", "destination": "/pricing/", "permanent": false },
+    { "source": "/payment-options/", "destination": "/pricing/", "permanent": false },
+    { "source": "/helpful-links", "destination": "/resources/", "permanent": false },
+    { "source": "/helpful-links/", "destination": "/resources/", "permanent": false }
+  ]
+}
