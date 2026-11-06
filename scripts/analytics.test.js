@@ -61,18 +61,13 @@ test('static page sends one explicit page view without query parameters', () => 
   assert.equal(events(context)[0][2].page_location, 'https://example.com/');
 });
 
-test('SPA tracks initial and changed pages, not repeated navigation', () => {
-  const { context, listeners } = setup(true, true);
-  const navigation = html.match(/  function goTo\(name\)\{[\s\S]*?(?=  function scrollToId)/);
-  assert.ok(navigation);
-  vm.runInContext(navigation[0], context);
-  context.goTo('home');
-  listeners.DOMContentLoaded();
-  context.goTo('consultation');
-  context.goTo('consultation');
-  assert.equal(events(context).length, 2);
-  assert.equal(events(context)[0][2].page_location, 'https://example.com/#home');
-  assert.equal(events(context)[1][2].page_location, 'https://example.com/#consultation');
+test('home page uses real routes instead of hash navigation', () => {
+  assert.equal(html.includes('function goTo'), false);
+  for (const href of ['/about/', '/program/', '/blog/', '/ebook/', '/consultation/', '/contact/']) {
+    assert.ok(html.includes(`href="${href}"`), href);
+  }
+  assert.match(html, /name="robots" content="noindex, nofollow"/);
+  assert.equal((html.match(/<h1\b/g) || []).length, 1);
 });
 
 test('booking, portal, phone and email clicks have distinct events', () => {
@@ -91,12 +86,25 @@ test('booking, portal, phone and email clicks have distinct events', () => {
 });
 
 test('each public page and both generators include analytics once', () => {
-  const pages = ['index.html', 'faq\\index.html', 'evidence\\index.html'];
+  const pages = [
+    'index.html',
+    path.join('about', 'index.html'),
+    path.join('program', 'index.html'),
+    path.join('faq', 'index.html'),
+    path.join('pricing', 'index.html'),
+    path.join('contact', 'index.html'),
+    path.join('ebook', 'index.html'),
+    path.join('blog', 'index.html'),
+    path.join('consultation', 'index.html'),
+    path.join('patient-stories', 'index.html'),
+    path.join('resources', 'index.html'),
+    path.join('evidence', 'index.html')
+  ];
   for (const folder of fs.readdirSync(path.join(root, 'blog'))) {
     const file = path.join('blog', folder, 'index.html');
     if (fs.existsSync(path.join(root, file))) pages.push(file);
   }
-  for (const file of [...pages, 'scripts\\build-food-fight.js', 'scripts\\build-longevity-pearls.js']) {
+  for (const file of [...pages, path.join('scripts', 'build-food-fight.js'), path.join('scripts', 'build-longevity-pearls.js')]) {
     assert.equal((fs.readFileSync(path.join(root, file), 'utf8').match(/\/assets\/analytics\.js/g) || []).length, 1, file);
   }
 });
