@@ -179,6 +179,7 @@ function renderArticle(post) {
   <meta property="article:published_time" content="${escapeHtml(post.publishedAt)}">
   <meta property="article:author" content="${escapeHtml(post.author)}">
   <script type="application/ld+json">${JSON.stringify(faqSchema).replace(/</g, '\\u003c')}</script>
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
     :root{color-scheme:light;--ink:#18332e;--green:#31584d;--gold:#c59654;--muted:#65756f;--paper:#f8f7f2;--line:#e4e6df}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 Georgia,"Times New Roman",serif}
@@ -193,7 +194,10 @@ function renderArticle(post) {
   </style>
 </head>
 <body>
-  <header class="site-header"><nav><a href="/">PEAK Cognitive Longevity</a><a href="/blog/">Blog</a><a href="/ebook/">E-book</a><a href="/consultation/">Book Your Consultation</a><a href="/contact/">Contact</a></nav></header>
+  <header class="site">
+    <div class="utility"><div class="wrap utility-inner"><a href="tel:+18177965115">(817) 796-5115</a><a href="/contact/">Contact</a></div></div>
+    <div class="wrap bar"><a class="brand" href="/"><img src="/assets/photos/peak-logo-cropped.png" alt="PEAK Cognitive Longevity logo" width="56" height="58"></a><nav class="primary" id="primary-nav" aria-label="Main"><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a><a class="btn nav-book" href="/consultation/">Book a consultation</a></nav></div>
+  </header>
   <main class="page">
     <div class="series-label">Longevity Pearls</div>
     <h1>${escapeHtml(post.title)}</h1>

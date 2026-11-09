@@ -17,7 +17,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
 
-.peak-ev{--blue:#1F4E9E;--navy:#14305F;--gold:#B8961E;--gold-bright:#E8C84A;--mist:#EBF0FA;--ink:#1E2533;--slate:#566074;--line:#D5DDEC;
+.peak-ev{--blue:#1F4E9E;--navy:#14305F;--gold:#163a78;--gold-bright:#10284f;--mist:#EBF0FA;--ink:#1E2533;--slate:#566074;--line:#D5DDEC;
   font-family:'Poppins',Arial,sans-serif;font-weight:300;color:var(--ink);font-size:17px;line-height:1.7;background:#fff}
 .peak-ev *{box-sizing:border-box}
 .peak-ev h1,.peak-ev h2,.peak-ev h3,.peak-ev h4{font-family:'Lora',Georgia,serif;color:var(--navy);margin:0;line-height:1.2;font-weight:600}
@@ -56,7 +56,7 @@
 .peak-ev .epigraph p{font-size:1.15rem;margin:0 0 8px}
 .peak-ev .epigraph cite{font-family:'Poppins',Arial,sans-serif;font-size:.86rem;font-style:normal;color:var(--slate)}
 .peak-ev .trail{list-style:none;margin:0;padding:0;position:relative}
-.peak-ev .trail::before{content:"";position:absolute;left:148px;top:10px;bottom:10px;width:3px;background:linear-gradient(to bottom,var(--line),var(--gold))}
+.peak-ev .trail::before{content:"";position:absolute;left:148px;top:10px;bottom:10px;width:3px;background:#d5ddec}
 .peak-ev .trail li{display:grid;grid-template-columns:130px 1fr;column-gap:56px;padding:0 0 44px;position:relative}
 .peak-ev .trail li::before{content:"";position:absolute;left:142px;top:12px;width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid var(--gold)}
 .peak-ev .trail li.now::before{background:var(--gold)}
@@ -139,7 +139,7 @@
 .peak-ev .cta{background:var(--navy);color:#fff;text-align:left}
 .peak-ev .cta h2{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem)}
 .peak-ev .cta p{color:#E6ECF7;max-width:56ch;font-size:1.05rem;margin-top:18px}
-.peak-ev .btn{display:inline-block;background:var(--gold-bright);color:var(--navy);font-weight:600;text-decoration:none;padding:16px 30px;border-radius:4px;margin:14px 20px 0 0;font-size:1rem}
+.peak-ev .btn{display:inline-block;background:#6b4e12;color:#fff;font-weight:600;text-decoration:none;padding:16px 30px;border-radius:4px;margin:14px 20px 0 0;font-size:1rem}
 .peak-ev .btn:hover{background:#F2D768}
 .peak-ev .phone{color:#fff;font-weight:500}
 .peak-ev .tag{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--gold-bright);font-size:1.25rem;margin-top:40px}
@@ -171,18 +171,36 @@
 </style>
   <script src="/assets/analytics.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalClinic","name":"PEAK Cognitive Longevity","url":"https://www.peakcognitivelongevity.com/","telephone":"+1-817-796-5115","email":"team@peakcognitivelongevity.com","address":{"@type":"PostalAddress","streetAddress":"200 Pecan Creek Drive","addressLocality":"Southlake","addressRegion":"TX","postalCode":"76092","addressCountry":"US"}}</script>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<nav class="site-jump" aria-label="Main">
-  <a href="/">PEAK</a>
-  <a href="/about/">Our Story</a>
-  <a href="/program/">Program</a>
-  <a href="/pricing/">Pricing</a>
-  <a href="/blog/">Blog</a>
-  <a href="/ebook/">E-book</a>
-  <a href="/contact/">Contact</a>
-  <a href="/consultation/">Book Your Consultation</a>
-</nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="utility">
+    <div class="wrap utility-inner">
+      <a href="tel:+18177965115">(817) 796-5115</a>
+      <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a>
+      <span class="spacer"></span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <img src="/assets/photos/peak-logo-cropped.png" alt="PEAK Cognitive Longevity logo" width="56" height="58">
+      <span>PEAK Cognitive Longevity</span>
+    </a>
+    <a class="btn bar-book" href="/consultation/">Book</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      Menu
+    </button>
+    <nav class="primary" id="primary-nav" aria-label="Main">
+      <a href="/about/">Our Story</a><a href="/program/">Program</a><a href="/pricing/">Pricing</a><a href="/faq/">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a>
+      <a class="btn nav-book" href="/consultation/">Book a consultation</a>
+    </nav>
+  </div>
+</header>
+
 
 <div class="peak-ev">
 
@@ -195,8 +213,8 @@
     </div>
     <svg class="ridge" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 170 L0 132 L120 118 L210 126 L330 92 L420 104 L540 66 L610 80 L720 38 L790 54 L880 22 L960 44 L1060 30 L1150 60 L1260 50 L1360 84 L1440 76 L1440 170 Z" fill="#1F4E9E"/>
-      <path d="M0 132 L120 118 L210 126 L330 92 L420 104 L540 66 L610 80 L720 38 L790 54 L880 22" fill="none" stroke="#E8C84A" stroke-width="3"/>
-      <circle cx="880" cy="22" r="7" fill="#E8C84A"/>
+      <path d="M0 132 L120 118 L210 126 L330 92 L420 104 L540 66 L610 80 L720 38 L790 54 L880 22" fill="none" stroke="#163a78" stroke-width="3"/>
+      <circle cx="880" cy="22" r="7" fill="#163a78"/>
       <path d="M0 170 L0 150 L160 142 L300 150 L460 128 L620 140 L780 112 L940 124 L1100 104 L1260 122 L1440 110 L1440 170 Z" fill="#fff"/>
     </svg>
   </header>
@@ -842,5 +860,46 @@
   </section>
 
 </div>
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="/assets/photos/pcl-logo-gray-text-white-mts.png" alt="PEAK Cognitive Longevity logo" width="64" height="64">
+      <p>PEAK Cognitive Longevity is a physician-led program at Timarron Family Medicine. Southlake, Texas, and virtual nationwide.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <ul class="foot-links">
+        <li><a href="/about/">Our Story</a></li>
+        <li><a href="/program/">The Program</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/evidence/">The Evidence</a></li>
+        <li><a href="/patient-stories/">Patient Stories</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Start here</h2>
+      <ul class="foot-links">
+        <li><a href="/consultation/">Book Your Consultation</a></li>
+        <li><a href="/ebook/">Free E-book</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/resources/">Ordering and Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Visit</h2>
+      <p><a href="tel:+18177965115">(817) 796-5115</a><br>
+      <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a></p>
+      <p>200 Pecan Creek Drive<br>Southlake, TX 76092</p>
+      <p>Mon to Thu, 8:00 AM to 4:30 PM<br>Fri, 8:00 AM to 12:00 PM</p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <p>&copy; 2026 PEAK Cognitive Longevity. All rights reserved.</p>
+    <p>PEAK Cognitive Longevity does not diagnose, treat, or cure dementia or Alzheimer's disease. Individual results vary.</p>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

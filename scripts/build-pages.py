@@ -114,7 +114,7 @@ def head(title, description, path, image, schemas):
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   {blocks}
   <script src="/assets/analytics.js" defer></script>
@@ -130,9 +130,17 @@ def header(active):
     return f"""<body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
+  <div class="utility">
+    <div class="wrap utility-inner">
+      <a href="tel:+18177965115">(817) 796-5115</a>
+      <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a>
+      <span class="spacer"></span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
   <div class="wrap bar">
     <a class="brand" href="/">
-      <img src="/assets/photos/peak-logo-cropped.png" alt="PEAK Cognitive Longevity logo" width="62" height="64">
+      <img src="/assets/photos/peak-logo-cropped.png" alt="PEAK Cognitive Longevity logo" width="56" height="58">
       <span>PEAK Cognitive Longevity</span>
     </a>
     <a class="btn bar-book" href="/consultation/">Book</a>
@@ -142,7 +150,7 @@ def header(active):
     </button>
     <nav class="primary" id="primary-nav" aria-label="Main">
       {''.join(links)}
-      <a class="btn nav-book" href="/consultation/">Book Your Consultation</a>
+      <a class="btn nav-book" href="/consultation/">Book a consultation</a>
     </nav>
   </div>
 </header>
@@ -153,8 +161,8 @@ def footer():
     return """<footer class="site">
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <img src="/assets/photos/pcl-logo-gray-text-white-mts.png" alt="PEAK Cognitive Longevity logo" width="72" height="72">
-      <p>A physician-led program for understanding and supporting brain health. Southlake, Texas, and virtual nationwide.</p>
+      <img src="/assets/photos/pcl-logo-gray-text-white-mts.png" alt="PEAK Cognitive Longevity logo" width="64" height="64">
+      <p>PEAK Cognitive Longevity is a physician-led program at Timarron Family Medicine. Southlake, Texas, and virtual nationwide.</p>
     </div>
     <div>
       <h2>Explore</h2>
@@ -225,34 +233,19 @@ def cta(extra=""):
 
 HOME = """
 <main id="main">
-  <section class="ebook-banner" aria-label="Free Food Fight e-book">
-    <div class="wrap">
-      <div>
-        <h2>Want our free e-book?</h2>
-        <p>Meet <em>Food Fight</em>: practical food swaps for your waistline, health, and brain.</p>
-      </div>
-      <a class="btn" href="/ebook/">Get the Free E-book</a>
-    </div>
-  </section>
   <section class="hero">
     <div class="wrap hero-grid">
+      <figure class="hero-photo">
+        <img src="/assets/photos/Person-Hiking-Alpine-Valley.jpg" alt="A hiker on a mountain trail overlooking an alpine valley" width="1600" height="1066" fetchpriority="high">
+      </figure>
       <div>
         <p class="eyebrow">Physician-led cognitive longevity</p>
         <h1>Your sharpest years are still ahead.</h1>
-        <p class="lede">See the factors shaping your brain health, often years before symptoms, and work on them with your own physician.</p>
-        <p>PEAK Cognitive Longevity is a six-month, physician-led precision medicine program in Southlake, Texas, and by video nationwide.</p>
-        <div class="hero-actions">
-          <a class="btn" href="/consultation/">Book Your Consultation</a>
-          <a class="btn btn-line-light" href="/ebook/">Get the Free E-book</a>
-        </div>
-        <p class="hero-links"><a href="/blog/">Read the blog</a> &nbsp; <a href="/about/#about-story-video">Watch our story (20 min)</a></p>
+        <p class="lede">A six-month program with your own physician, in Southlake and by video nationwide.</p>
+        <a class="btn" href="/consultation/">Book a consultation</a>
       </div>
-      <figure class="hero-photo">
-        <img src="/assets/photos/Person-Hiking-Alpine-Valley.jpg" alt="A hiker on a mountain trail overlooking an alpine valley" width="900" height="1125" fetchpriority="high">
-      </figure>
     </div>
   </section>
-  <div class="trust"><div class="wrap"><span>Two physicians</span><span>62 years combined experience</span><span>1:1 with your doctor every month</span><span>Southlake, TX and virtual nationwide</span></div></div>
   <section class="who-band">
     <div class="wrap">
       <p class="who"><strong>Who PEAK is for</strong> Adults who want to stay sharp, often before memory problems show. Many patients come after watching a parent live with dementia. You do not need a diagnosis to start. Visits happen in Southlake and by video across the country. Call us to confirm availability in your state.</p>
@@ -313,10 +306,6 @@ HOME = """
             <figcaption>Dr. Chris with his mother</figcaption>
           </figure>
         </div>
-        <blockquote class="story-quote">
-          <p>"I lost 2 people I loved deeply to dementia, and I promised myself I would spend my career making sure that didn't happen to anyone else I could reach."</p>
-          <cite>Dr. Lori King, MD</cite>
-        </blockquote>
       </div>
       <div>
         <h2>We each lost a parent to dementia. We built PEAK so other families can start sooner.</h2>
@@ -328,7 +317,18 @@ HOME = """
         </div>
       </div>
     </div>
-    <p class="wrap" style="margin-top:28px;font-family:var(--serif);font-size:1.25rem;color:var(--navy);">PEAK is everything we wish our parents had.<br>Drs. Lori and Chris King</p>
+    <div class="wrap quotes" style="margin-top:36px;">
+      <figure>
+        <img src="/assets/photos/dr-lori-king.jpg" alt="Dr. Lori King, MD" width="280" height="350">
+        <blockquote>"I lost 2 people I loved deeply to dementia, and I promised myself I would spend my career making sure that didn't happen to anyone else I could reach."</blockquote>
+        <figcaption>Dr. Lori King, MD <span>Founder and Physician</span></figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/photos/dr-chris-king.jpg" alt="Dr. Chris King, MD" width="280" height="350">
+        <blockquote>"PEAK is everything we wish our parents had."</blockquote>
+        <figcaption>Drs. Lori and Chris King <span>Founders</span></figcaption>
+      </figure>
+    </div>
   </section>
   <section class="section section-paper">
     <div class="wrap">
@@ -343,13 +343,29 @@ HOME = """
       </ol>
       <p><strong>Two journeys at once:</strong> a monthly 1:1 virtual visit with your physician, and a short weekly module with clear action steps, plus anytime secure messaging with your doctor.</p>
       <p>No guilt. No willpower marathons. Small, joyful changes you will actually love, because lifestyle change is life.</p>
-      <ul class="peak-name">
-        <li><b>P</b> <strong>Performance.</strong> Mind-body connection: meditation, sauna, gratitude, relationships, breathwork, nature.</li>
-        <li><b>E</b> <strong>Energy.</strong> A nutrient-dense, personalized way of eating that fuels your brain.</li>
-        <li><b>A</b> <strong>Activity.</strong> Movement that boosts blood flow and calms inflammation.</li>
-        <li><b>K</b> <strong>Kindness.</strong> Self-care: restorative sleep, toxin avoidance, and detoxification.</li>
-      </ul>
-      <div class="actions"><a class="btn" href="/program/">Program details</a></div>
+      <div class="cards cards-4">
+        <article class="card">
+          <img src="/assets/photos/living-what-we-teach/drs-king-mountain-hike.jpg" alt="Drs. Lori and Chris King hiking in the mountains" width="1200" height="900">
+          <h3>Performance</h3>
+          <p>Mind-body connection: meditation, sauna, gratitude, relationships, breathwork, nature.</p>
+        </article>
+        <article class="card">
+          <img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800">
+          <h3>Energy</h3>
+          <p>A nutrient-dense, personalized way of eating that fuels your brain.</p>
+        </article>
+        <article class="card">
+          <img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1600" height="1067">
+          <h3>Activity</h3>
+          <p>Movement that boosts blood flow and calms inflammation.</p>
+        </article>
+        <article class="card">
+          <img src="/assets/photos/living-what-we-teach/king-family-hike.jpg" alt="The King family hiking together" width="1200" height="900">
+          <h3>Kindness</h3>
+          <p>Self-care: restorative sleep, toxin avoidance, and detoxification.</p>
+        </article>
+      </div>
+      <div class="actions"><a class="btn" href="/program/">See the program</a><a class="btn btn-line" href="/ebook/">Get the Free E-book</a></div>
     </div>
   </section>
   <section class="section">
@@ -408,15 +424,38 @@ HOME = """
       <p><a href="/faq/">Read all of the questions</a></p>
     </div>
   </section>
-  <section class="section section-navy">
-    <div class="wrap narrow">
-      <h2>The climb begins with a conversation.</h2>
-      <p>Your consultation is not a sales call. It is one hour with Dr. Lori or Dr. Chris, reviewing your history and identifying your first risk factors. $350, credited in full toward the program if you enroll. Bring your spouse. Their consultation is free.</p>
-      <div class="actions">
-        <a class="btn" href="/consultation/">Book Your Consultation</a>
-        <a class="btn btn-line-light" href="tel:+18177965115">Call (817) 796-5115</a>
+  <section class="section">
+    <div class="wrap">
+      <h2>From the physicians' writing</h2>
+      <div class="cards cards-3">
+        <article class="card">
+          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/"><img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800"></a>
+          <h3><a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/">The Food Fight: how diet affects weight, disease, and brain health</a></h3>
+          <p>The opening chapter of Food Fight, from Dr. Lori King, MD.</p>
+        </article>
+        <article class="card">
+          <a href="/blog/morning-sunlight-brain-health/"><img src="/assets/photos/Mountain%20Sunrise%20Sun%20Beams.jpg" alt="Sunlight breaking over a mountain ridge at sunrise" width="1400" height="900"></a>
+          <h3><a href="/blog/morning-sunlight-brain-health/">Morning sunlight and brain health</a></h3>
+          <p>A short Longevity Pearl on a daily habit you can start outside.</p>
+        </article>
+        <article class="card">
+          <a href="/blog/morning-exercise-brain-health/"><img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1600" height="1067"></a>
+          <h3><a href="/blog/morning-exercise-brain-health/">A simple morning movement habit</a></h3>
+          <p>Another Longevity Pearl from Dr. Lori, written for real mornings.</p>
+        </article>
       </div>
-      <p><a href="/pricing/" style="color:#fff;">See pricing and payment options</a> &nbsp; <a href="/contact/" style="color:#fff;">Contact the team</a></p>
+      <div class="actions"><a class="btn" href="/blog/">Read the blog</a><a class="btn btn-line" href="/ebook/">Get the Free E-book</a></div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="wrap">
+      <h2>Next steps</h2>
+      <ol class="next-steps">
+        <li><a href="/consultation/">Book a consultation</a><p>One hour with Dr. Lori or Dr. Chris. $350, credited toward the program if you enroll. A spouse's consultation is free when booked together.</p></li>
+        <li><a href="/ebook/">Get the free e-book</a><p>Food Fight, practical food swaps from Dr. Lori King, MD.</p></li>
+        <li><a href="/blog/">Read the blog</a><p>The Food Fight series and Longevity Pearls, one short chapter at a time.</p></li>
+        <li><a href="/contact/">Contact the team</a><p>(817) 796-5115 or team@peakcognitivelongevity.com. Mon to Thu, 8:00 AM to 4:30 PM. Fri, 8:00 AM to 12:00 PM.</p></li>
+      </ol>
     </div>
   </section>
 </main>
@@ -955,10 +994,16 @@ RESOURCES = """
   <section class="section">
     <div class="wrap narrow prose">
       <p>You should know that our practice may receive compensation or a margin on products ordered through these partners. Our recommendations are made on clinical grounds regardless, and nothing we suggest depends on where you choose to buy it. You are always free to fill any recommendation elsewhere.</p>
-      <h2>Practice dispensary</h2>
-      <p>This is where most PEAK supplement protocols are filled. After your physician builds your protocol, the team sends ordering instructions. We do not send you to sort product quality on your own.</p>
-      <h2>Pharmacy partners</h2>
-      <p>Some protocols use practitioner-grade formulations from pharmacy partners. Registration is handled with the PEAK team.</p>
+      <div class="cards">
+        <article class="card">
+          <h2>Practice dispensary</h2>
+          <p>This is where most PEAK supplement protocols are filled. After your physician builds your protocol, the team sends ordering instructions. We do not send you to sort product quality on your own.</p>
+        </article>
+        <article class="card">
+          <h2>Pharmacy partners</h2>
+          <p>Some protocols use practitioner-grade formulations from pharmacy partners. Registration is handled with the PEAK team.</p>
+        </article>
+      </div>
       <p>If you need help placing an order, call <a href="tel:+18177965115">(817) 796-5115</a> or email <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a>.</p>
       <div class="actions"><a class="btn" href="/contact/">Contact the team</a></div>
     </div>
@@ -997,6 +1042,20 @@ def blog_body():
       <p class="eyebrow">From the physicians</p>
       <h1>Learn more about your brain</h1>
       <p class="lede">Practical writing on food, habits, and brain health from Dr. Lori King, MD, and Dr. Chris King, MD.</p>
+      <div class="cards cards-3">
+        <article class="card">
+          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/"><img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800"></a>
+          <h3><a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/">How diet affects weight, disease, and brain health</a></h3>
+        </article>
+        <article class="card">
+          <a href="/blog/morning-sunlight-brain-health/"><img src="/assets/photos/Mountain%20Sunrise%20Sun%20Beams.jpg" alt="Sunlight breaking over a mountain ridge at sunrise" width="1400" height="900"></a>
+          <h3><a href="/blog/morning-sunlight-brain-health/">Morning sunlight and brain health</a></h3>
+        </article>
+        <article class="card">
+          <a href="/blog/morning-exercise-brain-health/"><img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1600" height="1067"></a>
+          <h3><a href="/blog/morning-exercise-brain-health/">A simple morning movement habit</a></h3>
+        </article>
+      </div>
       <div class="blog-tools">
         <label for="blog-search">Search articles</label>
         <input id="blog-search" type="search" placeholder="Search by topic">
