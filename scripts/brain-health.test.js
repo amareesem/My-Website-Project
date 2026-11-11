@@ -6,14 +6,14 @@ const path = require('node:path');
 
 const root = path.join(__dirname, '..');
 const schedule = [
-  ['01-new-dementia-risk-factors-ldl-vision.md', 'new-dementia-risk-factors-ldl-vision', '2026-11-12'],
-  ['02-us-pointer-structured-lifestyle-brain-health.md', 'us-pointer-structured-lifestyle-brain-health', '2026-11-14'],
-  ['03-hearing-and-brain-achieve-trial.md', 'hearing-and-brain-achieve-trial', '2026-11-17'],
-  ['04-walking-steps-brain-health.md', 'walking-steps-brain-health', '2026-11-19'],
-  ['05-brain-fog-or-something-more.md', 'brain-fog-or-something-more', '2026-11-21'],
-  ['06-sleep-is-brain-maintenance.md', 'sleep-is-brain-maintenance', '2026-11-23'],
-  ['07-brain-friendly-thanksgiving-mind-diet.md', 'brain-friendly-thanksgiving-mind-diet', '2026-11-25'],
-  ['08-connection-is-brain-care-holidays.md', 'connection-is-brain-care-holidays', '2026-11-27']
+  ['01-new-dementia-risk-factors-ldl-vision.md', 'new-dementia-risk-factors-ldl-vision', '2026-11-12', 'A physician and a patient review lab results together in a calm exam room'],
+  ['02-us-pointer-structured-lifestyle-brain-health.md', 'us-pointer-structured-lifestyle-brain-health', '2026-11-14', 'Four older adults walk and talk together on a tree-lined path'],
+  ['03-hearing-and-brain-achieve-trial.md', 'hearing-and-brain-achieve-trial', '2026-11-17', 'An older woman wears testing headphones while a clinician checks her hearing'],
+  ['04-walking-steps-brain-health.md', 'walking-steps-brain-health', '2026-11-19', 'A woman walks a tree-lined neighborhood sidewalk in morning light'],
+  ['05-brain-fog-or-something-more.md', 'brain-fog-or-something-more', '2026-11-21', 'A man holding a coffee mug pauses thoughtfully in a kitchen doorway'],
+  ['06-sleep-is-brain-maintenance.md', 'sleep-is-brain-maintenance', '2026-11-23', 'A calm bedroom with a made bed and a low bedside lamp in the evening'],
+  ['07-brain-friendly-thanksgiving-mind-diet.md', 'brain-friendly-thanksgiving-mind-diet', '2026-11-25', 'A plate of greens, roasted vegetables, salmon, berries, and walnuts on a fall table'],
+  ['08-connection-is-brain-care-holidays.md', 'connection-is-brain-care-holidays', '2026-11-27', 'Two women laugh over coffee at a kitchen table']
 ];
 
 function read(relativePath) {
@@ -38,7 +38,7 @@ test('scheduled Brain Health posts are public only when their markdown is presen
   const slugs = new Set(index.map(post => post.slug));
   assert.equal(slugs.size, index.length);
 
-  for (const [file, slug, publishedAt] of schedule) {
+  for (const [file, slug, publishedAt, alt] of schedule) {
     const sourcePath = path.join('content', 'brain-health', file);
     const pagePath = path.join('blog', slug, 'index.html');
     const url = `https://www.peakcognitivelongevity.com/blog/${slug}/`;
@@ -55,7 +55,9 @@ test('scheduled Brain Health posts are public only when their markdown is presen
       assert.equal(post.publishedAt, publishedAt);
       assert.equal(post.category, 'Brain Health');
       assert.equal(post.featuredImage, `/assets/blog/brain-health/${slug}.jpg`);
-      assert.equal(post.featuredImageAlt, field(source, 'featuredImageAlt'));
+      assert.equal(field(source, 'featuredImageAlt'), alt);
+      assert.equal(post.featuredImageAlt, alt);
+      assert.ok(exists(path.join('assets', 'blog', 'brain-health', `${slug}.jpg`)), slug);
     } else {
       assert.equal(slugs.has(slug), false, slug);
       assert.equal(exists(pagePath), false, slug);
@@ -84,6 +86,9 @@ test('each live Brain Health page matches the article template and stays indexab
     assert.match(html, /property="og:description"/);
     assert.match(html, new RegExp(`property="og:url" content="https://www\\.peakcognitivelongevity\\.com/blog/${post.slug}/"`));
     assert.match(html, new RegExp(`property="og:image" content="https://www\\.peakcognitivelongevity\\.com/assets/blog/brain-health/${post.slug}\\.jpg"`));
+    assert.match(html, new RegExp(`property="og:image:alt" content="${escapeRegExp(post.featuredImageAlt)}"`));
+    assert.equal(html.includes('background:#e7ece8'), false, post.slug);
+    assert.equal(html.includes('#e7ece8'), false, post.slug);
     assert.match(html, /property="og:image:width" content="1200"/);
     assert.match(html, /property="og:image:height" content="800"/);
     assert.match(html, new RegExp(`property="article:published_time" content="${post.publishedAt}"`));

@@ -1668,15 +1668,18 @@
       card.style.cssText = 'padding:28px;display:flex;flex-direction:column;gap:12px;';
       if(post.featuredImage){
         var image = document.createElement('img');
-        image.src = post.featuredImage;
         image.alt = post.featuredImageAlt || '';
         image.width = 1200;
         image.height = 800;
-        image.loading = 'lazy';
-        image.style.cssText = 'width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;background:#e7ece8;display:block';
+        image.style.cssText = 'width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block';
         image.hidden = true;
         image.onload = function(){ image.hidden = false; };
         image.onerror = function(){ image.remove(); };
+        image.src = post.featuredImage;
+        if(image.complete){
+          if(image.naturalWidth > 0) image.hidden = false;
+          else image.remove();
+        }
         card.appendChild(image);
       }
       var label = document.createElement('span');

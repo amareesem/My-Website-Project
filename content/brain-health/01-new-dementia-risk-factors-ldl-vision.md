@@ -15,7 +15,7 @@ tags:
   - vision loss
   - Lancet Commission
 focusKeyword: "new dementia risk factors"
-featuredImageAlt: "A physician reviews cholesterol lab results with an adult patient in a calm exam room"
+featuredImageAlt: "A physician and a patient review lab results together in a calm exam room"
 ---
 
 If dementia runs in your family, it can feel as if the story is already written. Dr. Lori King and Dr. Chris King know that feeling. Each of them lost a parent to dementia. That is why they built PEAK Cognitive Longevity. A family history can raise your risk. It does not decide your future.

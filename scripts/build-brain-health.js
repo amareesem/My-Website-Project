@@ -15,14 +15,15 @@ const imageHeight = 800;
 // Publish order (America/Chicago). This script renders only the markdown files
 // that are actually in content/brain-health/, so a post stays off the site,
 // the sitemap, llms.txt, and the blog index until its file is added.
-// 01 2026-11-12 content/brain-health/01-new-dementia-risk-factors-ldl-vision.md
-// 02 2026-11-14 content/brain-health/02-us-pointer-structured-lifestyle-brain-health.md
-// 03 2026-11-17 content/brain-health/03-hearing-and-brain-achieve-trial.md
-// 04 2026-11-19 content/brain-health/04-walking-steps-brain-health.md
-// 05 2026-11-21 content/brain-health/05-brain-fog-or-something-more.md
-// 06 2026-11-23 content/brain-health/06-sleep-is-brain-maintenance.md
-// 07 2026-11-25 content/brain-health/07-brain-friendly-thanksgiving-mind-diet.md
-// 08 2026-11-27 content/brain-health/08-connection-is-brain-care-holidays.md
+// Also copy that post's image: assets/blog/brain-health/<slug>.jpg
+// 01 2026-11-12 content/brain-health/01-new-dementia-risk-factors-ldl-vision.md assets/blog/brain-health/new-dementia-risk-factors-ldl-vision.jpg
+// 02 2026-11-14 content/brain-health/02-us-pointer-structured-lifestyle-brain-health.md assets/blog/brain-health/us-pointer-structured-lifestyle-brain-health.jpg
+// 03 2026-11-17 content/brain-health/03-hearing-and-brain-achieve-trial.md assets/blog/brain-health/hearing-and-brain-achieve-trial.jpg
+// 04 2026-11-19 content/brain-health/04-walking-steps-brain-health.md assets/blog/brain-health/walking-steps-brain-health.jpg
+// 05 2026-11-21 content/brain-health/05-brain-fog-or-something-more.md assets/blog/brain-health/brain-fog-or-something-more.jpg
+// 06 2026-11-23 content/brain-health/06-sleep-is-brain-maintenance.md assets/blog/brain-health/sleep-is-brain-maintenance.jpg
+// 07 2026-11-25 content/brain-health/07-brain-friendly-thanksgiving-mind-diet.md assets/blog/brain-health/brain-friendly-thanksgiving-mind-diet.jpg
+// 08 2026-11-27 content/brain-health/08-connection-is-brain-care-holidays.md assets/blog/brain-health/connection-is-brain-care-holidays.jpg
 
 function unquote(value) {
   const trimmed = value.trim();
@@ -265,7 +266,7 @@ function renderArticle(post) {
     .page{max-width:860px;margin:0 auto;padding:54px 24px 80px}.series-label{color:#8b6839;text-transform:uppercase;letter-spacing:.12em;font:700 12px Arial,sans-serif}
     h1{font:700 clamp(32px,5vw,48px)/1.13 Georgia,serif;letter-spacing:-.025em;margin:14px 0 18px}.dek{font-size:19px;line-height:1.6;color:#52645d;margin:0 0 22px}
     .byline{font:14px/1.5 Arial,sans-serif;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:25px;margin-bottom:30px}
-    .hero-figure{margin:0 0 28px}.hero-figure img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px;background:#e7ece8}
+    .hero-figure{margin:0 0 28px}.hero-figure img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
     .article-body h2{font:700 28px/1.25 Georgia,serif;margin:42px 0 14px}.article-body h3{font:700 21px/1.35 Georgia,serif;margin:30px 0 12px}
     .article-body p,.article-body ul,.article-body ol,.article-body blockquote{margin:0 0 20px}.article-body ul,.article-body ol{padding-left:25px}.article-body li{margin:0 0 9px}.article-body a{overflow-wrap:anywhere}.article-body table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:25px 0;font:14px/1.5 Arial,sans-serif}.article-body th,.article-body td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}.article-body th,.article-body tr.header{background:#e9eee9}.article-body blockquote{border-left:3px solid var(--gold);padding:8px 20px;color:#50615a}
     .faqs{border-top:1px solid var(--line);margin-top:44px;padding-top:28px}.faqs h2{font:700 26px/1.3 Georgia,serif}.faq-item{border-bottom:1px solid var(--line);padding:14px 0}.faq-item summary{cursor:pointer;font-weight:700}.faq-item p{margin:10px 0 0;color:#465952}
