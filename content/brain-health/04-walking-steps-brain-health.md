@@ -15,7 +15,7 @@ tags:
   - Alzheimer's
   - steps
 focusKeyword: "how many steps a day for brain health"
-featuredImageAlt: "A person walks on a neighborhood path in soft morning light, wearing comfortable shoes"
+featuredImageAlt: "A woman walks a tree-lined neighborhood sidewalk in morning light"
 ---
 
 If the goal of 10,000 steps a day has ever made you close the app and give up, here is some encouraging news. You may not need that number for your brain.

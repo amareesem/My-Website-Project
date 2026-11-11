@@ -15,7 +15,7 @@ tags:
   - sleep apnea
   - brain fog
 focusKeyword: "sleep and Alzheimer's risk"
-featuredImageAlt: "A peaceful bedroom in evening light, with a made bed and a lamp turned low"
+featuredImageAlt: "A calm bedroom with a made bed and a low bedside lamp in the evening"
 ---
 
 While you sleep, your brain is not off the clock. Researchers think this is when the brain stores memories and runs a kind of overnight cleaning system, sometimes called the glymphatic system, that may help clear waste. You do not have to remember that name. The idea is simple: sleep is not lost time. It is maintenance.

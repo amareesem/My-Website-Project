@@ -15,7 +15,7 @@ tags:
   - early signs
   - Alzheimer's
 focusKeyword: "brain fog or dementia"
-featuredImageAlt: "A person pauses in a doorway, looking thoughtful, in a quietly lit home"
+featuredImageAlt: "A man holding a coffee mug pauses thoughtfully in a kitchen doorway"
 ---
 
 You walk into the kitchen and cannot remember why. You lose a word in the middle of a sentence. After a short night of sleep, your thinking feels thick, as if someone rubbed the edges off the day. These moments are very common. They happen at 35, and they happen at 75. They are not, by themselves, a diagnosis.

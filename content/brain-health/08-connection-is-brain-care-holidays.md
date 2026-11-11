@@ -15,7 +15,7 @@ tags:
   - holidays
   - purpose
 focusKeyword: "loneliness and cognitive decline"
-featuredImageAlt: "Two people share a warm conversation over coffee at a kitchen table"
+featuredImageAlt: "Two women laugh over coffee at a kitchen table"
 ---
 
 The day after Thanksgiving can be full, or it can feel oddly quiet. The dishes are done. Some guests have gone home. It is a natural moment to ask a simple question: who are you close to, and when did you last reach out?

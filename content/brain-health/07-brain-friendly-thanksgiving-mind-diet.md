@@ -15,7 +15,7 @@ tags:
   - nutrition
   - Food Fight
 focusKeyword: "MIND diet Thanksgiving"
-featuredImageAlt: "A holiday table with a colorful plate of greens, roasted vegetables, berries, nuts, and fish"
+featuredImageAlt: "A plate of greens, roasted vegetables, salmon, berries, and walnuts on a fall table"
 ---
 
 Thanksgiving is a hard week to talk about food without sliding into guilt or hype. So let's skip both. You can enjoy the table and still lean toward foods that have a good track record for heart and brain health: leafy greens, berries, nuts, olive oil, and fish. That pattern has a name, the MIND diet, and it deserves an honest telling, especially if you are gathering with family and thinking about a parent or grandparent who had dementia.

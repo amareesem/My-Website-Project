@@ -15,7 +15,7 @@ tags:
   - MIND diet
   - cognitive decline
 focusKeyword: "US POINTER study results"
-featuredImageAlt: "A small group walks together outdoors, suggesting structured support for healthy habits"
+featuredImageAlt: "Four older adults walk and talk together on a tree-lined path"
 ---
 
 If you are the kind of person who reads the research, buys the walking shoes, and still finds it hard to keep the plan going, you are not alone. Knowing what to do is rarely the hard part. Sticking with it is.

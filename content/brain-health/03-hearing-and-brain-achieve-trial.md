@@ -14,7 +14,7 @@ tags:
   - ACHIEVE trial
   - cognitive decline
 focusKeyword: "hearing loss and dementia"
-featuredImageAlt: "An older adult has a hearing check with a clinician in a quiet office"
+featuredImageAlt: "An older woman wears testing headphones while a clinician checks her hearing"
 ---
 
 If you have started asking people to repeat themselves, or if a busy restaurant leaves you exhausted, it can feel like a memory problem. Sometimes it is hearing. The two are more connected than most people think, and it is worth getting a clear answer instead of guessing.
