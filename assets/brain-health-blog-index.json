@@ -19,5 +19,151 @@
     "readingTime": 6,
     "author": "Lori King, MD",
     "excerpt": "In 2024, researchers added high LDL cholesterol in midlife and untreated vision loss in later life to the official list of dementia risk factors we can work on. Family history is not destiny, and two simple checkups can help you start."
+  },
+  {
+    "title": "Structure Beats Willpower: What the U.S. POINTER Trial Teaches Us About Brain Health",
+    "seoTitle": "U.S. POINTER Study: Why Structure May Help the Brain",
+    "description": "What the U.S. POINTER study found about lifestyle and cognition, and why structure and support may help people stick with brain-healthy habits.",
+    "slug": "us-pointer-structured-lifestyle-brain-health",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "U.S. POINTER",
+      "lifestyle",
+      "MIND diet",
+      "cognitive decline"
+    ],
+    "focusKeyword": "US POINTER study results",
+    "featuredImage": "/assets/blog/brain-health/us-pointer-structured-lifestyle-brain-health.jpg",
+    "featuredImageAlt": "A small group walks together outdoors, suggesting structured support for healthy habits",
+    "publishedAt": "2026-11-14",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "In the U.S. POINTER trial of 2,111 older adults at risk of cognitive decline, thinking-skill scores improved in both a self-guided and a structured lifestyle program. The structured program, with more support and accountability, was associated with a modestly larger gain."
+  },
+  {
+    "title": "Hearing and Your Brain: What the ACHIEVE Trial Found",
+    "seoTitle": "Hearing and the Brain: What the ACHIEVE Trial Found",
+    "description": "What the ACHIEVE trial found about hearing aids and cognition, including the 48% result in higher-risk adults and what the study did not show.",
+    "slug": "hearing-and-brain-achieve-trial",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "hearing loss",
+      "ACHIEVE trial",
+      "cognitive decline"
+    ],
+    "focusKeyword": "hearing loss and dementia",
+    "featuredImage": "/assets/blog/brain-health/hearing-and-brain-achieve-trial.jpg",
+    "featuredImageAlt": "An older adult has a hearing check with a clinician in a quiet office",
+    "publishedAt": "2026-11-17",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Hearing loss is one of the dementia risk factors we can work on. In the NIH-funded ACHIEVE trial, hearing care did not change cognitive decline for the full group over three years, but it was associated with about 48% slower decline in a higher-risk group."
+  },
+  {
+    "title": "You Don't Need 10,000 Steps: Walking and Your Brain",
+    "seoTitle": "Walking and Brain Health: You Don't Need 10,000 Steps",
+    "description": "How many steps a day are linked with brain health? A 2025 Harvard study found the association leveled off around 5,000 to 7,500 steps, not 10,000.",
+    "slug": "walking-steps-brain-health",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "walking",
+      "physical activity",
+      "Alzheimer's",
+      "steps"
+    ],
+    "focusKeyword": "how many steps a day for brain health",
+    "featuredImage": "/assets/blog/brain-health/walking-steps-brain-health.jpg",
+    "featuredImageAlt": "A person walks on a neighborhood path in soft morning light, wearing comfortable shoes",
+    "publishedAt": "2026-11-19",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "A 2025 Harvard Aging Brain Study paper found that, in cognitively healthy older adults with elevated amyloid, higher daily step counts were associated with slower tau buildup and slower cognitive decline. The link leveled off around 5,000 to 7,500 steps a day."
+  },
+  {
+    "title": "Brain Fog or Something More? Telling Everyday Slips From Changes Worth a Conversation",
+    "seoTitle": "Brain Fog or Dementia? Everyday Slips vs. Warning Signs",
+    "description": "Is it brain fog or something more? How to tell everyday memory slips from changes worth a doctor visit, using the Alzheimer's Association warning signs.",
+    "slug": "brain-fog-or-something-more",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "brain fog",
+      "memory",
+      "early signs",
+      "Alzheimer's"
+    ],
+    "focusKeyword": "brain fog or dementia",
+    "featuredImage": "/assets/blog/brain-health/brain-fog-or-something-more.jpg",
+    "featuredImageAlt": "A person pauses in a doorway, looking thoughtful, in a quietly lit home",
+    "publishedAt": "2026-11-21",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Walking into a room and forgetting why is common at any age. So is feeling foggy after poor sleep, stress, or illness. Here is a calm way to tell everyday slips from changes that are worth a conversation with your doctor."
+  },
+  {
+    "title": "Sleep Is Brain Maintenance: What We Know, and Don't, About Sleep and Alzheimer's",
+    "seoTitle": "Sleep and Alzheimer's: What We Know and Don't Know",
+    "description": "What science says about sleep and Alzheimer's risk, including what we don't know yet, plus the 7 to 9 hour goal and when to ask about apnea.",
+    "slug": "sleep-is-brain-maintenance",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "sleep",
+      "Alzheimer's",
+      "sleep apnea",
+      "brain fog"
+    ],
+    "focusKeyword": "sleep and Alzheimer's risk",
+    "featuredImage": "/assets/blog/brain-health/sleep-is-brain-maintenance.jpg",
+    "featuredImageAlt": "A peaceful bedroom in evening light, with a made bed and a lamp turned low",
+    "publishedAt": "2026-11-23",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Poor sleep and sleep-disordered breathing are associated with cognitive decline, and the link with Alzheimer's appears to run in both directions. It is not yet known whether improving sleep lowers Alzheimer's risk, but 7 to 9 hours and good sleep habits are still a sound investment."
+  },
+  {
+    "title": "A Brain-Friendly Thanksgiving Plate: The MIND Diet, Honestly",
+    "seoTitle": "The MIND Diet at Thanksgiving: An Honest Look",
+    "description": "What the MIND diet trial really found, and how to build a brain-friendly Thanksgiving plate with greens, berries, nuts, olive oil, and fish.",
+    "slug": "brain-friendly-thanksgiving-mind-diet",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "MIND diet",
+      "Thanksgiving",
+      "nutrition",
+      "Food Fight"
+    ],
+    "focusKeyword": "MIND diet Thanksgiving",
+    "featuredImage": "/assets/blog/brain-health/brain-friendly-thanksgiving-mind-diet.jpg",
+    "featuredImageAlt": "A holiday table with a colorful plate of greens, roasted vegetables, berries, nuts, and fish",
+    "publishedAt": "2026-11-25",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "The MIND diet has encouraging long-term observational research, but in a 2023 three-year trial, both the MIND group and the control group improved, with no significant difference between them. Here is an honest take, plus simple ways to fill a holiday plate with greens, berries, nuts, olive oil, and fish."
+  },
+  {
+    "title": "Connection Is Brain Care: Staying Close Through the Holidays",
+    "seoTitle": "Social Connection and Brain Health Through the Holidays",
+    "description": "Why social connection is part of brain care, what research says about loneliness and cognition, and NIA-backed ways to stay close through the holidays.",
+    "slug": "connection-is-brain-care-holidays",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "social connection",
+      "loneliness",
+      "holidays",
+      "purpose"
+    ],
+    "focusKeyword": "loneliness and cognitive decline",
+    "featuredImage": "/assets/blog/brain-health/connection-is-brain-care-holidays.jpg",
+    "featuredImageAlt": "Two people share a warm conversation over coffee at a kitchen table",
+    "publishedAt": "2026-11-27",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Social isolation and loneliness are associated with higher risk of cognitive decline, Alzheimer's disease, depression, and heart disease. Connection is one of the dementia risk factors we can work on, and the holidays are a natural time to practice it, without guilt."
   }
 ]
