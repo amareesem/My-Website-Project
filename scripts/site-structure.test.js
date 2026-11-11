@@ -40,7 +40,7 @@ test('home page states who PEAK is for and keeps the approved stat', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   assert.match(html, /Who PEAK is for/);
   assert.match(html, /before memory problems show/);
-  assert.match(html, /90% of the risk factors for cognitive decline are modifiable through physician directed lifestyle protocols/);
+  assert.match(html, /Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide/);
   assert.ok(fs.statSync(path.join(root, 'index.html')).size < 80000);
 });
 
@@ -72,7 +72,7 @@ test('production crawl files exist and preview header stays noindex', () => {
   assert.match(sitemap, /\/about\//);
   assert.match(sitemap, /\/blog\/polyphenols-brain-health\//);
   assert.match(llms, /PEAK Cognitive Longevity/);
-  assert.match(llms, /physician directed lifestyle protocols/);
+  assert.match(llms, /Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide/);
   assert.match(config, /noindex, nofollow/);
   assert.equal(config.includes('peakcognitivelongevity.com'), false);
 });

@@ -255,12 +255,12 @@ HOME = """
     <div class="wrap">
       <div class="narrow">
         <h2>The story most of us were told is incomplete.</h2>
-        <p>You have probably heard what we were taught in medical school: dementia is genetic, it is bad luck, and nothing can be done until memory starts slipping. The science now tells a different story. <strong>90% of the risk factors for cognitive decline are modifiable through physician directed lifestyle protocols</strong>.</p>
+        <p>You have probably heard what we were taught in medical school: dementia is genetic, it is bad luck, and nothing can be done until memory starts slipping. The science now tells a different story. <strong>Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide</strong>.</p>
         <p>The brain changes behind Alzheimer's can begin as many as 20 years before the first forgotten name. That means your 40s, 50s, and 60s are not a waiting room. They are your window.</p>
       </div>
       <div class="stat-row">
         <div class="stat"><strong>Up to 20 years</strong><span>how early brain changes can begin before symptoms</span></div>
-        <div class="stat"><strong>90%</strong><span>of risk factors for cognitive decline are modifiable</span></div>
+        <div class="stat"><strong>80%+</strong><span>of known dementia risk factors are modifiable</span></div>
         <div class="stat"><strong>About 1 hour a week</strong><span>your time commitment in PEAK</span></div>
       </div>
     </div>
@@ -400,7 +400,7 @@ HOME = """
         <li><h3>Dr. Dean Ornish</h3><p>2024 trial of an intensive lifestyle program in early Alzheimer's disease</p></li>
         <li><h3>Dr. Dale Bredesen</h3><p>Pioneer of the root-cause approach to cognitive decline</p></li>
         <li><h3>Dr. David Perlmutter</h3><p>Research on inflammation, the gut, and the brain's immune cells</p></li>
-        <li><h3>The Lancet Commission, 2024</h3><p>Identified 14 modifiable risk factors for dementia</p></li>
+        <li><h3>The Lancet Commission, 2024</h3><p>Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide.</p></li>
       </ul>
       <div class="actions"><a class="btn" href="/evidence/">See the evidence</a><a class="btn btn-line" href="/blog/">Read the blog</a></div>
       <p>PEAK has run a waiting list for much of 2026. We keep it small so every patient gets real physician time.</p>
