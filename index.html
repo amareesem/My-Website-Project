@@ -1574,6 +1574,7 @@
   }
   var foodFightPosts = [];
   var longevityPearlsPosts = [];
+  var brainHealthPosts = [];
   function renderFoodFightPosts(query){
     var grid = document.getElementById('food-fight-grid');
     if(!grid) return;
@@ -1613,6 +1614,7 @@
   function foodFightSearch(query){
     renderFoodFightPosts(query);
     renderLongevityPearlsPosts(query);
+    renderBrainHealthPosts(query);
   }
   function renderLongevityPearlsPosts(query){
     var grid = document.getElementById('longevity-pearls-grid');
@@ -1649,12 +1651,62 @@
     var empty = document.getElementById('longevity-pearls-empty');
     if(empty) empty.hidden = matches.length !== 0;
   }
+
+  function renderBrainHealthPosts(query){
+    var grid = document.getElementById('brain-health-grid');
+    if(!grid) return;
+    var normalizedQuery = (query || '').trim().toLowerCase();
+    var matches = brainHealthPosts.filter(function(post){
+      var searchable = [post.title, post.description, post.excerpt, post.focusKeyword]
+        .concat(post.tags || []).join(' ').toLowerCase();
+      return !normalizedQuery || searchable.indexOf(normalizedQuery) !== -1;
+    });
+    grid.replaceChildren();
+    matches.forEach(function(post){
+      var card = document.createElement('article');
+      card.className = 'card';
+      card.style.cssText = 'padding:28px;display:flex;flex-direction:column;gap:12px;';
+      if(post.featuredImage){
+        var image = document.createElement('img');
+        image.src = post.featuredImage;
+        image.alt = post.featuredImageAlt || '';
+        image.width = 1200;
+        image.height = 800;
+        image.loading = 'lazy';
+        image.style.cssText = 'width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;background:#e7ece8;display:block';
+        image.hidden = true;
+        image.onload = function(){ image.hidden = false; };
+        image.onerror = function(){ image.remove(); };
+        card.appendChild(image);
+      }
+      var label = document.createElement('span');
+      label.className = 'eyebrow';
+      label.textContent = 'Brain Health';
+      var title = document.createElement('h3');
+      title.style.cssText = 'font-size:18px;font-weight:600;';
+      var link = document.createElement('a');
+      link.href = '/blog/' + post.slug + '/';
+      link.textContent = post.title;
+      title.appendChild(link);
+      var excerpt = document.createElement('p');
+      excerpt.style.cssText = 'font-size:14.5px;line-height:1.65;';
+      excerpt.textContent = post.description;
+      var meta = document.createElement('span');
+      meta.className = 'pill';
+      meta.style.alignSelf = 'flex-start';
+      meta.textContent = post.readingTime + ' min read';
+      card.append(label, title, excerpt, meta);
+      grid.appendChild(card);
+    });
+    var empty = document.getElementById('brain-health-empty');
+    if(empty) empty.hidden = matches.length !== 0;
+  }
   (function loadFoodFightPosts(){
     var categories = document.getElementById('blog-categories');
     var categoryCards = Array.prototype.map.call(categories.querySelectorAll('.grid-3 > .card[onclick^="blogShowCategory"]'), function(card){
       return card.textContent.indexOf('Longevity Pearls') === -1 ? card.outerHTML : '';
     }).join('');
-    categories.innerHTML = '<section class="card" style="padding:28px;margin-bottom:24px;"><h2 style="font-size:24px;font-weight:700;">The Food Fight Series</h2><p style="font-size:14.5px;line-height:1.65;">Food, weight loss, brain health, and practical nutrition from Dr. Lori King, MD.</p></section><div class="grid-3" style="margin-bottom:32px;">' + categoryCards + '</div><div id="food-fight-grid" class="grid-3"></div><p id="food-fight-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p><p id="food-fight-error" class="narrow" role="status" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;"></p><section class="card" style="padding:28px;margin:52px 0 24px;"><h2 style="font-size:24px;font-weight:700;">Longevity Pearls</h2><p style="font-size:14.5px;line-height:1.65;">Short, practical insights from Dr. Lori on living longer, with a sharper mind.</p></section><div id="longevity-pearls-grid" class="grid-3"></div><p id="longevity-pearls-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p><p id="longevity-pearls-error" class="narrow" role="status" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;"></p>';
+    categories.innerHTML = '<section class="card" style="padding:28px;margin-bottom:24px;"><h2 style="font-size:24px;font-weight:700;">The Food Fight Series</h2><p style="font-size:14.5px;line-height:1.65;">Food, weight loss, brain health, and practical nutrition from Dr. Lori King, MD.</p></section><div class="grid-3" style="margin-bottom:32px;">' + categoryCards + '</div><div id="food-fight-grid" class="grid-3"></div><p id="food-fight-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p><p id="food-fight-error" class="narrow" role="status" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;"></p><section class="card" style="padding:28px;margin:52px 0 24px;"><h2 style="font-size:24px;font-weight:700;">Longevity Pearls</h2><p style="font-size:14.5px;line-height:1.65;">Short, practical insights from Dr. Lori on living longer, with a sharper mind.</p></section><div id="longevity-pearls-grid" class="grid-3"></div><p id="longevity-pearls-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p><p id="longevity-pearls-error" class="narrow" role="status" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;"></p><section class="card" style="padding:28px;margin:52px 0 24px;"><h2 style="font-size:24px;font-weight:700;">Brain Health</h2><p style="font-size:14.5px;line-height:1.65;">Research and practical steps for protecting memory, from Dr. Lori King, MD.</p></section><div id="brain-health-grid" class="grid-3"></div><p id="brain-health-empty" class="narrow" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;" hidden>No articles match your search.</p><p id="brain-health-error" class="narrow" role="status" style="text-align:center;font-size:14px;color:var(--muted);margin-top:24px;"></p>';
     fetch('/assets/food-fight-blog-index.json')
       .then(function(response){
         if(!response.ok) throw new Error('Unable to load Food Fight articles (' + response.status + ')');
@@ -1683,6 +1735,21 @@
       .catch(function(error){
         var status = document.getElementById('longevity-pearls-error');
         if(status) status.textContent = 'Longevity Pearls articles could not be loaded. Please refresh and try again.';
+        console.error(error);
+      });
+    fetch('/assets/brain-health-blog-index.json')
+      .then(function(response){
+        if(!response.ok) throw new Error('Unable to load Brain Health articles (' + response.status + ')');
+        return response.json();
+      })
+      .then(function(posts){
+        if(!Array.isArray(posts)) throw new Error('The Brain Health article index is invalid');
+        brainHealthPosts = posts;
+        renderBrainHealthPosts(document.getElementById('blog-search').value);
+      })
+      .catch(function(error){
+        var status = document.getElementById('brain-health-error');
+        if(status) status.textContent = 'Brain Health articles could not be loaded. Please refresh and try again.';
         console.error(error);
       });
   })();
