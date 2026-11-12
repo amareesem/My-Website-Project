@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mockup C, story led | PEAK Cognitive Longevity</title>
+  <meta name="description" content="A story-led mockup of the PEAK Cognitive Longevity homepage. Preview only.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.peakcognitivelongevity.com/mockups/c/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Caveat:wght@500&amp;family=Playfair+Display:ital,wght@0,560;0,700;1,560&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f3ec;
+      --ink: #2a211c;
+      --moss: #3e4a32;
+      --muted: #5c5148;
+      --line: #e0d6c8;
+      --btn: #6f5310;
+      --btn-hover: #57410c;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+      --script: "Caveat", cursive;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1.125rem/1.6 var(--sans); }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--moss); }
+    h1, h2 { font-family: var(--serif); font-weight: 560; line-height: 1.05; margin: 0 0 0.35em; color: var(--ink); }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    p { margin: 0 0 0.8em; }
+    .wrap { width: min(100% - 28px, 1080px); margin: 0 auto; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; background: var(--btn); color: #fff; text-decoration: none; font-weight: 700; }
+    .btn:hover { background: var(--btn-hover); color: #fff; }
+    :focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; }
+    header { padding: 20px 0 6px; }
+    .letterhead { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+    .word { font-family: var(--serif); font-size: 1.8rem; text-decoration: none; color: var(--ink); margin-right: auto; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    nav a { color: var(--ink); text-decoration: none; font-size: 0.98rem; }
+    .portraits { display: grid; grid-template-columns: 1.35fr 0.8fr; gap: 8px; margin-top: 18px; }
+    .portraits figure { margin: 0; }
+    .portraits img { width: 100%; object-fit: cover; }
+    .portraits .main { aspect-ratio: 4/5; object-position: center 30%; }
+    .portraits .side { aspect-ratio: 3/4; margin-top: 18%; object-position: center 40%; }
+    .portraits figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+    .hero { padding: 22px 0 8px; }
+    .hero .lede { font-size: 1.25rem; max-width: 36rem; }
+    .parents { padding: 10px 0 20px; }
+    .parent-row { display: grid; gap: 16px; }
+    .parent-row figure { margin: 0; }
+    .parent-row img { width: 100%; object-fit: cover; }
+    .wide { aspect-ratio: 4/5; max-width: 420px; }
+    .narrowpic { aspect-ratio: 4/5; max-width: 260px; }
+    .parent-copy { max-width: 38rem; }
+    figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 6px; }
+    .program { padding: 28px 0; border-top: 1px solid var(--line); }
+    .program-grid { display: grid; gap: 18px; }
+    .note { border-left: 3px solid var(--moss); padding-left: 14px; }
+    .note li { margin: 0 0 8px; }
+    .blog { padding: 10px 0 28px; }
+    .contents { list-style: none; margin: 0; padding: 0; }
+    .contents li { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+    .contents img { width: 72px; height: 72px; object-fit: cover; }
+    .contents a { color: var(--ink); text-decoration: none; font-family: var(--serif); font-size: 1.25rem; }
+    .quote { padding: 12px 0 48px; }
+    .quote blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; max-width: 18ch; }
+    .by { display: flex; gap: 14px; align-items: center; margin-top: 16px; }
+    .by img { width: 72px; height: 72px; object-fit: cover; border-radius: 50%; }
+    .sign { font-family: var(--script); font-size: 2rem; line-height: 1; margin: 0; }
+    .sign span { display: block; font-family: var(--sans); font-size: 0.95rem; color: var(--muted); }
+    footer { background: #2a211c; color: #f7f3ec; padding: 32px 0 18px; }
+    footer a { color: #f7f3ec; }
+    footer h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .foot { display: grid; gap: 18px; }
+    .foot ul { list-style: none; margin: 0; padding: 0; }
+    .foot li { margin: 0 0 6px; }
+    .legal { margin-top: 16px; font-size: 0.9rem; }
+    @media (min-width: 840px) {
+      .parent-row { grid-template-columns: 280px 220px 1fr; align-items: end; gap: 28px; }
+      .program-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .foot { grid-template-columns: 1.4fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap letterhead">
+      <a class="word" href="/">PEAK Cognitive Longevity</a>
+      <nav aria-label="Main">
+        <a href="/about/">Our story</a>
+        <a href="/program/">Program</a>
+        <a href="/blog/">Blog</a>
+        <a href="/ebook/">E-book</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <a class="btn" href="/consultation/">Book a consultation</a>
+    </div>
+    <div class="wrap portraits">
+      <figure>
+        <img class="main" src="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.jpg" alt="Drs. Lori and Chris King enjoying time together by the ocean" width="1200" height="900" fetchpriority="high">
+        <figcaption>Drs. Lori and Chris King</figcaption>
+      </figure>
+      <figure>
+        <img class="side" src="/assets/photos/living-what-we-teach/drs-king-waterfall-hike.jpg" alt="Drs. Lori and Chris King hiking near a waterfall" width="1200" height="900">
+      </figure>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <h1>We each lost a parent to dementia.</h1>
+      <p class="lede">We built PEAK so other families can start sooner. Your sharpest years are still ahead.</p>
+      <a class="btn" href="/consultation/">Book a consultation</a>
+    </div>
+  </section>
+  <section class="parents">
+    <div class="wrap parent-row">
+      <figure>
+        <img class="wide" src="/assets/photos/Lori-with-Dad.jpg" alt="Dr. Lori King with her father" width="314" height="419">
+        <figcaption>Dr. Lori with her father</figcaption>
+      </figure>
+      <figure>
+        <img class="narrowpic" src="/assets/photos/Chris-with-Mom.jpg" alt="Dr. Chris King with his mother" width="960" height="1280">
+        <figcaption>Dr. Chris with his mother</figcaption>
+      </figure>
+      <div class="parent-copy">
+        <p>After 62 years in family medicine, we each lost a parent to dementia. We did everything conventional medicine taught us. It was not enough, because what we had been taught was incomplete.</p>
+        <p>So we went back to learning. We retrained in root-cause and longevity medicine, applied it to ourselves first, and built PEAK so other families would have what ours never did: answers early enough to change the story.</p>
+        <p>PEAK is everything we wish our parents had.</p>
+        <p><a href="/about/">Read our full story</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="program">
+    <div class="wrap program-grid">
+      <div>
+        <h2>What the six months look like.</h2>
+        <p>A personal clinical relationship, and a short weekly module. About an hour of your time, inside the life you already have. One virtual visit with your physician each month.</p>
+        <p>Southlake, Texas, and by video nationwide. Often before any memory problem shows.</p>
+      </div>
+      <div class="note">
+        <p><strong>Trailhead.</strong> One hour with Dr. Lori or Dr. Chris. $350, credited toward the program if you enroll. A spouse's consultation is free when booked together.</p>
+        <p><strong>Then the testing,</strong> mostly from home, and a Review of Findings that becomes a protocol for you alone. Six Basecamps follow. You leave a graduate, and PEAK Ascent is there if you want another year.</p>
+        <p><a href="/program/">See the program</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="blog">
+    <div class="wrap">
+      <h2>Reading from the practice</h2>
+      <ul class="contents">
+        <li>
+          <img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="900" height="1164">
+          <a href="/ebook/">Food Fight, the free e-book</a>
+        </li>
+        <li>
+          <img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1600" height="1066">
+          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/">The Food Fight: How Diet Affects Weight Loss, Chronic Disease, and Brain Health</a>
+        </li>
+        <li>
+          <img src="/assets/photos/Mountain%20Sunrise%20Sun%20Beams.jpg" alt="Sunlight breaking over a mountain ridge at sunrise" width="3078" height="2052">
+          <a href="/blog/morning-sunlight-brain-health/">The Free "Brain Boost" That's Been Right Outside Your Door</a>
+        </li>
+        <li>
+          <img src="/assets/photos/living-what-we-teach/king-family-hike.jpg" alt="The King family hiking together" width="1200" height="900">
+          <a href="/blog/morning-exercise-brain-health/">The Simple Morning Habit That Protects Your Brain (No Gym Required)</a>
+        </li>
+      </ul>
+      <p><a href="/blog/">Read the blog</a></p>
+    </div>
+  </section>
+  <section class="quote">
+    <div class="wrap">
+      <blockquote>I lost 2 people I loved deeply to dementia, and I promised myself I would spend my career making sure that didn't happen to anyone else I could reach.</blockquote>
+      <div class="by">
+        <img src="/assets/photos/dr-lori-king.jpg" alt="Dr. Lori King, MD" width="225" height="225">
+        <p class="sign">Lori<span>Dr. Lori King, MD, founder. Dr. Chris King, MD, co-founder.</span></p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <h2>PEAK Cognitive Longevity</h2>
+        <p>Timarron Family Medicine<br>200 Pecan Creek Drive<br>Southlake, TX 76092</p>
+      </div>
+      <div>
+        <h2>When we are here</h2>
+        <p>Mon to Thu, 8:00 AM to 4:30 PM<br>Fri, 8:00 AM to 12:00 PM</p>
+        <p><a href="tel:+18177965115">(817) 796-5115</a></p>
+      </div>
+      <div>
+        <h2>Write or visit</h2>
+        <ul>
+          <li><a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a></li>
+          <li><a href="/contact/">Contact us</a></li>
+          <li><a href="/consultation/">Book a consultation</a></li>
+          <li><a href="/ebook/">Get the e-book</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap legal">PEAK Cognitive Longevity does not diagnose, treat, or cure dementia or Alzheimer's disease. Individual results vary.</div>
+  </footer>
+</body>
+</html>

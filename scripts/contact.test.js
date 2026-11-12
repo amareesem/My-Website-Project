@@ -159,9 +159,10 @@ test('never claims success for provider rejections, invalid confirmations, or ti
   assert.equal((await submit(request())).code, 502);
 });
 
-const html = readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const handlerSource = html.slice(html.indexOf('  async function handleContactSubmit(e){'), html.indexOf('  (function applyPeakPhotography(){'));
-assert.ok(handlerSource.startsWith('  async function handleContactSubmit(e){'));
+const clientSource = readFileSync(path.join(__dirname, '..', 'assets', 'site.js'), 'utf8');
+const handlerStart = clientSource.indexOf('  async function handleContactSubmit(event) {');
+const handlerSource = clientSource.slice(handlerStart, clientSource.indexOf('  form.addEventListener', handlerStart));
+assert.ok(handlerSource.startsWith('  async function handleContactSubmit(event) {'));
 
 function client(fetch) {
   const elements = {
