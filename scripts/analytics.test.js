@@ -91,12 +91,12 @@ test('booking, portal, phone and email clicks have distinct events', () => {
 });
 
 test('each public page and both generators include analytics once', () => {
-  const pages = ['index.html', 'faq\\index.html', 'evidence\\index.html'];
+  const pages = ['index.html', path.join('faq', 'index.html'), path.join('evidence', 'index.html')];
   for (const folder of fs.readdirSync(path.join(root, 'blog'))) {
     const file = path.join('blog', folder, 'index.html');
     if (fs.existsSync(path.join(root, file))) pages.push(file);
   }
-  for (const file of [...pages, 'scripts\\build-food-fight.js', 'scripts\\build-longevity-pearls.js']) {
+  for (const file of [...pages, path.join('scripts', 'build-food-fight.js'), path.join('scripts', 'build-longevity-pearls.js'), path.join('scripts', 'build-brain-health.js')]) {
     assert.equal((fs.readFileSync(path.join(root, file), 'utf8').match(/\/assets\/analytics\.js/g) || []).length, 1, file);
   }
 });
