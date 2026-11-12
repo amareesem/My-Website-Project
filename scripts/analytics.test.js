@@ -104,7 +104,7 @@ test('each public page and both generators include analytics once', () => {
     const file = path.join('blog', folder, 'index.html');
     if (fs.existsSync(path.join(root, file))) pages.push(file);
   }
-  for (const file of [...pages, path.join('scripts', 'build-food-fight.js'), path.join('scripts', 'build-longevity-pearls.js')]) {
+  for (const file of [...pages, path.join('scripts', 'build-food-fight.js'), path.join('scripts', 'build-longevity-pearls.js'), path.join('scripts', 'build-brain-health.js')]) {
     assert.equal((fs.readFileSync(path.join(root, file), 'utf8').match(/\/assets\/analytics\.js/g) || []).length, 1, file);
   }
 });
