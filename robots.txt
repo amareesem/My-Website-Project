@@ -1,7 +1,3 @@
-# Production crawl rules for PEAK Cognitive Longevity.
-# This preview deployment also sends noindex, nofollow on every response.
-# Remove the preview robots meta tag and the X-Robots-Tag header before a production release.
-
 User-agent: *
 Allow: /
 

@@ -1,0 +1,6 @@
+body { background: #f3efe4; color: #1a1814; font-family: "Nunito", "Segoe UI", sans-serif; }
+h1, .article-body h2, .article-body h3, .faqs h2 { font-family: "Fraunces", Georgia, serif; font-weight: 460; letter-spacing: -0.03em; }
+.site-header, .top { background: #1c2b22; }
+.byline a { color: #6d3a28; font-weight: 800; }
+.hero-figure img { border-radius: 18px; }
+.article-body a { color: #6d3a28; }

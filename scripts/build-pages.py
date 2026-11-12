@@ -3,12 +3,14 @@
 
 import html
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://www.peakcognitivelongevity.com"
 BOOK = "https://timarronaestheticcenter.practicebetter.io/#/666c7768ad746af80f84ddc6/bookings?r=67868e4b5507f788d6a47270"
-OG_DEFAULT = f"{ORIGIN}/assets/photos/Person-Hiking-Alpine-Valley.jpg"
+OG_DEFAULT = f"{ORIGIN}/assets/photos/living-what-we-teach/drs-king-by-the-ocean.jpg"
+FONT = "https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,560&amp;family=Nunito:wght@400;700;800&amp;display=swap"
 
 NAV = [
     ("/about/", "Our Story", "about"),
@@ -95,6 +97,9 @@ def head(title, description, path, image, schemas):
     blocks = "\n".join(
         f'<script type="application/ld+json">{json.dumps(item, ensure_ascii=False)}</script>' for item in schemas
     )
+    preload = ""
+    if path == "/":
+        preload = '<link rel="preload" as="image" href="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.webp" type="image/webp" fetchpriority="high">'
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -111,10 +116,16 @@ def head(title, description, path, image, schemas):
   <meta property="og:url" content="{e(canonical)}">
   <meta property="og:image" content="{e(image)}">
   <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{e(title)}">
+  <meta name="twitter:description" content="{e(description)}">
+  <meta name="twitter:image" content="{e(image)}">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
+  {preload}
+  <link rel="preload" as="style" href="{FONT}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{FONT}"></noscript>
   <link rel="stylesheet" href="/assets/site.css">
   {blocks}
   <script src="/assets/analytics.js" defer></script>
@@ -127,41 +138,29 @@ def header(active):
     for href, label, key in NAV:
         current = ' aria-current="page"' if key == active else ""
         links.append(f'<a href="{href}"{current}>{label}</a>')
+    nav = "".join(links)
     return f"""<body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site">
-  <div class="utility">
-    <div class="wrap utility-inner">
-      <a href="tel:+18177965115">(817) 796-5115</a>
-      <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a>
-      <span class="spacer"></span>
-      <a href="/contact/">Contact</a>
-    </div>
-  </div>
-  <div class="wrap bar">
-    <a class="brand" href="/">
-      <img src="/assets/photos/peak-logo-cropped.png" alt="PEAK Cognitive Longevity logo" width="56" height="58">
-      <span>PEAK Cognitive Longevity</span>
-    </a>
-    <a class="btn bar-book" href="/consultation/">Book</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-      <span class="nav-toggle-bars" aria-hidden="true"></span>
-      Menu
-    </button>
-    <nav class="primary" id="primary-nav" aria-label="Main">
-      {''.join(links)}
-      <a class="btn nav-book" href="/consultation/">Book a consultation</a>
-    </nav>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">PEAK<small>Cognitive Longevity</small></a>
+    <nav class="links desk" aria-label="Main">{nav}</nav>
+    <a class="book" href="/consultation/">Book a consultation</a>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav class="links" aria-label="Mobile">{nav}</nav>
+      <a class="book" href="/consultation/">Book a consultation</a>
+    </details>
   </div>
 </header>
 """
 
 
 def footer():
-    return """<footer class="site">
-  <div class="wrap foot-grid">
-    <div class="foot-brand">
-      <img src="/assets/photos/pcl-logo-gray-text-white-mts.png" alt="PEAK Cognitive Longevity logo" width="64" height="64">
+    return """<footer class="site-footer">
+  <div class="foot">
+    <div>
+      <p class="brand">PEAK</p>
       <p>PEAK Cognitive Longevity is a physician-led program at Timarron Family Medicine. Southlake, Texas, and virtual nationwide.</p>
     </div>
     <div>
@@ -175,25 +174,15 @@ def footer():
       </ul>
     </div>
     <div>
-      <h2>Start here</h2>
-      <ul class="foot-links">
-        <li><a href="/consultation/">Book Your Consultation</a></li>
-        <li><a href="/ebook/">Free E-book</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/resources/">Ordering and Resources</a></li>
-      </ul>
-    </div>
-    <div>
       <h2>Visit</h2>
       <p><a href="tel:+18177965115">(817) 796-5115</a><br>
       <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a></p>
       <p>200 Pecan Creek Drive<br>Southlake, TX 76092</p>
       <p>Mon to Thu, 8:00 AM to 4:30 PM<br>Fri, 8:00 AM to 12:00 PM</p>
+      <p><a href="/consultation/">Book a consultation</a> · <a href="/ebook/">Free e-book</a> · <a href="/blog/">Blog</a> · <a href="/faq/">FAQ</a> · <a href="/contact/">Contact</a> · <a href="/resources/">Ordering and Resources</a></p>
     </div>
   </div>
-  <div class="wrap legal">
+  <div class="legal fine">
     <p>&copy; 2026 PEAK Cognitive Longevity. All rights reserved.</p>
     <p>PEAK Cognitive Longevity does not diagnose, treat, or cure dementia or Alzheimer's disease. Individual results vary.</p>
   </div>
@@ -211,9 +200,12 @@ def page(path, title, description, active, body, schemas=None, image=OG_DEFAULT)
     for token in banned:
         if token in document:
             raise SystemExit(f"{path} contains forbidden token: {token}")
-    document = document.replace("<img ", '<img loading="lazy" ')
-    document = document.replace('<img loading="lazy" src="/assets/photos/peak-logo-cropped.png"', '<img src="/assets/photos/peak-logo-cropped.png"')
-    document = document.replace('loading="lazy" fetchpriority="high"', 'fetchpriority="high"')
+    def lazy_img(match):
+        tag = match.group(0)
+        if "fetchpriority=\"high\"" in tag or "loading=" in tag:
+            return tag
+        return tag.replace("<img ", '<img loading="lazy" ', 1)
+    document = re.sub(r"<img\b[^>]*>", lazy_img, document)
     if document.lower().count("<h1") != 1:
         raise SystemExit(f"{path} must have exactly one h1")
     if len(description) > 155:
@@ -233,17 +225,19 @@ def cta(extra=""):
 
 HOME = """
 <main id="main">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <figure class="hero-photo">
-        <img src="/assets/photos/Person-Hiking-Alpine-Valley.jpg" alt="A hiker on a mountain trail overlooking an alpine valley" width="1600" height="1066" fetchpriority="high">
-      </figure>
-      <div>
-        <p class="eyebrow">Physician-led cognitive longevity</p>
-        <h1>Your sharpest years are still ahead.</h1>
-        <p class="lede">A six-month program with your own physician, in Southlake and by video nationwide.</p>
-        <a class="btn" href="/consultation/">Book a consultation</a>
-      </div>
+  <section class="stage">
+    <picture>
+      <source srcset="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.avif" type="image/avif">
+      <source srcset="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.webp" type="image/webp">
+      <img src="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.jpg" alt="Dr. Lori King and Dr. Chris King outdoors by the ocean" width="1200" height="900" fetchpriority="high">
+    </picture>
+  </section>
+  <section class="sheet">
+    <div class="wrap">
+      <p class="eyebrow">Physician-led cognitive longevity</p>
+      <h1>Your sharpest years are still ahead.</h1>
+      <p class="lede">A six-month program with your own physician, in Southlake and by video nationwide.</p>
+      <a class="btn" href="/consultation/">Book a consultation</a>
     </div>
   </section>
   <section class="who-band">
@@ -458,7 +452,43 @@ HOME = """
       </ol>
     </div>
   </section>
+  <section class="section section-paper" id="blog">
+    <div class="wrap">
+      <h2>Brain Health</h2>
+      <div id="brain-health-grid" class="cards cards-3"></div>
+    </div>
+  </section>
 </main>
+<script>
+function renderBrainHealthPosts(posts) {
+  var grid = document.getElementById('brain-health-grid');
+  if (!grid || !posts) return;
+  grid.textContent = '';
+  posts.forEach(function (post) {
+    var article = document.createElement('article');
+    article.className = 'card';
+    var link = document.createElement('a');
+    link.href = '/blog/' + post.slug + '/';
+    var img = document.createElement('img');
+    img.src = post.featuredImage;
+    img.alt = post.featuredImageAlt || '';
+    img.width = 1200;
+    img.height = 800;
+    img.loading = 'lazy';
+    var heading = document.createElement('h3');
+    heading.textContent = post.title;
+    link.appendChild(img);
+    link.appendChild(heading);
+    var copy = document.createElement('p');
+    copy.textContent = post.description || '';
+    article.appendChild(link);
+    article.appendChild(copy);
+    grid.appendChild(article);
+  });
+}
+function loadFoodFightPosts() {}
+fetch('/assets/brain-health-blog-index.json').then(function (response) { return response.json(); }).then(renderBrainHealthPosts);
+</script>
 """
 
 ABOUT = """
@@ -485,13 +515,13 @@ ABOUT = """
     <div class="wrap">
       <h2>The physicians behind PEAK</h2>
       <div class="physicians">
-        <article>
+        <article id="lori">
           <img class="portrait" src="/assets/photos/dr-lori-king.jpg" alt="Dr. Lori King, MD" width="400" height="500">
           <h3>Dr. Lori King, MD</h3>
           <p class="role">Founder and Physician</p>
           <p>A conventionally trained family physician who retrained in root-cause and longevity medicine. Dr. Lori brings decades of family-medicine experience and a personal commitment to helping families act early to support brain health.</p>
         </article>
-        <article>
+        <article id="chris">
           <img class="portrait" src="/assets/photos/dr-chris-king.jpg" alt="Dr. Chris King, MD" width="480" height="600">
           <h3>Dr. Chris King, MD</h3>
           <p class="role">Co-Founder and Physician</p>
@@ -1044,7 +1074,7 @@ def blog_body():
       <p class="lede">Practical writing on food, habits, and brain health from Dr. Lori King, MD, and Dr. Chris King, MD.</p>
       <div class="cards cards-3">
         <article class="card">
-          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/"><img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800"></a>
+          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/"><img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800" fetchpriority="high"></a>
           <h3><a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/">How diet affects weight, disease, and brain health</a></h3>
         </article>
         <article class="card">
@@ -1066,6 +1096,10 @@ def blog_body():
   <section class="section">
     <div class="wrap">
       <div class="blog-group">
+        <h2>Brain Health</h2>
+        <div id="brain-health-grid" class="cards cards-3"></div>
+      </div>
+      <div class="blog-group">
         <h2>The Food Fight series</h2>
         <p>Short chapters from the <a href="/ebook/">Food Fight e-book</a>, published as articles you can read one at a time.</p>
         <ul class="post-list">{items(fight)}</ul>
@@ -1082,6 +1116,35 @@ def blog_body():
     </div>
   </section>
 </main>
+<script>
+function renderBrainHealthPosts(posts) {{
+  var grid = document.getElementById('brain-health-grid');
+  if (!grid || !posts) return;
+  grid.textContent = '';
+  posts.forEach(function (post) {{
+    var article = document.createElement('article');
+    article.className = 'card';
+    var link = document.createElement('a');
+    link.href = '/blog/' + post.slug + '/';
+    var img = document.createElement('img');
+    img.src = post.featuredImage;
+    img.alt = post.featuredImageAlt || '';
+    img.width = 1200;
+    img.height = 800;
+    img.loading = 'lazy';
+    var heading = document.createElement('h3');
+    heading.textContent = post.title;
+    link.appendChild(img);
+    link.appendChild(heading);
+    var copy = document.createElement('p');
+    copy.textContent = post.description || '';
+    article.appendChild(link);
+    article.appendChild(copy);
+    grid.appendChild(article);
+  }});
+}}
+fetch('/assets/brain-health-blog-index.json').then(function (response) {{ return response.json(); }}).then(renderBrainHealthPosts);
+</script>
 """
 
 
