@@ -269,7 +269,7 @@ HOME = """
       </div>
       <ul class="fact-list">
         <li><h3>Early-warning brain signals</h3><p>p-Tau 217, amyloid beta 42/40, NfL, and GFAP</p></li>
-        <li><h3>Your genetic blueprint</h3><p>APOE4 and critical risk genes, plus the IntellxxDNA Brain Optimization Panel (500+ variants)</p></li>
+        <li><h3>Your genetic blueprint</h3><p>APOE4 and critical risk genes, plus an advanced genetic brain panel (500+ variants)</p></li>
         <li><h3>Hidden inflammation and blood sugar</h3><p>Comprehensive metabolic blood panel</p></li>
         <li><h3>Your cellular energy</h3><p>NAD+ testing</p></li>
         <li><h3>Toxins that can stress the brain</h3><p>Total Toxin Burden Analysis</p></li>
@@ -786,7 +786,7 @@ PRICING = """
             <tr><th scope="row">Neurotransmitter and hormone evaluation</th><td>Included</td><td>Included</td><td>Included</td></tr>
             <tr><th scope="row">Total Toxin Burden Analysis (environmental toxins, mold, heavy metals)</th><td>Not included</td><td>Included</td><td>Included</td></tr>
             <tr><th scope="row">Professional cognitive performance testing</th><td>Not included</td><td>Included</td><td>Included</td></tr>
-            <tr><th scope="row">IntellxxDNA Brain Optimization Panel (500+ genetic variants)</th><td>Not included</td><td>Not included</td><td>Included</td></tr>
+            <tr><th scope="row">Advanced genetic brain panel (500+ variants)</th><td>Not included</td><td>Not included</td><td>Included</td></tr>
             <tr><th scope="row">Monthly 1:1 physician visits, weekly modules, messaging, graduation</th><td>Included</td><td>Included</td><td>Included</td></tr>
           </tbody>
         </table>
