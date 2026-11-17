@@ -19,5 +19,25 @@
     "readingTime": 6,
     "author": "Lori King, MD",
     "excerpt": "In 2024, researchers added high LDL cholesterol in midlife and untreated vision loss in later life to the official list of dementia risk factors we can work on. Family history is not destiny, and two simple checkups can help you start."
+  },
+  {
+    "title": "Hearing and Your Brain: What the ACHIEVE Trial Found",
+    "seoTitle": "Hearing and the Brain: What the ACHIEVE Trial Found",
+    "description": "What the ACHIEVE trial found about hearing aids and cognition, including the 48% result in higher-risk adults and what the study did not show.",
+    "slug": "hearing-and-brain-achieve-trial",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "hearing loss",
+      "ACHIEVE trial",
+      "cognitive decline"
+    ],
+    "focusKeyword": "hearing loss and dementia",
+    "featuredImage": "/assets/blog/brain-health/hearing-and-brain-achieve-trial.jpg",
+    "featuredImageAlt": "An older woman wears testing headphones while a clinician checks her hearing",
+    "publishedAt": "2026-11-17",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Hearing loss is one of the dementia risk factors we can work on. In the NIH-funded ACHIEVE trial, hearing care did not change cognitive decline for the full group over three years, but it was associated with about 48% slower decline in a higher-risk group."
   }
 ]
