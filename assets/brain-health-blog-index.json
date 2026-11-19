@@ -39,5 +39,26 @@
     "readingTime": 6,
     "author": "Lori King, MD",
     "excerpt": "Hearing loss is one of the dementia risk factors we can work on. In the NIH-funded ACHIEVE trial, hearing care did not change cognitive decline for the full group over three years, but it was associated with about 48% slower decline in a higher-risk group."
+  },
+  {
+    "title": "You Don't Need 10,000 Steps: Walking and Your Brain",
+    "seoTitle": "Walking and Brain Health: You Don't Need 10,000 Steps",
+    "description": "How many steps a day are linked with brain health? A 2025 Harvard study found the association leveled off around 5,000 to 7,500 steps, not 10,000.",
+    "slug": "walking-steps-brain-health",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "walking",
+      "physical activity",
+      "Alzheimer's",
+      "steps"
+    ],
+    "focusKeyword": "how many steps a day for brain health",
+    "featuredImage": "/assets/blog/brain-health/walking-steps-brain-health.jpg",
+    "featuredImageAlt": "A woman walks a tree-lined neighborhood sidewalk in morning light",
+    "publishedAt": "2026-11-19",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "A 2025 Harvard Aging Brain Study paper found that, in cognitively healthy older adults with elevated amyloid, higher daily step counts were associated with slower tau buildup and slower cognitive decline. The link leveled off around 5,000 to 7,500 steps a day."
   }
 ]
