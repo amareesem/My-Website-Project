@@ -231,6 +231,17 @@ function renderArticle(post) {
       acceptedAnswer: { '@type': 'Answer', text: faq.answer }
     }))
   };
+  const posting = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    author: { '@type': 'Person', name: post.author, url: `${siteOrigin}/about/#lori` },
+    image: imageUrl,
+    mainEntityOfPage: canonical,
+    publisher: { '@type': 'Organization', name: 'PEAK Cognitive Longevity', url: `${siteOrigin}/` }
+  };
   const faqs = post.faqs.map(faq => `
         <details class="faq-item" open>
           <summary>${escapeHtml(faq.question)}</summary>
@@ -259,6 +270,7 @@ function renderArticle(post) {
   <meta property="article:published_time" content="${escapeHtml(post.publishedAt)}">
   <meta property="article:author" content="${escapeHtml(post.author)}">
   <script type="application/ld+json">${JSON.stringify(faqSchema).replace(/</g, '\\u003c')}</script>
+  <script type="application/ld+json">${JSON.stringify(posting).replace(/</g, '\\u003c')}</script>
   <style>
     :root{color-scheme:light;--ink:#18332e;--green:#31584d;--gold:#c59654;--muted:#65756f;--paper:#f8f7f2;--line:#e4e6df}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 Georgia,"Times New Roman",serif}
@@ -273,23 +285,44 @@ function renderArticle(post) {
     .back-link{display:inline-block;margin-top:30px;font:600 14px Arial,sans-serif}
     @media(max-width:600px){.page{padding:38px 18px 60px}.site-header nav{align-items:flex-start}}
   </style>
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/article.css">
   <script src="/assets/analytics.js" defer></script>
 </head>
 <body>
-  <header class="site-header"><nav><a href="/">PEAK Cognitive Longevity</a><a href="/index.html#blog">All Blog Posts</a></nav></header>
-  <main class="page">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="/">PEAK<small>Cognitive Longevity</small></a>
+      <nav class="links desk" aria-label="Main"><a href="/about/">Our Story</a><a href="/program/">Program</a><a href="/pricing/">Pricing</a><a href="/faq/">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a></nav>
+      <a class="book" href="/consultation/">Book a consultation</a>
+      <details class="menu">
+        <summary>Menu</summary>
+        <nav class="links" aria-label="Mobile"><a href="/about/">Our Story</a><a href="/program/">Program</a><a href="/pricing/">Pricing</a><a href="/faq/">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a></nav>
+        <a class="book" href="/consultation/">Book a consultation</a>
+      </details>
+    </div>
+  </header>
+  <main id="main" class="page">
     <div class="series-label">Brain Health</div>
     <h1>${escapeHtml(post.title)}</h1>
     <p class="dek">${escapeHtml(post.description)}</p>
-    <div class="byline">${escapeHtml(post.author)} \u00b7 ${escapeHtml(post.publishedAt)} \u00b7 ${post.readingTime} min read</div>
+    <div class="byline"><a href="/about/#lori">${escapeHtml(post.author)}</a> \u00b7 ${escapeHtml(post.publishedAt)} \u00b7 ${post.readingTime} min read</div>
     <figure class="hero-figure">
       <img src="${escapeHtml(post.featuredImage)}" alt="${escapeHtml(post.featuredImageAlt)}" width="${imageWidth}" height="${imageHeight}" onerror="this.closest('figure').hidden=true">
     </figure>
     <article class="article-body">${post.body}</article>
     <section class="faqs" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>${faqs}
     </section>
-    <a class="back-link" href="/index.html#blog">\u2190 Back to all blog posts</a>
+    <a class="back-link" href="/blog/">Back to all blog posts</a>
   </main>
+  <footer class="site-footer">
+    <div class="foot">
+      <p>PEAK Cognitive Longevity. Southlake, Texas, and virtual nationwide.</p>
+      <p><a href="tel:+18177965115">(817) 796-5115</a> · <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a></p>
+      <p>200 Pecan Creek Drive, Southlake, TX 76092</p>
+    </div>
+  </footer>
 </body>
 </html>`;
 }
@@ -340,7 +373,16 @@ function xmlEscape(value) {
 async function writeCrawlFiles(entries) {
   const staticPages = [
     `${siteOrigin}/`,
+    `${siteOrigin}/about/`,
+    `${siteOrigin}/program/`,
     `${siteOrigin}/faq/`,
+    `${siteOrigin}/pricing/`,
+    `${siteOrigin}/contact/`,
+    `${siteOrigin}/ebook/`,
+    `${siteOrigin}/blog/`,
+    `${siteOrigin}/consultation/`,
+    `${siteOrigin}/patient-stories/`,
+    `${siteOrigin}/resources/`,
     `${siteOrigin}/evidence/`
   ];
   const urls = [
@@ -367,7 +409,16 @@ Of the known risk factors for dementia, more than 80% are modifiable, and the La
 ## Pages
 
 - ${siteOrigin}/
+- ${siteOrigin}/about/
+- ${siteOrigin}/program/
 - ${siteOrigin}/faq/
+- ${siteOrigin}/pricing/
+- ${siteOrigin}/contact/
+- ${siteOrigin}/ebook/
+- ${siteOrigin}/blog/
+- ${siteOrigin}/consultation/
+- ${siteOrigin}/patient-stories/
+- ${siteOrigin}/resources/
 - ${siteOrigin}/evidence/
 
 ## Blog
