@@ -1,0 +1,7 @@
+Gray and Brown Mountain
+Photographer: Pixabay
+Source: https://www.pexels.com/photo/gray-and-brown-mountain-417173/
+License: Pexels License, free to use. https://www.pexels.com/license/
+Downloaded: 2026-11-19
+
+Homepage hero. Desktop files are a 16:9 crop. Phone files are a 3:4 crop centered on the summit. AVIF and WebP srcset sizes are in assets/photos/hero-mountain/, with JPEG fallbacks.

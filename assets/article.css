@@ -1,5 +1,14 @@
 body { background: #f3efe4; color: #1a1814; font-family: "Nunito", "Segoe UI", sans-serif; }
-h1, .article-body h2, .article-body h3, .faqs h2 { font-family: "Fraunces", Georgia, serif; font-weight: 460; letter-spacing: -0.03em; }
+h1, .article-body h2, .article-body h3, .faqs h2 { font-family: "Fraunces", Georgia, serif; font-weight: 560; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.25rem, 2.4vw + 1.2rem, 3.25rem); line-height: 1.22; max-width: 22em; }
+.page { max-width: 42rem; }
+.dek, .article-body, .faqs { max-width: 65ch; }
+.dek { font-size: 1.125rem; line-height: 1.6; }
+.article-body p, .article-body li { line-height: 1.6; }
+.article-body h2 { font-size: clamp(1.75rem, 1vw + 1.2rem, 2.25rem); line-height: 1.28; }
+.article-body h3, .faqs h2 { font-size: 1.35rem; line-height: 1.35; }
+.faq-item { padding: 16px 0; }
+.faq-item summary { line-height: 1.45; padding: 4px 0; }
 .site-header, .top { background: #1c2b22; }
 .byline a { color: #6d3a28; font-weight: 800; }
 .hero-figure img { border-radius: 18px; }
