@@ -11,10 +11,16 @@
     }
   ],
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": false },
-    { "source": "/payment-options", "destination": "/pricing/", "permanent": false },
-    { "source": "/payment-options/", "destination": "/pricing/", "permanent": false },
-    { "source": "/helpful-links", "destination": "/resources/", "permanent": false },
-    { "source": "/helpful-links/", "destination": "/resources/", "permanent": false }
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/physicians/", "permanent": true },
+    { "source": "/about/", "destination": "/physicians/", "permanent": true },
+    { "source": "/pricing", "destination": "/investment/", "permanent": true },
+    { "source": "/pricing/", "destination": "/investment/", "permanent": true },
+    { "source": "/faq", "destination": "/who-we-help/", "permanent": true },
+    { "source": "/faq/", "destination": "/who-we-help/", "permanent": true },
+    { "source": "/payment-options", "destination": "/investment/", "permanent": true },
+    { "source": "/payment-options/", "destination": "/investment/", "permanent": true },
+    { "source": "/helpful-links", "destination": "/resources/", "permanent": true },
+    { "source": "/helpful-links/", "destination": "/resources/", "permanent": true }
   ]
 }

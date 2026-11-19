@@ -237,7 +237,7 @@ function renderArticle(post) {
     headline: post.title,
     description: post.description,
     datePublished: post.publishedAt,
-    author: { '@type': 'Person', name: post.author, url: `${siteOrigin}/about/#lori` },
+    author: { '@type': 'Person', name: post.author, url: `${siteOrigin}/physicians/#lori` },
     image: imageUrl,
     mainEntityOfPage: canonical,
     publisher: { '@type': 'Organization', name: 'PEAK Cognitive Longevity', url: `${siteOrigin}/` }
@@ -294,12 +294,12 @@ function renderArticle(post) {
   <header class="top">
     <div class="top-inner">
       <a class="brand" href="/">PEAK<small>Cognitive Longevity</small></a>
-      <nav class="links desk" aria-label="Main"><a href="/about/">Our Story</a><a href="/program/">Program</a><a href="/pricing/">Pricing</a><a href="/faq/">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a></nav>
-      <a class="book" href="/consultation/">Book a consultation</a>
+      <nav class="links desk" aria-label="Main"><a href="/">Home</a><a href="/physicians/">Meet the Physicians</a><a href="/program/">The Program</a><a href="/who-we-help/">Who We Help</a><a href="/evidence/">The Evidence</a><a href="/resources/">Resources</a><a href="/investment/">Investment</a><a href="/contact/">Contact</a></nav>
+      <a class="book" href="/consultation/">Schedule a Consultation</a>
       <details class="menu">
         <summary>Menu</summary>
-        <nav class="links" aria-label="Mobile"><a href="/about/">Our Story</a><a href="/program/">Program</a><a href="/pricing/">Pricing</a><a href="/faq/">FAQ</a><a href="/blog/" aria-current="page">Blog</a><a href="/ebook/">E-book</a><a href="/contact/">Contact</a></nav>
-        <a class="book" href="/consultation/">Book a consultation</a>
+        <nav class="links" aria-label="Mobile"><a href="/">Home</a><a href="/physicians/">Meet the Physicians</a><a href="/program/">The Program</a><a href="/who-we-help/">Who We Help</a><a href="/evidence/">The Evidence</a><a href="/resources/">Resources</a><a href="/investment/">Investment</a><a href="/contact/">Contact</a></nav>
+        <a class="book" href="/consultation/">Schedule a Consultation</a>
       </details>
     </div>
   </header>
@@ -307,7 +307,7 @@ function renderArticle(post) {
     <div class="series-label">Brain Health</div>
     <h1>${escapeHtml(post.title)}</h1>
     <p class="dek">${escapeHtml(post.description)}</p>
-    <div class="byline"><a href="/about/#lori">${escapeHtml(post.author)}</a> \u00b7 ${escapeHtml(post.publishedAt)} \u00b7 ${post.readingTime} min read</div>
+    <div class="byline"><a href="/physicians/#lori">${escapeHtml(post.author)}</a> \u00b7 ${escapeHtml(post.publishedAt)} \u00b7 ${post.readingTime} min read</div>
     <figure class="hero-figure">
       <img src="${escapeHtml(post.featuredImage)}" alt="${escapeHtml(post.featuredImageAlt)}" width="${imageWidth}" height="${imageHeight}" onerror="this.closest('figure').hidden=true">
     </figure>
@@ -373,10 +373,10 @@ function xmlEscape(value) {
 async function writeCrawlFiles(entries) {
   const staticPages = [
     `${siteOrigin}/`,
-    `${siteOrigin}/about/`,
+    `${siteOrigin}/physicians/`,
     `${siteOrigin}/program/`,
-    `${siteOrigin}/faq/`,
-    `${siteOrigin}/pricing/`,
+    `${siteOrigin}/who-we-help/`,
+    `${siteOrigin}/investment/`,
     `${siteOrigin}/contact/`,
     `${siteOrigin}/ebook/`,
     `${siteOrigin}/blog/`,
@@ -409,10 +409,10 @@ Of the known risk factors for dementia, more than 80% are modifiable, and the La
 ## Pages
 
 - ${siteOrigin}/
-- ${siteOrigin}/about/
+- ${siteOrigin}/physicians/
 - ${siteOrigin}/program/
-- ${siteOrigin}/faq/
-- ${siteOrigin}/pricing/
+- ${siteOrigin}/who-we-help/
+- ${siteOrigin}/investment/
 - ${siteOrigin}/contact/
 - ${siteOrigin}/ebook/
 - ${siteOrigin}/blog/

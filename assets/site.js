@@ -12,22 +12,22 @@
 
   var legacy = {
     home: '/',
-    about: '/about/',
+    about: '/physicians/',
     program: '/program/',
     evidence: '/evidence/',
     blog: '/blog/',
     'helpful-links': '/resources/',
-    'payment-options': '/pricing/',
+    'payment-options': '/investment/',
     consultation: '/consultation/',
     contact: '/contact/',
     ebook: '/ebook/',
     'patient-stories': '/patient-stories/',
-    faq: '/faq/',
+    faq: '/who-we-help/',
     'l-craig': '/patient-stories/#l-craig',
     yvonne: '/patient-stories/#yvonne',
     anonymous: '/patient-stories/#anonymous',
     barbara: '/patient-stories/#barbara',
-    'about-story-video': '/about/#about-story-video',
+    'about-story-video': '/physicians/#about-story-video',
     'ebook-signup': '/ebook/#ebook-signup'
   };
   var hash = (location.hash || '').replace(/^#/, '');

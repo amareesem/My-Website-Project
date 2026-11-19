@@ -63,7 +63,7 @@ test('static page sends one explicit page view without query parameters', () => 
 
 test('home page uses real routes instead of hash navigation', () => {
   assert.equal(html.includes('function goTo'), false);
-  for (const href of ['/about/', '/program/', '/blog/', '/ebook/', '/consultation/', '/contact/']) {
+  for (const href of ['/physicians/', '/program/', '/blog/', '/ebook/', '/consultation/', '/contact/']) {
     assert.ok(html.includes(`href="${href}"`), href);
   }
   assert.match(html, /name="robots" content="noindex, nofollow"/);
@@ -88,10 +88,10 @@ test('booking, portal, phone and email clicks have distinct events', () => {
 test('each public page and both generators include analytics once', () => {
   const pages = [
     'index.html',
-    path.join('about', 'index.html'),
+    path.join('physicians', 'index.html'),
     path.join('program', 'index.html'),
-    path.join('faq', 'index.html'),
-    path.join('pricing', 'index.html'),
+    path.join('who-we-help', 'index.html'),
+    path.join('investment', 'index.html'),
     path.join('contact', 'index.html'),
     path.join('ebook', 'index.html'),
     path.join('blog', 'index.html'),

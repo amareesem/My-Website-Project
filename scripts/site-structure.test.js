@@ -6,10 +6,10 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const pages = [
   ['index.html', '/'],
-  ['about/index.html', '/about/'],
+  ['physicians/index.html', '/physicians/'],
   ['program/index.html', '/program/'],
-  ['faq/index.html', '/faq/'],
-  ['pricing/index.html', '/pricing/'],
+  ['who-we-help/index.html', '/who-we-help/'],
+  ['investment/index.html', '/investment/'],
   ['contact/index.html', '/contact/'],
   ['ebook/index.html', '/ebook/'],
   ['blog/index.html', '/blog/'],
@@ -69,7 +69,7 @@ test('production crawl files exist and preview header stays noindex', () => {
   const config = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8');
   assert.match(robots, /Allow: \//);
   assert.match(robots, /sitemap\.xml/);
-  assert.match(sitemap, /\/about\//);
+  assert.match(sitemap, /\/physicians\//);
   assert.match(sitemap, /\/blog\/polyphenols-brain-health\//);
   assert.match(llms, /PEAK Cognitive Longevity/);
   assert.match(llms, /Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide/);

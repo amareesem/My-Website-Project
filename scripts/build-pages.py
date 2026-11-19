@@ -10,15 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://www.peakcognitivelongevity.com"
 BOOK = "https://timarronaestheticcenter.practicebetter.io/#/666c7768ad746af80f84ddc6/bookings?r=67868e4b5507f788d6a47270"
 OG_DEFAULT = f"{ORIGIN}/assets/photos/living-what-we-teach/drs-king-by-the-ocean.jpg"
-FONT = "https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,560&amp;family=Nunito:wght@400;700;800&amp;display=swap"
-
 NAV = [
-    ("/about/", "Our Story", "about"),
-    ("/program/", "Program", "program"),
-    ("/pricing/", "Pricing", "pricing"),
-    ("/faq/", "FAQ", "faq"),
-    ("/blog/", "Blog", "blog"),
-    ("/ebook/", "E-book", "ebook"),
+    ("/", "Home", "home"),
+    ("/physicians/", "Meet the Physicians", "physicians"),
+    ("/program/", "The Program", "program"),
+    ("/who-we-help/", "Who We Help", "who"),
+    ("/evidence/", "The Evidence", "evidence"),
+    ("/resources/", "Resources", "resources"),
+    ("/investment/", "Investment", "investment"),
     ("/contact/", "Contact", "contact"),
 ]
 
@@ -99,7 +98,7 @@ def head(title, description, path, image, schemas):
     )
     preload = ""
     if path == "/":
-        preload = '<link rel="preload" as="image" href="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.webp" type="image/webp" fetchpriority="high">'
+        preload = '<link rel="preload" as="image" href="/assets/photos/hero-mountain/mobile-750.avif" type="image/avif" media="(max-width: 859px)" fetchpriority="high">\n  <link rel="preload" as="image" href="/assets/photos/hero-mountain/desktop-1280.avif" type="image/avif" media="(min-width: 860px)" fetchpriority="high">'
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -121,11 +120,9 @@ def head(title, description, path, image, schemas):
   <meta name="twitter:description" content="{e(description)}">
   <meta name="twitter:image" content="{e(image)}">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/assets/fonts/lora-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-normal-400.woff2" as="font" type="font/woff2" crossorigin>
   {preload}
-  <link rel="preload" as="style" href="{FONT}" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{FONT}"></noscript>
   <link rel="stylesheet" href="/assets/site.css">
   {blocks}
   <script src="/assets/analytics.js" defer></script>
@@ -145,11 +142,11 @@ def header(active):
   <div class="top-inner">
     <a class="brand" href="/">PEAK<small>Cognitive Longevity</small></a>
     <nav class="links desk" aria-label="Main">{nav}</nav>
-    <a class="book" href="/consultation/">Book a consultation</a>
+    <a class="book" href="{BOOK}">Schedule a Consultation</a>
     <details class="menu">
       <summary>Menu</summary>
       <nav class="links" aria-label="Mobile">{nav}</nav>
-      <a class="book" href="/consultation/">Book a consultation</a>
+      <a class="book" href="{BOOK}">Schedule a Consultation</a>
     </details>
   </div>
 </header>
@@ -166,11 +163,13 @@ def footer():
     <div>
       <h2>Explore</h2>
       <ul class="foot-links">
-        <li><a href="/about/">Our Story</a></li>
+        <li><a href="/physicians/">Meet the Physicians</a></li>
         <li><a href="/program/">The Program</a></li>
-        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/who-we-help/">Who We Help</a></li>
+        <li><a href="/investment/">Investment</a></li>
         <li><a href="/evidence/">The Evidence</a></li>
         <li><a href="/patient-stories/">Patient Stories</a></li>
+        <li><a href="/ebook/">Free E-book</a></li>
       </ul>
     </div>
     <div>
@@ -179,7 +178,7 @@ def footer():
       <a href="mailto:team@peakcognitivelongevity.com">team@peakcognitivelongevity.com</a></p>
       <p>200 Pecan Creek Drive<br>Southlake, TX 76092</p>
       <p>Mon to Thu, 8:00 AM to 4:30 PM<br>Fri, 8:00 AM to 12:00 PM</p>
-      <p><a href="/consultation/">Book a consultation</a> · <a href="/ebook/">Free e-book</a> · <a href="/blog/">Blog</a> · <a href="/faq/">FAQ</a> · <a href="/contact/">Contact</a> · <a href="/resources/">Ordering and Resources</a></p>
+      <p><a href="/consultation/">Book a consultation</a> · <a href="/ebook/">Free e-book</a> · <a href="/blog/">Blog</a> · <a href="/who-we-help/">FAQ</a> · <a href="/contact/">Contact</a> · <a href="/resources/">Ordering and Resources</a></p>
     </div>
   </div>
   <div class="legal fine">
@@ -226,118 +225,57 @@ def cta(extra=""):
 HOME = """
 <main id="main">
   <section class="stage">
+    <!-- Hero photograph: Gray and Brown Mountain by Pixabay, Pexels License (free to use). https://www.pexels.com/photo/gray-and-brown-mountain-417173/ -->
     <picture>
-      <source srcset="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.avif" type="image/avif">
-      <source srcset="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.webp" type="image/webp">
-      <img src="/assets/photos/living-what-we-teach/drs-king-by-the-ocean.jpg" alt="Dr. Lori King and Dr. Chris King outdoors by the ocean" width="1200" height="900" fetchpriority="high">
+      <source media="(min-width: 860px)" type="image/avif" sizes="100vw" srcset="/assets/photos/hero-mountain/desktop-960.avif 960w, /assets/photos/hero-mountain/desktop-1280.avif 1280w, /assets/photos/hero-mountain/desktop-1600.avif 1600w, /assets/photos/hero-mountain/desktop-1920.avif 1920w">
+      <source media="(max-width: 859px)" type="image/avif" sizes="100vw" srcset="/assets/photos/hero-mountain/mobile-480.avif 480w, /assets/photos/hero-mountain/mobile-750.avif 750w, /assets/photos/hero-mountain/mobile-1000.avif 1000w">
+      <source media="(min-width: 860px)" type="image/webp" sizes="100vw" srcset="/assets/photos/hero-mountain/desktop-960.webp 960w, /assets/photos/hero-mountain/desktop-1280.webp 1280w, /assets/photos/hero-mountain/desktop-1600.webp 1600w, /assets/photos/hero-mountain/desktop-1920.webp 1920w">
+      <source media="(max-width: 859px)" type="image/webp" sizes="100vw" srcset="/assets/photos/hero-mountain/mobile-480.webp 480w, /assets/photos/hero-mountain/mobile-750.webp 750w, /assets/photos/hero-mountain/mobile-1000.webp 1000w">
+      <img src="/assets/photos/hero-mountain/desktop-1600.jpg" alt="A calm snow-covered mountain peak rising above the clouds" width="1600" height="900" fetchpriority="high">
     </picture>
-  </section>
-  <section class="sheet">
-    <div class="wrap">
-      <p class="eyebrow">Physician-led cognitive longevity</p>
-      <h1>Your sharpest years are still ahead.</h1>
-      <p class="lede">A six-month program with your own physician, in Southlake and by video nationwide.</p>
-      <a class="btn" href="/consultation/">Book a consultation</a>
+    <div class="stage-scrim" aria-hidden="true"></div>
+    <div class="stage-copy">
+      <div class="wrap">
+        <p class="eyebrow">Physician-led cognitive longevity</p>
+        <h1>Protect Your Brain Health. Invest in Your Future.</h1>
+        <p class="lede">PEAK is a six-month program with your own physician. You can visit in Southlake or meet by video across the country.</p>
+        <a class="btn" href="https://timarronaestheticcenter.practicebetter.io/#/666c7768ad746af80f84ddc6/bookings?r=67868e4b5507f788d6a47270">Schedule a Consultation</a>
+      </div>
     </div>
   </section>
-  <section class="who-band">
-    <div class="wrap narrow">
+  <section class="section" id="who">
+    <div class="wrap">
       <p class="eyebrow">Who PEAK is for</p>
-      <p>Adults who want to stay sharp, often before memory problems show. Many patients come after watching a parent live with dementia. You do not need a diagnosis to start. Visits happen in Southlake and by video across the country. Call us to confirm availability in your state.</p>
+      <h2>Who PEAK helps</h2>
+      <div class="cols-2">
+        <article class="card">
+          <h3>In your 40s, 50s, and 60s</h3>
+          <p>Many people start before memory problems show, often after watching a parent live with dementia. You do not need a diagnosis. This is the group we see most.</p>
+        </article>
+        <article class="card">
+          <h3>Age 60 and older, with early changes</h3>
+          <p>If words slip or you are not feeling like yourself, you can still start. Your physician looks for causes you can work on, and every result comes with a plan.</p>
+        </article>
+      </div>
     </div>
   </section>
   <section class="section section-paper">
-    <div class="wrap">
-      <div class="narrow">
-        <h2>The story most of us were told is incomplete.</h2>
-        <p>You have probably heard what we were taught in medical school: dementia is genetic, it is bad luck, and nothing can be done until memory starts slipping. The science now tells a different story. <strong>Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide</strong>.</p>
-        <p>The brain changes behind Alzheimer's can begin as many as 20 years before the first forgotten name. That means your 40s, 50s, and 60s are not a waiting room. They are your window.</p>
-      </div>
+    <div class="wrap narrow">
+      <h2>Why brain health deserves your attention</h2>
+      <p>You may have heard that dementia is only genes or bad luck, and that nothing can be done until memory slips. The science is more hopeful than that.</p>
+      <p><strong>Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide.</strong></p>
+      <p>The brain changes behind Alzheimer's can begin as many as 20 years before the first forgotten name. Your 40s, 50s, and 60s are a useful window, not a waiting room.</p>
       <div class="stat-row">
         <div class="stat"><strong>Up to 20 years</strong><span>how early brain changes can begin before symptoms</span></div>
         <div class="stat"><strong>80%+</strong><span>of known dementia risk factors are modifiable</span></div>
-        <div class="stat"><strong>About 1 hour a week</strong><span>your time commitment in PEAK</span></div>
+        <div class="stat"><strong>About 1 hour a week</strong><span>your time in PEAK, plus one physician visit a month</span></div>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="wrap">
-      <div class="narrow">
-        <p class="eyebrow">What we measure</p>
-        <h2>See the factors that can shape your brain, while you can still work on them.</h2>
-        <p>These are not guesses based only on family history. They come from your own blood, genes, and biology. Most people never see these numbers. You can see them while there is still time to work with them.</p>
-      </div>
-      <ul class="fact-list">
-        <li><h3>Early-warning brain signals</h3><p>p-Tau 217, amyloid beta 42/40, NfL, and GFAP</p></li>
-        <li><h3>Your genetic blueprint</h3><p>APOE4 and critical risk genes, plus an advanced genetic brain panel (500+ variants)</p></li>
-        <li><h3>Hidden inflammation and blood sugar</h3><p>Comprehensive metabolic blood panel</p></li>
-        <li><h3>Your cellular energy</h3><p>NAD+ testing</p></li>
-        <li><h3>Toxins that can stress the brain</h3><p>Total Toxin Burden Analysis</p></li>
-        <li><h3>Brain chemistry and hormones</h3><p>Neurotransmitter and hormone evaluation</p></li>
-        <li><h3>How your brain performs today</h3><p>Professional cognitive performance testing</p></li>
-      </ul>
-      <p class="note">Testing included varies by package.</p>
-      <p>Every finding comes with a plan. The point is to know what to do next.</p>
-      <div class="actions"><a class="btn" href="/program/">See the program</a><a class="btn btn-line" href="/pricing/">See pricing</a></div>
-    </div>
-  </section>
-  <section class="section section-navy">
-    <div class="wrap narrow">
-      <h2>Your brain and body were designed to heal.</h2>
-      <p>We believe that, given the right conditions, the body does what it was made to do: repair, renew, and thrive. Cognitive decline is not a random sentence. It often follows root causes such as inflammation, blood sugar, gut health, toxins, sleep, hormones, and cellular energy. Find them and address them, and you give your brain better conditions for the decades ahead.</p>
-      <p>The mind is a gift worth fighting for.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap split">
-      <div>
-        <div class="pair-photos">
-          <figure>
-            <img src="/assets/photos/Lori-with-Dad.jpg" alt="Dr. Lori King with her father" width="800" height="1000">
-            <figcaption>Dr. Lori with her father</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/photos/Chris-with-Mom.jpg" alt="Dr. Chris King with his mother" width="800" height="1000">
-            <figcaption>Dr. Chris with his mother</figcaption>
-          </figure>
-        </div>
-      </div>
-      <div>
-        <h2>We each lost a parent to dementia. We built PEAK so other families can start sooner.</h2>
-        <p>After 62 years in family medicine, we each lost a parent to dementia. We retrained in root-cause and longevity medicine to offer families the answers and support we wish our parents had.</p>
-        <p><a href="/about/">Read our full story</a></p>
-        <div class="actions">
-          <a class="btn" href="/consultation/">Book Your Consultation</a>
-          <a class="btn btn-line" href="/about/#about-story-video">Watch our story (20 min)</a>
-        </div>
-      </div>
-    </div>
-    <div class="wrap quotes" style="margin-top:36px;">
-      <figure>
-        <img src="/assets/photos/dr-lori-king.jpg" alt="Dr. Lori King, MD" width="280" height="350">
-        <blockquote>"I lost 2 people I loved deeply to dementia, and I promised myself I would spend my career making sure that didn't happen to anyone else I could reach."</blockquote>
-        <figcaption>Dr. Lori King, MD <span>Founder and Physician</span></figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/photos/dr-chris-king.jpg" alt="Dr. Chris King, MD" width="280" height="350">
-        <blockquote>"PEAK is everything we wish our parents had."</blockquote>
-        <figcaption>Drs. Lori and Chris King <span>Founders</span></figcaption>
-      </figure>
-    </div>
-  </section>
-  <section class="section section-paper">
-    <div class="wrap">
-      <p class="eyebrow">The PEAK program</p>
-      <h2>Your climb to the PEAK: six months, your own physician, one step at a time.</h2>
-      <ol class="steps">
-        <li><span class="k">Trailhead</span><h3>Your consultation</h3><p>One hour, 1:1 with Dr. Lori or Dr. Chris. The real work starts here.</p></li>
-        <li><span class="k">Weeks 1 to 2</span><h3>At-home testing</h3><p>A look at the hidden factors shaping your brain's future.</p></li>
-        <li><span class="k">Weeks 3 to 4</span><h3>Review of Findings</h3><p>We walk you through every result and build a protocol designed for you alone.</p></li>
-        <li><span class="k">Months 2 to 7</span><h3>Six Basecamps</h3><p>Foundations and Observation, then Inflammation, Mitochondrial Health, Cellular Energy and Performance, Autophagy and Cellular Regeneration, and Lifelong Brain Health.</p></li>
-        <li><span class="k">Summit</span><h3>Graduation</h3><p>You leave a PEAK graduate, with the option to keep climbing in PEAK Ascent.</p></li>
-      </ol>
-      <p><strong>Two journeys at once:</strong> a monthly 1:1 virtual visit with your physician, and a short weekly module with clear action steps, plus anytime secure messaging with your doctor.</p>
-      <p>No guilt. No willpower marathons. Small, joyful changes you will actually love, because lifestyle change is life.</p>
+      <p class="eyebrow">The PEAK approach</p>
+      <h2>Four parts of the same plan</h2>
       <div class="cards cards-4">
         <article class="card">
           <img src="/assets/photos/living-what-we-teach/drs-king-mountain-hike.jpg" alt="Drs. Lori and Chris King hiking in the mountains" width="1200" height="900">
@@ -360,12 +298,43 @@ HOME = """
           <p>Self-care: restorative sleep, toxin avoidance, and detoxification.</p>
         </article>
       </div>
-      <div class="actions"><a class="btn" href="/program/">See the program</a><a class="btn btn-line" href="/ebook/">Get the Free E-book</a></div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span class="k">1</span><h3>Consultation</h3><p>One hour, one to one, with Dr. Lori or Dr. Chris. The real work starts here.</p></li>
+        <li><span class="k">2</span><h3>Testing</h3><p>At-home testing looks at the factors that can shape your brain.</p></li>
+        <li><span class="k">3</span><h3>Review of Findings</h3><p>We walk through every result with you.</p></li>
+        <li><span class="k">4</span><h3>Personalized protocol</h3><p>A plan built for your results, not a generic list.</p></li>
+        <li><span class="k">5</span><h3>Six Basecamps</h3><p>Foundations and Observation, then Inflammation, Mitochondrial Health, Cellular Energy and Performance, Autophagy and Cellular Regeneration, and Lifelong Brain Health.</p></li>
+      </ol>
+      <p class="narrow">Two journeys at once: a monthly visit with your physician, and a short weekly module with clear steps. You can message your physician between visits.</p>
+      <p><a href="/program/">See the program</a></p>
     </div>
   </section>
   <section class="section">
+    <div class="wrap split">
+      <div class="pair-photos">
+        <figure>
+          <img src="/assets/photos/dr-lori-king.jpg" alt="Dr. Lori King, MD" width="400" height="500">
+          <figcaption>Dr. Lori King, MD</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/photos/dr-chris-king.jpg" alt="Dr. Chris King, MD" width="480" height="600">
+          <figcaption>Dr. Chris King, MD</figcaption>
+        </figure>
+      </div>
+      <div class="narrow">
+        <h2>Meet the physicians</h2>
+        <p>After 62 years in family medicine, we each lost a parent to dementia. That is why we built PEAK.</p>
+        <p><a href="/physicians/">Read our story</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper" id="patient-stories">
     <div class="wrap">
-      <p class="eyebrow">From our patients</p>
       <h2>In their words</h2>
       <div class="reviews">
         <figure class="review">
@@ -385,78 +354,21 @@ HOME = """
         </figure>
       </div>
       <p class="note">Individual experiences vary.</p>
-      <p><a href="/patient-stories/">Read all patient stories</a></p>
     </div>
   </section>
-  <section class="section section-paper">
+  <section class="section" id="blog">
     <div class="wrap">
-      <h2>Built on research you can read for yourself.</h2>
-      <ul class="research">
-        <li><h3>Dr. Dean Ornish</h3><p>2024 trial of an intensive lifestyle program in early Alzheimer's disease</p></li>
-        <li><h3>Dr. Dale Bredesen</h3><p>Pioneer of the root-cause approach to cognitive decline</p></li>
-        <li><h3>Dr. David Perlmutter</h3><p>Research on inflammation, the gut, and the brain's immune cells</p></li>
-        <li><h3>The Lancet Commission, 2024</h3><p>Of the known risk factors for dementia, more than 80% are modifiable, and the Lancet Commission estimates that addressing just 14 of them could prevent or delay up to 45% of dementia cases worldwide.</p></li>
-      </ul>
-      <div class="actions"><a class="btn" href="/evidence/">See the evidence</a><a class="btn btn-line" href="/blog/">Read the blog</a></div>
-      <p>PEAK has run a waiting list for much of 2026. We keep it small so every patient gets real physician time.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap narrow">
-      <p class="eyebrow">Healthspan, not just lifespan</p>
-      <h2>This is about your next 30 years.</h2>
-      <p>Cognitive longevity means being the one who remembers the grandkids' recital, plans the trip, runs the business, finishes the crossword, and is still the person everyone calls for advice. The root causes we address for your brain also show up in energy, sleep, weight, mood, and blood pressure.</p>
-      <p>There is no single pill for that future. The small choices you make every day matter: how and when you eat, how you move and sleep, the light you see, the toxins around you, how you handle stress, and the gratitude, nature, and connection in your life. Each choice either fuels your brain or quietly drains it.</p>
-      <p>PEAK puts a plan built for your body in your hands, along with the knowledge to choose with confidence. One choice at a time, the future you just pictured becomes something you build.</p>
-    </div>
-  </section>
-  <section class="section section-paper">
-    <div class="wrap narrow">
-      <h2>A few questions people ask first</h2>
-      <details class="faq"><summary>Do I need to have memory problems to start?</summary><p>No. The best time is before anything shows. Most PEAK patients come because they want to keep it that way, often after watching a parent decline.</p></details>
-      <details class="faq"><summary>What if a result is hard to hear?</summary><p>Every result arrives with a plan and a physician beside you. We look for risks so we can work on them, not to deliver a verdict.</p></details>
-      <details class="faq"><summary>Can my spouse join me?</summary><p>Yes. Your spouse's consultation is free when booked with yours, and if you both enroll, you each receive $500 off.</p></details>
-      <p><a href="/faq/">Read all of the questions</a></p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
-      <h2>From the physicians' writing</h2>
-      <div class="cards cards-3">
-        <article class="card">
-          <a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/"><img src="/assets/photos/food-fight-ebook-cover.jpg" alt="Food Fight e-book cover by Dr. Lori King, MD" width="600" height="800"></a>
-          <h3><a href="/blog/food-fight-weight-loss-chronic-disease-brain-health/">The Food Fight: how diet affects weight, disease, and brain health</a></h3>
-          <p>The opening chapter of Food Fight, from Dr. Lori King, MD.</p>
-        </article>
-        <article class="card">
-          <a href="/blog/morning-sunlight-brain-health/"><img src="/assets/photos/Mountain%20Sunrise%20Sun%20Beams.jpg" alt="Sunlight breaking over a mountain ridge at sunrise" width="1400" height="900"></a>
-          <h3><a href="/blog/morning-sunlight-brain-health/">Morning sunlight and brain health</a></h3>
-          <p>A short Longevity Pearl on a daily habit you can start outside.</p>
-        </article>
-        <article class="card">
-          <a href="/blog/morning-exercise-brain-health/"><img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1600" height="1067"></a>
-          <h3><a href="/blog/morning-exercise-brain-health/">A simple morning movement habit</a></h3>
-          <p>Another Longevity Pearl from Dr. Lori, written for real mornings.</p>
-        </article>
-      </div>
-      <div class="actions"><a class="btn" href="/blog/">Read the blog</a><a class="btn btn-line" href="/ebook/">Get the Free E-book</a></div>
-    </div>
-  </section>
-  <section class="section section-paper">
-    <div class="wrap">
-      <h2>Next steps</h2>
-      <ol class="next-steps">
-        <li><a href="/consultation/">Book a consultation</a><p>One hour with Dr. Lori or Dr. Chris. $350, credited toward the program if you enroll. A spouse's consultation is free when booked together.</p></li>
-        <li><a href="/ebook/">Get the free e-book</a><p>Food Fight, practical food swaps from Dr. Lori King, MD.</p></li>
-        <li><a href="/blog/">Read the blog</a><p>The Food Fight series and Longevity Pearls, one short chapter at a time.</p></li>
-        <li><a href="/contact/">Contact the team</a><p>(817) 796-5115 or team@peakcognitivelongevity.com. Mon to Thu, 8:00 AM to 4:30 PM. Fri, 8:00 AM to 12:00 PM.</p></li>
-      </ol>
-    </div>
-  </section>
-  <section class="section section-paper" id="blog">
-    <div class="wrap">
-      <h2>Brain Health</h2>
+      <h2>From the blog</h2>
+      <p class="eyebrow">Brain Health</p>
       <div id="brain-health-grid" class="cards cards-3"></div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="wrap narrow">
+      <h2>Take the next step</h2>
+      <p>Your consultation is one hour with Dr. Lori or Dr. Chris. The fee is $350, credited toward the program if you enroll. A spouse's consultation is free when booked the same day.</p>
+      <a class="btn" href="https://timarronaestheticcenter.practicebetter.io/#/666c7768ad746af80f84ddc6/bookings?r=67868e4b5507f788d6a47270">Schedule a Consultation</a>
+      <p><a href="tel:+18177965115">(817) 796-5115</a></p>
     </div>
   </section>
 </main>
@@ -464,8 +376,11 @@ HOME = """
 function renderBrainHealthPosts(posts) {
   var grid = document.getElementById('brain-health-grid');
   if (!grid || !posts) return;
+  var newest = posts.slice().sort(function (a, b) {
+    return (b.publishedAt || '').localeCompare(a.publishedAt || '');
+  }).slice(0, 3);
   grid.textContent = '';
-  posts.forEach(function (post) {
+  newest.forEach(function (post) {
     var article = document.createElement('article');
     article.className = 'card';
     var link = document.createElement('a');
@@ -637,7 +552,7 @@ PROGRAM = """
         <p class="eyebrow">The program</p>
         <h1>What PEAK actually includes</h1>
         <p class="lede">Six months. Two things happening at once: a personal clinical relationship, and a structured education that changes how you live.</p>
-        <div class="actions"><a class="btn" href="/consultation/">Book Your Consultation</a><a class="btn btn-line" href="/pricing/">See pricing</a></div>
+        <div class="actions"><a class="btn" href="/consultation/">Book Your Consultation</a><a class="btn btn-line" href="/investment/">See pricing</a></div>
       </div>
       <img src="/assets/photos/Mountain-Trail-Sunrise.jpg" alt="A quiet mountain trail at sunrise" width="1200" height="800">
     </div>
@@ -725,8 +640,8 @@ def faq_body():
   <section class="page-intro">
     <div class="wrap narrow">
       <p class="eyebrow">Questions people ask before booking</p>
-      <h1>Questions, answered honestly.</h1>
-      <p class="lede">Clear answers about the PEAK program, testing, time, and what to expect.</p>
+      <h1>Who we help</h1>
+      <p class="lede">Adults who want to stay sharp, often before memory problems show, and people who are noticing early changes. A diagnosis is not required.</p>
     </div>
   </section>
   <section class="section">
@@ -952,7 +867,7 @@ CONSULT = f"""
           <a class="btn btn-line" href="tel:+18177965115">Call (817) 796-5115</a>
           <a class="btn btn-line" href="/contact/">Email us</a>
         </div>
-        <p class="note"><a href="/pricing/">See program prices and payment options</a> · <a href="/ebook/">Get the free e-book while you decide</a></p>
+        <p class="note"><a href="/investment/">See program prices and payment options</a> · <a href="/ebook/">Get the free e-book while you decide</a></p>
       </div>
     </div>
   </section>
@@ -1153,18 +1068,18 @@ def main():
     page("/", "Your Sharpest Years Are Still Ahead | PEAK Cognitive Longevity",
          "A six-month physician-led program in Southlake, TX, and by video nationwide, for adults who want to stay sharp.",
          "home", HOME, [clinic_schema(), LORI, CHRIS])
-    page("/about/", "Our Story | PEAK Cognitive Longevity",
+    page("/physicians/", "Our Story | PEAK Cognitive Longevity",
          "Dr. Lori King and Dr. Chris King each lost a parent to dementia. They built PEAK at Timarron Family Medicine.",
-         "about", ABOUT, [clinic_schema(), LORI, CHRIS], f"{ORIGIN}/assets/photos/Lori-with-Dad.jpg")
+         "physicians", ABOUT, [clinic_schema(), LORI, CHRIS], f"{ORIGIN}/assets/photos/Lori-with-Dad.jpg")
     page("/program/", "The PEAK Program | PEAK Cognitive Longevity",
          "What the six-month PEAK program includes: testing, a personal protocol, weekly modules, and monthly physician visits.",
          "program", PROGRAM)
-    page("/faq/", "Questions About PEAK | PEAK Cognitive Longevity",
-         "Common questions about PEAK, testing, time, the $350 consultation, couples, and how payment works.",
-         "faq", faq_body(), [clinic_schema(), faq_schema()])
-    page("/pricing/", "Pricing and Payment Options | PEAK Cognitive Longevity",
+    page("/who-we-help/", "Who We Help | PEAK Cognitive Longevity",
+         "Who PEAK is for, from your 40s through early changes later in life, plus common questions.",
+         "who", faq_body(), [clinic_schema(), faq_schema()])
+    page("/investment/", "Investment | PEAK Cognitive Longevity",
          "Silver, Gold, and Executive program prices, cash or check savings, financing, and the couple discount.",
-         "pricing", PRICING)
+         "investment", PRICING)
     page("/contact/", "Contact Us | PEAK Cognitive Longevity",
          "Call (817) 796-5115 or email team@peakcognitivelongevity.com. 200 Pecan Creek Drive, Southlake, TX 76092.",
          "contact", CONTACT)
