@@ -102,5 +102,26 @@
     "readingTime": 6,
     "author": "Lori King, MD",
     "excerpt": "Walking into a room and forgetting why is common at any age. So is feeling foggy after poor sleep, stress, or illness. Here is a calm way to tell everyday slips from changes that are worth a conversation with your doctor."
+  },
+  {
+    "title": "Sleep Is Brain Maintenance: What We Know, and Don't, About Sleep and Alzheimer's",
+    "seoTitle": "Sleep and Alzheimer's: What We Know and Don't Know",
+    "description": "What science says about sleep and Alzheimer's risk, including what we don't know yet, plus the 7 to 9 hour goal and when to ask about apnea.",
+    "slug": "sleep-is-brain-maintenance",
+    "category": "Brain Health",
+    "tags": [
+      "Brain Health",
+      "sleep",
+      "Alzheimer's",
+      "sleep apnea",
+      "brain fog"
+    ],
+    "focusKeyword": "sleep and Alzheimer's risk",
+    "featuredImage": "/assets/blog/brain-health/sleep-is-brain-maintenance.jpg",
+    "featuredImageAlt": "A calm bedroom with a made bed and a low bedside lamp in the evening",
+    "publishedAt": "2026-11-23",
+    "readingTime": 6,
+    "author": "Lori King, MD",
+    "excerpt": "Poor sleep and sleep-disordered breathing are associated with cognitive decline, and the link with Alzheimer's appears to run in both directions. It is not yet known whether improving sleep lowers Alzheimer's risk, but 7 to 9 hours and good sleep habits are still a sound investment."
   }
 ]
